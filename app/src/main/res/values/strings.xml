@@ -7,4 +7,7 @@
     <string name="sign_up">إنشاء حساب</string>
     <string name="do_not_have_an_account">ليس لديك حساب؟</string>
     <string name="forgot_password">هل نسيت كلمة السر؟</string>
+    <string name="user_name">اسم المستخدم</string>
+    <string name="confirm_password">تأكيد كلمة السر</string>
+    <string name="already_have_an_account">هل لديك حساب ؟</string>
 </resources>

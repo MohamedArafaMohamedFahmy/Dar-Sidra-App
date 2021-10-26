@@ -7,11 +7,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/Theme.DarSidraApp">
         <activity android:name=".activities.ForgotPasswordActivity"></activity>
-        <activity android:name=".activities.RegistrationActivity" />
-        <activity android:name=".activities.LoginActivity"
+        <activity android:name=".activities.RegistrationActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar"
             >
             <intent-filter>
@@ -19,6 +18,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".activities.LoginActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"
+            >
+
         </activity>
         <activity android:name=".MainActivity">
 

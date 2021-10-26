@@ -31,7 +31,8 @@
     </style>
 
     <style name="FilledBoxEndIconTint" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="endIconTint">#A1000000</item>
+        <item name="startIconTint">#A1000000</item>
+        <item name="startIconDrawable">@drawable/ic_eye</item>
     </style>
 
 </resources>
