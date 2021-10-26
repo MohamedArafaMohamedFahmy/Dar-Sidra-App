@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DarSidraApp</string>
+    <string name="sign_in">تسجيل دخول</string>
+    <string name="email_address">البريد الالكترونى</string>
+    <string name="password">كلمة السر</string>
+    <string name="loading">تحميل....</string>
+    <string name="sign_up">إنشاء حساب</string>
+    <string name="do_not_have_an_account">ليس لديك حساب؟</string>
+    <string name="forgot_password">هل نسيت كلمة السر؟</string>
+</resources>
