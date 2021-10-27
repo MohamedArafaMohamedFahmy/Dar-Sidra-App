@@ -8,7 +8,6 @@
     android:background="#FFF4E6"
     android:layoutDirection="rtl"
     android:textDirection="rtl"
-    android:textAlignment="viewEnd"
     >
 
     <RelativeLayout
@@ -224,6 +223,24 @@
             android:padding="5dp"
             >
 
+            <com.balysv.materialripple.MaterialRippleLayout
+                style="@style/RippleStyleGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_sign_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/aladin"
+                    android:textColor="#ef6c00"
+                    android:text="@string/sign_in"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_already_have_account"
                 android:layout_width="wrap_content"
@@ -233,22 +250,6 @@
                 android:text="@string/already_have_an_account"
                 android:textSize="15sp"
                 />
-            <com.balysv.materialripple.MaterialRippleLayout
-                style="@style/RippleStyleGrey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_sign_in"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:fontFamily="@font/aladin"
-                    android:textColor="#ef6c00"
-                    android:text="@string/sign_in"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-            </com.balysv.materialripple.MaterialRippleLayout>
 
 
         </LinearLayout>

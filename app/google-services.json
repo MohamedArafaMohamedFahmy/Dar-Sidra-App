@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "588521949066",
+    "firebase_url": "https://casesmakers.firebaseio.com",
+    "project_id": "casesmakers",
+    "storage_bucket": "casesmakers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588521949066:android:3959cfb8d47989d0b9ea73",
+        "android_client_info": {
+          "package_name": "com.arafa.mohamed.darsidraapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588521949066-52dmhdesjg3qljrhj8a2tvfhp0kb1a1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOiD1sow-C-DvZK0nBIaU4QUT5Hoe5lv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588521949066-52dmhdesjg3qljrhj8a2tvfhp0kb1a1i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588521949066:android:bcdc414b6a82c717b9ea73",
+        "android_client_info": {
+          "package_name": "com.arafa.mohamed.lifemakers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588521949066-52dmhdesjg3qljrhj8a2tvfhp0kb1a1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOiD1sow-C-DvZK0nBIaU4QUT5Hoe5lv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588521949066-52dmhdesjg3qljrhj8a2tvfhp0kb1a1i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588521949066:android:b3a6d4c29a0aae24b9ea73",
+        "android_client_info": {
+          "package_name": "com.arafa.mohamed.whitedental"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588521949066-52dmhdesjg3qljrhj8a2tvfhp0kb1a1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOiD1sow-C-DvZK0nBIaU4QUT5Hoe5lv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588521949066-52dmhdesjg3qljrhj8a2tvfhp0kb1a1i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,8 +1,10 @@
-package com.arafa.mohamed.darsidraapp;
+package com.arafa.mohamed.darsidraapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.arafa.mohamed.darsidraapp.R;
 
 public class MainActivity extends AppCompatActivity {
 

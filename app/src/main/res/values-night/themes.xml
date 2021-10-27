@@ -21,6 +21,9 @@
         <item name="android:statusBarColor">@color/general_app</item>
         <item name="colorPrimary">@color/general_app</item>
         <item name="colorSecondary">@color/general_app</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:textDirection">rtl</item>
+
 
     </style>
 

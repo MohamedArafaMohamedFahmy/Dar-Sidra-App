@@ -9,24 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.DarSidraApp">
-        <activity android:name=".activities.ForgotPasswordActivity"></activity>
-        <activity android:name=".activities.RegistrationActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar"
-            >
+        <activity android:name=".activities.RatingSubscriptionDetailsActivity"></activity>
+        <activity android:name=".activities.StudentDetailsActivity" />
+        <activity android:name=".activities.RegisteredStudentsActivity" />
+        <activity
+            android:name=".activities.ForgotPasswordActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity
+            android:name=".activities.RegistrationActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.LoginActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar"
-            >
-
-        </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity android:name=".activities.MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

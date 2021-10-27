@@ -169,6 +169,24 @@
             android:layout_marginBottom="10dp"
             android:padding="5dp"
             >
+            <com.balysv.materialripple.MaterialRippleLayout
+                style="@style/RippleStyleGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_sign_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/aladin"
+                    android:text="@string/sign_up"
+                    android:textColor="#ef6c00"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </com.balysv.materialripple.MaterialRippleLayout>
+
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_doNot_have_account"
@@ -179,23 +197,6 @@
                 android:text="@string/do_not_have_an_account"
                 android:textSize="15sp"
                 />
-            <com.balysv.materialripple.MaterialRippleLayout
-                style="@style/RippleStyleGrey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_sign_up"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:fontFamily="@font/aladin"
-                    android:text="@string/sign_up"
-                    android:textColor="#ef6c00"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-            </com.balysv.materialripple.MaterialRippleLayout>
 
         </LinearLayout>
 

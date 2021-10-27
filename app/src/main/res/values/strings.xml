@@ -10,4 +10,29 @@
     <string name="user_name">اسم المستخدم</string>
     <string name="confirm_password">تأكيد كلمة السر</string>
     <string name="already_have_an_account">هل لديك حساب ؟</string>
+    <string name="text_error1">الرجاء إدخال كلمة المرور</string>
+    <string name="text_error2">كلمة المرور قصيرة جدًا ، يجب أن تتكون كلمة المرور من 6 أحرف على الأقل </string>
+    <string name="text_error3">الرجاء إدخال تأكيد كلمة المرور</string>
+    <string name="text_error4">تأكيد كلمة المرور لا يتطابق مع كلمة المرور</string>
+    <string name="first_text">أولاً ، دعنا نعيد تعيين كلمة المرور لحسابك</string>
+    <string name="second_text">رجاءا أدخل بريدك الإلكتروني</string>
+    <string name="message_forgot_password"> %1$s تحقق من بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك  </string>
+    <string name="reset_password">إعادة تعيين كلمة المرور</string>
+    <string name="reset_password_appbar">تغيير كلمة السر</string>
+    <string name="do_you_want_to_delete_this_item">هل تريد حذف هذا الطالب ؟</string>
+    <string name="do_you_want_to_log_out">هل تريد تسجيل الخروج؟</string>
+    <string name="registered_student_appbar">الطلاب المسجلين</string>
+    <string name="name_student">اسم الطالب</string>
+    <string name="joining_date">تاريخ الالتحاق</string>
+    <string name="national_id_father">الرقم القومى للاب</string>
+    <string name="rating_subscription_appbar">تفاصيل الاشتراك والتقييم</string>
+    <string name="cancel">إلغاء</string>
+    <string name="accept">موافق</string>
+    <string name="notification">تنبيه</string>
+    <string name="code_student">كود الطالب</string>
+    <string name="mobile_father">تليفون الاب</string>
+    <string name="mobile_mother">تليفون الام</string>
+    <string name="class_student">فصل الطالب</string>
+
+
 </resources>
