@@ -9,27 +9,30 @@
         android:roundIcon="@mipmap/ic_logo_sidra_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.DarSidraApp">
-        <activity android:name=".activities.RatingSubscriptionDetailsActivity"
+        <activity android:name=".activities.SplashScreenActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar"
-            />
-        <activity android:name=".activities.StudentDetailsActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar"
-            />
-        <activity android:name=".activities.RegisteredStudentsActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar"
-            />
-        <activity
-            android:name=".activities.ForgotPasswordActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
-        <activity
-            android:name=".activities.RegistrationActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.RatingSubscriptionDetailsActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity
+            android:name=".activities.StudentDetailsActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity
+            android:name=".activities.RegisteredStudentsActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity
+            android:name=".activities.ForgotPasswordActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity
+            android:name=".activities.RegistrationActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"/>
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />

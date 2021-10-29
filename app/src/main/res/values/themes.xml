@@ -32,9 +32,14 @@
         <item name="mrl_rippleAlpha">0.5</item>
     </style>
 
-    <style name="FilledBoxEndIconTint" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="FilledBoxStartIconTint" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="startIconTint">#A1000000</item>
         <item name="startIconDrawable">@drawable/ic_eye</item>
 
+    </style>
+
+    <style name="FilledBoxStartIconTintDate" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="startIconTint">@color/general_app</item>
+        <item name="startIconDrawable">@drawable/ic_baseline_calendar_24</item>
     </style>
 </resources>

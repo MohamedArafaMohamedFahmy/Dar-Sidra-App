@@ -77,7 +77,7 @@
             app:boxCornerRadiusTopStart="10dp"
             app:startIconDrawable="@drawable/ic_eye"
             app:boxStrokeColor="@color/black_gray"
-            style="@style/FilledBoxEndIconTint">
+            style="@style/FilledBoxStartIconTint">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_password"

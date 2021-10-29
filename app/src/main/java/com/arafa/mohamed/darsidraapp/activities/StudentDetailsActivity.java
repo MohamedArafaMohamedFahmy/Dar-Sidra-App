@@ -5,44 +5,50 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import android.app.Activity;
-import android.app.Dialog;
+import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
-import android.view.Window;
 import android.webkit.MimeTypeMap;
+import android.widget.DatePicker;
 import android.widget.Toast;
 import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.models.StudentModel;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+
+import java.util.Calendar;
 import java.util.Objects;
 
-public class StudentDetailsActivity extends AppCompatActivity {
+public class StudentDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     AppCompatTextView tvToolbar;
     AppCompatImageButton btBackArrow,btSubRating;
     TextInputEditText etNameStudent,etEnrollmentStudent,etCodeStudent,etMobileFather,etMobileMother,etClassStudent,etDateSession;
+    TextInputLayout layoutEnrollmentStudent;
     AppCompatButton btRegisterData;
     AppCompatImageView imgStudent;
     DatabaseReference databaseReference;
     StorageReference storageReference;
     StudentModel studentModel, retrieveDataStudent ;
     public Uri imgUri;
-    String nameStudent, enrollmentStudent, codeStudent, mobileFather, mobileMother, classStudent, dateSession, urlStudent;
+    String nameStudent, enrollmentStudent, codeStudent, mobileFather, mobileMother, classStudent, dateSession, urlStudent, enrollmentDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
         etDateSession = findViewById(R.id.editText_date_session_student);
         btRegisterData = findViewById(R.id.button_submit);
         imgStudent = findViewById(R.id.image_student_details);
+        layoutEnrollmentStudent = findViewById(R.id.date_student_layout);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -85,6 +92,10 @@ public class StudentDetailsActivity extends AppCompatActivity {
         }
 
         btSubRating.setOnClickListener(v -> startActivity(new Intent(StudentDetailsActivity.this,RatingSubscriptionDetailsActivity.class)));
+
+        layoutEnrollmentStudent.setStartIconOnClickListener(v -> {
+           showDatePickerDialog();
+        });
 
         btRegisterData.setOnClickListener(v -> {
             nameStudent = Objects.requireNonNull(etNameStudent.getText()).toString();
@@ -172,4 +183,20 @@ public class StudentDetailsActivity extends AppCompatActivity {
                     }
                 }
             });
+
+    public void showDatePickerDialog() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                this,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        enrollmentDate = dayOfMonth + " - " + (month + 1) + " - " + year;
+        etEnrollmentStudent.setText(enrollmentDate);
+    }
 }

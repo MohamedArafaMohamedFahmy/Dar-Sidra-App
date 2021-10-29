@@ -9,15 +9,24 @@
     android:background="@color/general_app"
     >
 
+   <com.balysv.materialripple.MaterialRippleLayout
+       android:id="@+id/ripple_back_arrow"
+       style="@style/RippleStyleGrey"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="3dp"
+       android:layout_alignParentEnd="true"
+       >
+
    <androidx.appcompat.widget.AppCompatImageButton
        android:id="@+id/button_back_arrow"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:src="@drawable/ic_baseline_arrow_forward_24"
-       android:layout_marginTop="3dp"
-       android:layout_alignParentEnd="true"
        android:background="@color/transparent"
        />
+
+   </com.balysv.materialripple.MaterialRippleLayout>
 
    <androidx.appcompat.widget.AppCompatTextView
        android:id="@+id/text_toolbar"
@@ -27,8 +36,18 @@
        android:textStyle="bold"
        android:textSize="20sp"
        android:layout_alignParentEnd="true"
+       android:layout_toStartOf="@id/ripple_student_details"
        android:layout_marginEnd="30dp"
        />
+
+   <com.balysv.materialripple.MaterialRippleLayout
+       android:id="@+id/ripple_subscription_rating"
+       style="@style/RippleStyleGrey"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_toEndOf="@id/ripple_log_out"
+       android:layout_marginStart="20dp"
+       >
 
    <androidx.appcompat.widget.AppCompatImageButton
        android:id="@+id/button_subscription_rating"
@@ -37,9 +56,18 @@
        android:src="@drawable/ic_baseline_sub_rating_24"
        android:background="@color/transparent"
        android:visibility="gone"
-       android:layout_toEndOf="@id/button_log_out"
-       android:layout_marginStart="20dp"
+
        />
+   </com.balysv.materialripple.MaterialRippleLayout>
+
+   <com.balysv.materialripple.MaterialRippleLayout
+       android:id="@+id/ripple_student_details"
+       style="@style/RippleStyleGrey"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_toEndOf="@id/ripple_log_out"
+       android:layout_marginStart="20dp"
+       >
 
    <androidx.appcompat.widget.AppCompatImageButton
        android:id="@+id/button_student_details"
@@ -48,10 +76,17 @@
        android:src="@drawable/ic_list"
        android:background="@color/transparent"
        android:visibility="gone"
-       android:layout_toEndOf="@id/button_log_out"
-       android:layout_marginStart="20dp"
-       />
 
+       />
+   </com.balysv.materialripple.MaterialRippleLayout>
+
+   <com.balysv.materialripple.MaterialRippleLayout
+       android:id="@+id/ripple_log_out"
+       style="@style/RippleStyleGrey"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentStart="true"
+       >
 
    <androidx.appcompat.widget.AppCompatImageButton
        android:id="@+id/button_log_out"
@@ -60,7 +95,8 @@
        android:src="@drawable/ic_logout"
        android:background="@color/transparent"
        android:visibility="gone"
-       android:layout_alignParentStart="true"
+
        />
+   </com.balysv.materialripple.MaterialRippleLayout>
 
 </RelativeLayout>
