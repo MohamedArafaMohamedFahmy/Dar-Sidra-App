@@ -125,8 +125,8 @@ public class RegistrationActivity extends AppCompatActivity {
                         databaseReference.child("Users").child(userId).child("YourData").setValue(userInformationModel).addOnCompleteListener(task1 -> {
                             if(task1.isSuccessful()){
                                 linearProgressBar.setVisibility(View.GONE);
-                                Toast.makeText(RegistrationActivity.this, "تسجيل بنجاح", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
+                                Toast.makeText(RegistrationActivity.this, "تم التسجيل بنجاح", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(RegistrationActivity.this, RegisteredStudentsActivity.class));
                                 finish();
                             }
                         });
@@ -183,7 +183,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void updateUI() {
-        startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
+        startActivity(new Intent(RegistrationActivity.this, RegisteredStudentsActivity.class));
     }
     private void closeKeyboard() {
         View view = this.getCurrentFocus();

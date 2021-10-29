@@ -29,7 +29,7 @@
     <style name="RippleStyleGrey">
         <item name="mrl_rippleOverlay">true</item>
         <item name="mrl_rippleColor">#fff</item>
-        <item name="mrl_rippleAlpha">0.8</item>
+        <item name="mrl_rippleAlpha">0.5</item>
     </style>
 
     <style name="FilledBoxEndIconTint" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">

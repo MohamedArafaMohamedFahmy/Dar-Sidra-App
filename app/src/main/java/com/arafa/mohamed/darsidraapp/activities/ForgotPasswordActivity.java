@@ -23,6 +23,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
+
 import java.util.Objects;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
@@ -66,7 +67,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 closeKeyboard();
                 linearProgressBar.setVisibility(View.VISIBLE);
 
-                firebaseauth.sendPasswordResetEmail(emailAddress).addOnCompleteListener(task -> {
+               firebaseauth.sendPasswordResetEmail(emailAddress).addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
                         linearProgressBar.setVisibility(View.GONE);
                         etEmailAddress.setCursorVisible(true);

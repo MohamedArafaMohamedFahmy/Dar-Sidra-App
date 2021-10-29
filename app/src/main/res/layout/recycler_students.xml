@@ -4,7 +4,9 @@
     android:layout_height="wrap_content"
     android:layoutDirection="rtl"
     android:textDirection="rtl"
+    android:textAlignment="viewStart"
     android:padding="10dp"
+    app:cardBackgroundColor="@color/sub_color_app"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
@@ -17,6 +19,9 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:cardCornerRadius="50dp"
+            app:cardBackgroundColor="@color/transparent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             >
             <androidx.appcompat.widget.AppCompatImageView
@@ -42,12 +47,14 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_code_students"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="كود الطالب"
+            android:text="@string/code_student"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000"
+            android:gravity="start"
+            android:layout_alignParentEnd="true"
 
             />
 
@@ -55,14 +62,18 @@
            android:id="@+id/text_name_students"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:text="اسم الطالب"
+           android:text="@string/name_student"
+           android:maxLines="1"
+           android:ellipsize="end"
            android:textSize="20sp"
            android:textStyle="bold"
            android:textColor="#000"
+           android:layout_alignParentEnd="true"
            android:layout_below="@id/text_code_students"
            />
 
         </RelativeLayout>
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

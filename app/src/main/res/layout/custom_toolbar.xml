@@ -26,8 +26,41 @@
        android:textColor="@color/white"
        android:textStyle="bold"
        android:textSize="20sp"
-       android:layout_toStartOf="@id/button_back_arrow"
-       android:layout_marginEnd="10dp"
+       android:layout_alignParentEnd="true"
+       android:layout_marginEnd="30dp"
+       />
+
+   <androidx.appcompat.widget.AppCompatImageButton
+       android:id="@+id/button_subscription_rating"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/ic_baseline_sub_rating_24"
+       android:background="@color/transparent"
+       android:visibility="gone"
+       android:layout_toEndOf="@id/button_log_out"
+       android:layout_marginStart="20dp"
+       />
+
+   <androidx.appcompat.widget.AppCompatImageButton
+       android:id="@+id/button_student_details"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/ic_list"
+       android:background="@color/transparent"
+       android:visibility="gone"
+       android:layout_toEndOf="@id/button_log_out"
+       android:layout_marginStart="20dp"
+       />
+
+
+   <androidx.appcompat.widget.AppCompatImageButton
+       android:id="@+id/button_log_out"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/ic_logout"
+       android:background="@color/transparent"
+       android:visibility="gone"
+       android:layout_alignParentStart="true"
        />
 
 </RelativeLayout>

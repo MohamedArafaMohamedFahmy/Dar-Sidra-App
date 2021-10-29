@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.LoginActivity"
-    android:background="#FFF4E6"
+    android:background="@color/sub_color_app"
     android:layoutDirection="rtl"
     android:textDirection="rtl"
     >
@@ -27,7 +27,7 @@
             android:gravity="center"
             android:padding="5dp"
             android:text="@string/sign_in"
-            android:textColor="@color/sub_color_app"
+            android:textColor="@color/general_app"
             android:textSize="40sp"
             android:textStyle="bold" />
 
@@ -40,12 +40,12 @@
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
             android:hint="@string/email_address"
-            android:textColorHint="#ef6c00"
+            android:textColorHint="@color/black_gray"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
-            app:boxStrokeColor="#ef6c00"
+            app:boxStrokeColor="@color/black_gray"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
 
@@ -53,7 +53,7 @@
                 android:id="@+id/editText_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#b53d00"
+                android:textColor="@color/black_gray"
                 android:drawablePadding="10dp"
                 android:inputType="textEmailAddress"
                 android:drawableEnd="@drawable/ic_baseline_email_24"
@@ -70,20 +70,20 @@
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
             android:hint="@string/password"
-            android:textColorHint="#ef6c00"
+            android:textColorHint="@color/black_gray"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
             app:boxCornerRadiusTopStart="10dp"
             app:startIconDrawable="@drawable/ic_eye"
-            app:boxStrokeColor="#ef6c00"
+            app:boxStrokeColor="@color/black_gray"
             style="@style/FilledBoxEndIconTint">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#b53d00"
+                android:textColor="@color/black_gray"
                 android:drawablePadding="10dp"
                 android:inputType="textPassword"
                 android:drawableEnd="@drawable/ic_lock"
@@ -110,8 +110,8 @@
             style="@style/RippleStyleGrey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="15dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
 
             >
             <androidx.appcompat.widget.AppCompatTextView
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:fontFamily="@font/aladin"
-                android:textColor="#ef6c00"
+                android:textColor="@color/general_app"
                 android:text="@string/forgot_password"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -181,7 +181,7 @@
                     android:layout_marginEnd="5dp"
                     android:fontFamily="@font/aladin"
                     android:text="@string/sign_up"
-                    android:textColor="#ef6c00"
+                    android:textColor="@color/general_app"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -193,7 +193,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/aladin"
-                android:textColor="#ef6c00"
+                android:textColor="@color/general_app"
                 android:text="@string/do_not_have_an_account"
                 android:textSize="15sp"
                 />
