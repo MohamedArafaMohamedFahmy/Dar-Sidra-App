@@ -1,21 +1,21 @@
 package com.arafa.mohamed.darsidraapp.adapter;
 
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-
 import com.arafa.mohamed.darsidraapp.fragments.RatingDetailsFragment;
 import com.arafa.mohamed.darsidraapp.fragments.SubscriptionDetailsFragment;
 
 public class TabsAdapter extends FragmentStateAdapter {
     FragmentActivity fragmentActivity;
+    String codeStudent;
 
-    public TabsAdapter(@NonNull  FragmentActivity fragmentActivity) {
+    public TabsAdapter(@NonNull  FragmentActivity fragmentActivity, String codeStudent) {
         super(fragmentActivity);
         this.fragmentActivity = fragmentActivity;
+        this.codeStudent = codeStudent;
 
     }
 
@@ -25,14 +25,14 @@ public class TabsAdapter extends FragmentStateAdapter {
 
         switch (position){
             case 0:
-                return new RatingDetailsFragment();
+                return new RatingDetailsFragment(codeStudent);
 
             case 1:
-                return new  SubscriptionDetailsFragment();
+                return new  SubscriptionDetailsFragment(codeStudent);
             default:
                 Toast.makeText(fragmentActivity, "No Page", Toast.LENGTH_SHORT).show();
         }
-        return new SubscriptionDetailsFragment();
+        return new SubscriptionDetailsFragment(codeStudent);
     }
 
     @Override

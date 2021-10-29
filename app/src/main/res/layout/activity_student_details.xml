@@ -40,8 +40,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/image_qr"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
                 android:scaleType="centerInside"
                 android:layout_marginTop="15dp"
                 android:layout_alignParentStart="true"
@@ -133,7 +133,7 @@
                     android:textColor="@color/black_gray"
                     android:drawablePadding="10dp"
                     android:inputType="text"
-                    android:drawableEnd="@drawable/ic_baseline_date_24"
+                    android:drawableEnd="@drawable/ic_id_card"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -296,5 +296,40 @@
         </RelativeLayout>
 
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linear_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:background="@drawable/bg_progress_bar"
+        android:visibility="gone"
+        >
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:elevation="5dp"
+            android:layout_marginTop="5dp"
+            android:progressBackgroundTint="@color/white"
+             />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:padding="5dp"
+            android:text="@string/loading"
+            android:textColor="#CB000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+             />
+
+    </LinearLayout>
 
 </RelativeLayout>

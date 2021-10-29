@@ -9,7 +9,6 @@ import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.adapter.TabsAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
 import java.util.ArrayList;
 
 public class RatingSubscriptionDetailsActivity extends AppCompatActivity {
@@ -19,6 +18,7 @@ public class RatingSubscriptionDetailsActivity extends AppCompatActivity {
     ViewPager2 viewPager;
     TabsAdapter tabsAdapter;
     ArrayList<String> items;
+    Bundle extra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +34,13 @@ public class RatingSubscriptionDetailsActivity extends AppCompatActivity {
         tabsItems = findViewById(R.id.tabs_item);
         viewPager = findViewById(R.id.view_pager);
         items = new ArrayList<>();
+        extra = getIntent().getExtras();
 
         items.add("تفاصيل التقييم");
         items.add("تفاصيل الاشتراك");
 
 
-        tabsAdapter = new TabsAdapter(this);
+        tabsAdapter = new TabsAdapter(this,extra.getString("codeStudent"));
         viewPager.setAdapter(tabsAdapter);
         new TabLayoutMediator(tabsItems, viewPager, (tab, position) -> tab.setText(items.get(position))).attach();
 

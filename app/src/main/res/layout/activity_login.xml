@@ -218,7 +218,7 @@
                 android:elevation="5dp"
                 android:layout_marginTop="5dp"
                 android:progressBackgroundTint="@color/white"
-                android:visibility="visible" />
+                 />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_loading"
@@ -231,7 +231,7 @@
                 android:textColor="#CB000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:visibility="visible" />
+                 />
 
         </LinearLayout>
 
