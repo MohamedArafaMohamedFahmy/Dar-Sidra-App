@@ -13,10 +13,20 @@
         android:id="@+id/toolbar_registered_student"
         layout="@layout/custom_toolbar"/>
 
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_student"
+        android:layout_below="@id/toolbar_registered_student"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/general_app"
+
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec_student"
         android:padding="10dp"
-        android:layout_below="@id/toolbar_registered_student"
+        android:layout_below="@id/search_student"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

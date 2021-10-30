@@ -8,6 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Filter;
+import android.widget.Filterable;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -17,22 +21,30 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.activities.StudentDetailsActivity;
 import com.arafa.mohamed.darsidraapp.models.StudentModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyViewHolder> {
+public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyViewHolder> implements Filterable {
     Context context;
     ArrayList<StudentModel> downloadData;
+    ArrayList<StudentModel> dataListFilter;
     DatabaseReference databaseReference;
+    StorageReference storageReference;
     AppCompatButton btYes,btNo;
 
 
     public StudentsAdapter(Context context, ArrayList<StudentModel> downloadData) {
         this.context = context;
         this.downloadData = downloadData;
+        dataListFilter = new ArrayList<>(downloadData);
     }
 
     @NonNull
@@ -68,7 +80,39 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         return downloadData.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public Filter getFilter() {
+        return patientFilter;
+    }
+
+     private final Filter patientFilter = new Filter() {
+         @Override
+         protected FilterResults performFiltering(CharSequence constraint) {
+             ArrayList<StudentModel> filteredList = new ArrayList<>();
+             if (constraint == null || constraint.length() == 0) {
+                 filteredList.addAll(dataListFilter);
+             } else {
+                 String filterPattern = constraint.toString().toLowerCase().trim();
+                 for (StudentModel item : dataListFilter) {
+                     if (item.getCodeStudent().toLowerCase().contains(filterPattern)) {
+                         filteredList.add(item);
+                     }
+                 }
+             }
+             FilterResults results = new FilterResults();
+             results.values = filteredList;
+             return results;
+         }
+
+         @Override
+         protected void publishResults(CharSequence constraint, FilterResults results) {
+             downloadData.clear();
+             downloadData.addAll((ArrayList) results.values);
+             notifyDataSetChanged();
+         }
+     };
+
+         public class MyViewHolder extends RecyclerView.ViewHolder {
         AppCompatTextView tvNameStudent,tvCodeStudent;
         AppCompatImageView imgStudent;
 
@@ -92,6 +136,20 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         btNo = dialog.findViewById(R.id.button_no);
 
         btYes.setOnClickListener(v -> {
+
+            storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(downloadData.get(position).getUrlStudent());
+            storageReference.delete().addOnCompleteListener(task -> {
+                if(task.isSuccessful()){
+                    databaseReference.child("StudentsData").child(downloadData.get(position).getCodeStudent()).removeValue();
+                    databaseReference.child("Rating").child(downloadData.get(position).getCodeStudent()).removeValue();
+                    databaseReference.child("Subscription").child(downloadData.get(position).getCodeStudent()).removeValue();
+                    Toast.makeText(context, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            });
+
             dialog.dismiss();
         });
 

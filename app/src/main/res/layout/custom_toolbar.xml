@@ -73,7 +73,7 @@
        android:id="@+id/button_student_details"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:src="@drawable/ic_list"
+       android:src="@drawable/ic_baseline_add_student_24"
        android:background="@color/transparent"
        android:visibility="gone"
 

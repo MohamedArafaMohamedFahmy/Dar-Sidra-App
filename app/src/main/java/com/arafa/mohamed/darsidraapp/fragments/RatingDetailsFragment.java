@@ -79,7 +79,7 @@ public class RatingDetailsFragment extends Fragment {
             ratingModel = new RatingModel(review, preservation, audience, absence,total);
             databaseReference.child("Rating").child(codeStudent).setValue(ratingModel).addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
-                    Toast.makeText(getActivity(), "تم الاضاغة بنجاح", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getActivity(), ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }

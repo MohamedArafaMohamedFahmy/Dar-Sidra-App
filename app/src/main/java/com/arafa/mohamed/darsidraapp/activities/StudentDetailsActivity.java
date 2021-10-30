@@ -5,36 +5,24 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.app.Activity;
-import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.MimeTypeMap;
-import android.widget.DatePicker;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.arafa.mohamed.darsidraapp.R;
+import com.arafa.mohamed.darsidraapp.models.DatePickerDialogBorn;
+import com.arafa.mohamed.darsidraapp.models.DatePickerDialogEnrollment;
 import com.arafa.mohamed.darsidraapp.models.StudentModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -47,26 +35,27 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.squareup.picasso.Picasso;
-
-import java.util.Calendar;
 import java.util.Objects;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-public class StudentDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+
+public class StudentDetailsActivity extends AppCompatActivity  {
 
     AppCompatTextView tvToolbar;
     AppCompatImageButton btBackArrow,btSubRating;
-    TextInputEditText etNameStudent,etEnrollmentStudent,etCodeStudent,etMobileFather,etMobileMother,etClassStudent,etDateSession;
-    TextInputLayout layoutEnrollmentStudent;
+    TextInputEditText etNameStudent,etEnrollmentStudent,etCodeStudent,etMobileFather,etMobileMother,etClassStudent,
+            etDateSession, etBornDate, etBranch, etStartSaving;
+    TextInputLayout layoutEnrollmentStudent, layoutBornDate;
     AppCompatButton btRegisterData;
     AppCompatImageView imgStudent,imgQRCode;
     LinearLayout linearProgressBar;
     DatabaseReference databaseReference;
     StorageReference storageReference;
     StudentModel studentModel, retrieveDataStudent ;
+    DatePickerDialogBorn datePickerDialogBorn;
+    DatePickerDialogEnrollment datePickerDialogEnrollment;
     public Uri imgUri;
-    String nameStudent, enrollmentStudent, codeStudent, mobileFather, mobileMother, classStudent, dateSession, urlStudent, enrollmentDate;
+    String nameStudent, enrollmentStudent, codeStudent, mobileFather, mobileMother, classStudent, dateSession,
+            bornDate, branch, startSaving, urlStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,11 +72,15 @@ public class StudentDetailsActivity extends AppCompatActivity implements DatePic
         etMobileMother = findViewById(R.id.editText_mobile_mother);
         etClassStudent = findViewById(R.id.editText_class_student);
         etDateSession = findViewById(R.id.editText_date_session_student);
+        etBornDate = findViewById(R.id.editText_born_date);
+        etBranch = findViewById(R.id.editText_branch);
+        etStartSaving = findViewById(R.id.editText_start_saving);
         btRegisterData = findViewById(R.id.button_submit);
         linearProgressBar = findViewById(R.id.linear_progress_bar);
         imgStudent = findViewById(R.id.image_student_details);
         imgQRCode = findViewById(R.id.image_qr);
         layoutEnrollmentStudent = findViewById(R.id.date_student_layout);
+        layoutBornDate = findViewById(R.id.born_date_layout);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -110,9 +103,13 @@ public class StudentDetailsActivity extends AppCompatActivity implements DatePic
             etMobileMother.setText(retrieveDataStudent.getMobileMother());
             etClassStudent.setText(retrieveDataStudent.getClassStudent());
             etDateSession.setText(retrieveDataStudent.getDateSession());
+            etBornDate.setText(retrieveDataStudent.getBornDate());
+            etBranch.setText(retrieveDataStudent.getBranch());
+            etStartSaving.setText(retrieveDataStudent.getStartSaving());
             generateQRCode(retrieveDataStudent.getCodeStudent());
-        }
 
+
+        }
 
         btSubRating.setOnClickListener(v -> {
             Intent intentRatingSubscription = new Intent(StudentDetailsActivity.this,RatingSubscriptionDetailsActivity.class);
@@ -120,9 +117,15 @@ public class StudentDetailsActivity extends AppCompatActivity implements DatePic
             startActivity(intentRatingSubscription);
         });
 
-        layoutEnrollmentStudent.setStartIconOnClickListener(v -> {
-           showDatePickerDialog();
+        layoutEnrollmentStudent.setStartIconOnClickListener(v ->{
+            datePickerDialogEnrollment = new DatePickerDialogEnrollment(StudentDetailsActivity.this, etEnrollmentStudent);
+            datePickerDialogEnrollment.showDatePickerDialogEnrollment();
         });
+        layoutBornDate.setStartIconOnClickListener(v ->{
+                datePickerDialogBorn = new DatePickerDialogBorn(StudentDetailsActivity.this, etBornDate);
+                datePickerDialogBorn.showDatePickerDialogBorn();
+
+    });
 
         btRegisterData.setOnClickListener(v -> {
             nameStudent = Objects.requireNonNull(etNameStudent.getText()).toString();
@@ -132,10 +135,14 @@ public class StudentDetailsActivity extends AppCompatActivity implements DatePic
             mobileMother = Objects.requireNonNull(etMobileMother.getText()).toString();
             classStudent = Objects.requireNonNull(etClassStudent.getText()).toString();
             dateSession = Objects.requireNonNull(etDateSession.getText()).toString();
+            bornDate = Objects.requireNonNull(etBornDate.getText()).toString();
+            branch = Objects.requireNonNull(etBranch.getText()).toString();
+            startSaving = Objects.requireNonNull(etStartSaving.getText()).toString();
 
             if(!nameStudent.isEmpty() && !enrollmentStudent.isEmpty() && !codeStudent.isEmpty() &&
                     mobileFather.length() == 11 && mobileMother.length() == 11 &&
-                    !classStudent.isEmpty() && !dateSession.isEmpty() && imgUri != null ){
+                    !classStudent.isEmpty() && !dateSession.isEmpty() && !bornDate.isEmpty() && !branch.isEmpty() &&
+                    !startSaving.isEmpty() && imgUri != null && retrieveDataStudent == null){
 
                 linearProgressBar.setVisibility(View.VISIBLE);
               StorageReference filePath = storageReference.child("UploadImages").child(codeStudent + "." + getFileExtension(imgUri));
@@ -149,7 +156,7 @@ public class StudentDetailsActivity extends AppCompatActivity implements DatePic
                 }).addOnCompleteListener(task -> {
                     urlStudent = Objects.requireNonNull(task.getResult()).toString();
                     studentModel = new StudentModel(nameStudent, enrollmentStudent, codeStudent, mobileFather,
-                            mobileMother, classStudent, dateSession, urlStudent);
+                            mobileMother, classStudent, dateSession, bornDate, branch, startSaving, urlStudent);
                     databaseReference.child("StudentsData").child(codeStudent).setValue(studentModel).addOnCompleteListener(task1 -> {
                        if (task1.isSuccessful()){
                            linearProgressBar.setVisibility(View.GONE);
@@ -164,24 +171,55 @@ public class StudentDetailsActivity extends AppCompatActivity implements DatePic
 
             if(!nameStudent.isEmpty() && !enrollmentStudent.isEmpty() && !codeStudent.isEmpty() &&
                     mobileFather.length() == 11 && mobileMother.length() == 11 &&
-                    !classStudent.isEmpty() && !dateSession.isEmpty()  ){
+                    !classStudent.isEmpty() && !dateSession.isEmpty() && !bornDate.isEmpty() && !branch.isEmpty() &&
+                    !startSaving.isEmpty() && imgUri != null && retrieveDataStudent != null){
 
                 linearProgressBar.setVisibility(View.VISIBLE);
-
-                    urlStudent = retrieveDataStudent.getUrlStudent();
+                StorageReference filePath = storageReference.child("UploadImages").child(codeStudent + "." + getFileExtension(imgUri));
+                final UploadTask uploadTaskFather = filePath.putFile(imgUri);
+                uploadTaskFather.continueWithTask(task -> {
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(StudentDetailsActivity.this, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                    urlStudent = filePath.getDownloadUrl().toString();
+                    return filePath.getDownloadUrl();
+                }).addOnCompleteListener(task -> {
+                    urlStudent = Objects.requireNonNull(task.getResult()).toString();
                     studentModel = new StudentModel(nameStudent, enrollmentStudent, codeStudent, mobileFather,
-                            mobileMother, classStudent, dateSession, urlStudent);
+                            mobileMother, classStudent, dateSession, bornDate, branch, startSaving, urlStudent);
                     databaseReference.child("StudentsData").child(codeStudent).setValue(studentModel).addOnCompleteListener(task1 -> {
                         if (task1.isSuccessful()){
                             linearProgressBar.setVisibility(View.GONE);
                             Toast.makeText(this, "تم التحديث بنجاح", Toast.LENGTH_LONG).show();
                         }else{
                             linearProgressBar.setVisibility(View.GONE);
-                            Toast.makeText(this, ""+ Objects.requireNonNull(task1.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
+                });
+            }
+
+            if(!nameStudent.isEmpty() && !enrollmentStudent.isEmpty() && !codeStudent.isEmpty() &&
+                    mobileFather.length() == 11 && mobileMother.length() == 11 &&
+                    !classStudent.isEmpty() && !dateSession.isEmpty() && !bornDate.isEmpty() && !branch.isEmpty() &&
+                    !startSaving.isEmpty() &&imgUri == null && retrieveDataStudent != null){
+                linearProgressBar.setVisibility(View.VISIBLE);
+
+                urlStudent = retrieveDataStudent.getUrlStudent();
+                studentModel = new StudentModel(nameStudent, enrollmentStudent, codeStudent, mobileFather,
+                        mobileMother, classStudent, dateSession, bornDate, branch, startSaving, urlStudent);
+                databaseReference.child("StudentsData").child(codeStudent).setValue(studentModel).addOnCompleteListener(task1 -> {
+                    if (task1.isSuccessful()){
+                        linearProgressBar.setVisibility(View.GONE);
+                        Toast.makeText(this, "تم التحديث بنجاح", Toast.LENGTH_LONG).show();
+                    }else{
+                        linearProgressBar.setVisibility(View.GONE);
+                        Toast.makeText(this, ""+ Objects.requireNonNull(task1.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
+
 
             if (nameStudent.isEmpty()){
                 etNameStudent.setError("من فضلك ادخل اسم الطالب");
@@ -204,7 +242,13 @@ public class StudentDetailsActivity extends AppCompatActivity implements DatePic
             if (dateSession.isEmpty()){
                 etDateSession.setError("من فضلك ادخل ميعاد الطالب");
             }
+            if(imgUri == null && retrieveDataStudent == null){
+                Toast.makeText(this, "من فضلك اختر صورة", Toast.LENGTH_SHORT).show();
+            }
+
         });
+
+
     }
 
     public void imageChooser() {
@@ -235,26 +279,8 @@ public class StudentDetailsActivity extends AppCompatActivity implements DatePic
                 }
             });
 
-    public void showDatePickerDialog() {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                this,
-                this,
-                Calendar.getInstance().get(Calendar.YEAR),
-                Calendar.getInstance().get(Calendar.MONTH),
-                Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.show();
-    }
-
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        enrollmentDate = dayOfMonth + " - " + (month + 1) + " - " + year;
-        etEnrollmentStudent.setText(enrollmentDate);
-    }
 
     public void generateQRCode(String text){
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-        executor.execute(() -> {
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         try {
 
@@ -272,11 +298,6 @@ public class StudentDetailsActivity extends AppCompatActivity implements DatePic
             Toast.makeText(StudentDetailsActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
-            handler.post(() -> {
-                //UI Thread work here
-            });
-        });
     }
-
 
 }

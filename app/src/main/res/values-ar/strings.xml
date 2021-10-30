@@ -59,6 +59,10 @@
     <string name="absence">الغياب</string>
     <string name="total">المجموع</string>
     <string name="text_logo_sidra">دار سدرة المنتهى</string>
+    <string name="search_code_student">البحث بكود الطالب</string>
+    <string name="born_date">تاريخ الميلاد</string>
+    <string name="branch">الفرع</string>
+    <string name="start_saving">بداية الحفظ</string>
 
 
 </resources>

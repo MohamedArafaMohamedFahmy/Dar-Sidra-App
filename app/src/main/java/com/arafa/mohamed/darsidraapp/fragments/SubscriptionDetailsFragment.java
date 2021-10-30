@@ -31,7 +31,6 @@ public class SubscriptionDetailsFragment extends Fragment {
     public SubscriptionDetailsFragment(String codeStudent) {
         this.codeStudent = codeStudent;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -96,7 +95,7 @@ public class SubscriptionDetailsFragment extends Fragment {
             subscriptionModel = new SubscriptionModel(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec);
             databaseReference.child("Subscription").child(codeStudent).setValue(subscriptionModel).addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
-                    Toast.makeText(getActivity(), "تم الاضاغة بنجاح", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(getActivity(), ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }

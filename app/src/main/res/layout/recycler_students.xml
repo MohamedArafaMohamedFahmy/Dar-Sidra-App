@@ -5,7 +5,10 @@
     android:layoutDirection="rtl"
     android:textDirection="rtl"
     android:textAlignment="viewStart"
-    android:padding="10dp"
+    android:padding="5dp"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp"
     app:cardBackgroundColor="@color/sub_color_app"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 

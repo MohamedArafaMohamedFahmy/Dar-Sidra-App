@@ -5,13 +5,12 @@ import java.io.Serializable;
 public class StudentModel implements Serializable {
 
     private String nameStudent, enrollmentStudent, codeStudent, mobileFather,
-            mobileMother, classStudent, dateSession,urlStudent;
+            mobileMother, classStudent, dateSession,bornDate,branch,startSaving,urlStudent;
 
     public StudentModel() {
     }
 
-    public StudentModel(String nameStudent, String enrollmentStudent, String codeStudent, String mobileFather,
-                        String mobileMother, String classStudent, String dateSession, String urlStudent) {
+    public StudentModel(String nameStudent, String enrollmentStudent, String codeStudent, String mobileFather, String mobileMother, String classStudent, String dateSession, String bornDate, String branch, String startSaving, String urlStudent) {
         this.nameStudent = nameStudent;
         this.enrollmentStudent = enrollmentStudent;
         this.codeStudent = codeStudent;
@@ -19,6 +18,9 @@ public class StudentModel implements Serializable {
         this.mobileMother = mobileMother;
         this.classStudent = classStudent;
         this.dateSession = dateSession;
+        this.bornDate = bornDate;
+        this.branch = branch;
+        this.startSaving = startSaving;
         this.urlStudent = urlStudent;
     }
 
@@ -76,6 +78,30 @@ public class StudentModel implements Serializable {
 
     public void setDateSession(String dateSession) {
         this.dateSession = dateSession;
+    }
+
+    public String getBornDate() {
+        return bornDate;
+    }
+
+    public void setBornDate(String bornDate) {
+        this.bornDate = bornDate;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }
+
+    public String getStartSaving() {
+        return startSaving;
+    }
+
+    public void setStartSaving(String startSaving) {
+        this.startSaving = startSaving;
     }
 
     public String getUrlStudent() {

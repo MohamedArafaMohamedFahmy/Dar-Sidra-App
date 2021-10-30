@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
 import com.arafa.mohamed.darsidraapp.R;
@@ -37,6 +39,7 @@ public class RegisteredStudentsActivity extends AppCompatActivity {
     StudentsAdapter studentsAdapter;
     ArrayList <StudentModel> listStudent;
     RecyclerView recStudents;
+    SearchView searchStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class RegisteredStudentsActivity extends AppCompatActivity {
         btStudentDetails = findViewById(R.id.button_student_details);
         tvToolbar = findViewById(R.id.text_toolbar);
         recStudents = findViewById(R.id.rec_student);
+        searchStudent = findViewById(R.id.search_student);
         listStudent = new ArrayList<>();
 
         tvToolbar.setText(R.string.registered_student_appbar);
@@ -78,6 +82,7 @@ public class RegisteredStudentsActivity extends AppCompatActivity {
                     studentsAdapter = new StudentsAdapter(RegisteredStudentsActivity.this,listStudent);
                     recStudents.setAdapter(studentsAdapter);
                     recStudents.setLayoutManager(new LinearLayoutManager(RegisteredStudentsActivity.this));
+
                 }else {
                     Toast.makeText(RegisteredStudentsActivity.this, "لا يوجد طلبه مسجلين", Toast.LENGTH_SHORT).show();
                 }
@@ -85,9 +90,27 @@ public class RegisteredStudentsActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull  DatabaseError error) {
-
+                Toast.makeText(RegisteredStudentsActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        //searchStudent.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        //searchStudent.setQueryHint(getString(R.string.search_code_student));
+        searchStudent.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (!newText.isEmpty()) {
+                    studentsAdapter.getFilter().filter(newText);
+                }
+                return false;
+            }
+        });
+
 
     }
 
