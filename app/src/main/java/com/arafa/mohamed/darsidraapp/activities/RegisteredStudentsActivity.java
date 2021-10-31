@@ -10,8 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
@@ -80,10 +85,12 @@ public class RegisteredStudentsActivity extends AppCompatActivity {
                 }
                 if(!listStudent.isEmpty()){
                     studentsAdapter = new StudentsAdapter(RegisteredStudentsActivity.this,listStudent);
+                    studentsAdapter.notifyDataSetChanged();
                     recStudents.setAdapter(studentsAdapter);
                     recStudents.setLayoutManager(new LinearLayoutManager(RegisteredStudentsActivity.this));
 
                 }else {
+                    studentsAdapter.notifyDataSetChanged();
                     Toast.makeText(RegisteredStudentsActivity.this, "لا يوجد طلبه مسجلين", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -96,9 +103,13 @@ public class RegisteredStudentsActivity extends AppCompatActivity {
 
         //searchStudent.setImeOptions(EditorInfo.IME_ACTION_DONE);
         //searchStudent.setQueryHint(getString(R.string.search_code_student));
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchStudent.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchStudent.setMaxWidth(Integer.MAX_VALUE);
         searchStudent.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                studentsAdapter.notifyDataSetChanged();
                 return false;
             }
 
@@ -106,6 +117,7 @@ public class RegisteredStudentsActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 if (!newText.isEmpty()) {
                     studentsAdapter.getFilter().filter(newText);
+                    studentsAdapter.notifyDataSetChanged();
                 }
                 return false;
             }
@@ -137,4 +149,32 @@ public class RegisteredStudentsActivity extends AppCompatActivity {
         dialog.show();
 
     }
+
+   /* @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        searchView.setQueryHint(getString(R.string.search_code_student));
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (!newText.isEmpty()) {
+                    studentsAdapter.getFilter().filter(newText);
+                }
+                return false;
+            }
+        });
+        return true;
+    }*/
 }

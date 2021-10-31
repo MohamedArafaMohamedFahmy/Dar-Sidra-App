@@ -107,7 +107,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
          @Override
          protected void publishResults(CharSequence constraint, FilterResults results) {
              downloadData.clear();
-             downloadData.addAll((ArrayList) results.values);
+             downloadData.addAll((ArrayList<StudentModel>) results.values);
              notifyDataSetChanged();
          }
      };

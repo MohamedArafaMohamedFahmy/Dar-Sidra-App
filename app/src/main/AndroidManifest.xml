@@ -12,9 +12,10 @@
         android:roundIcon="@mipmap/ic_logo_sidra_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.DarSidraApp">
-        <activity android:name=".activities.SplashScreenActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar"
-            >
+        <activity android:name=".activities.FilterSubscriptionActivity"></activity>
+        <activity
+            android:name=".activities.SplashScreenActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,13 +30,17 @@
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".activities.RegisteredStudentsActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.ForgotPasswordActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".activities.RegistrationActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar"/>
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
