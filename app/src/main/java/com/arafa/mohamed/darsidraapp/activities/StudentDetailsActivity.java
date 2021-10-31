@@ -114,6 +114,8 @@ public class StudentDetailsActivity extends AppCompatActivity  {
         btSubRating.setOnClickListener(v -> {
             Intent intentRatingSubscription = new Intent(StudentDetailsActivity.this,RatingSubscriptionDetailsActivity.class);
             intentRatingSubscription.putExtra("codeStudent",retrieveDataStudent.getCodeStudent());
+            intentRatingSubscription.putExtra("nameStudent",retrieveDataStudent.getNameStudent());
+            intentRatingSubscription.putExtra("classStudent",retrieveDataStudent.getClassStudent());
             startActivity(intentRatingSubscription);
         });
 

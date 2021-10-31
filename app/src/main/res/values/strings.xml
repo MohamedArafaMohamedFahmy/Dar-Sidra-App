@@ -37,18 +37,6 @@
     <string name="student_details_appbar">بيانات الطالب</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="status">الحاله</string>
-    <string name="jan">يناير</string>
-    <string name="feb">فبراير</string>
-    <string name="mar">مارس</string>
-    <string name="apr">ابريل</string>
-    <string name="may">مايو</string>
-    <string name="jun">يونيو</string>
-    <string name="jul">يوليو</string>
-    <string name="aug">اغسطس</string>
-    <string name="sep">سبتمبر</string>
-    <string name="oct">اكتوبر</string>
-    <string name="nov">نوفمبر</string>
-    <string name="dec">ديسمبر</string>
     <string name="add_status">Add Status</string>
     <string name="review">المراجعة</string>
     <string name="score">الدرجة</string>
@@ -61,6 +49,23 @@
     <string name="born_date">تاريخ الميلاد</string>
     <string name="branch">الفرع</string>
     <string name="start_saving">بداية الحفظ</string>
+    <string name="payment">تم الدفع</string>
+    <string name="filter_month">فلترة الشهور</string>
+    <string name="total_number">العدد الاجمالى:</string>
+
+
+    <string name="jan">يناير</string>
+    <string name="feb">فبراير</string>
+    <string name="mar">مارس</string>
+    <string name="apr">ابريل</string>
+    <string name="may">مايو</string>
+    <string name="jun">يونيو</string>
+    <string name="jul">يوليو</string>
+    <string name="aug">اغسطس</string>
+    <string name="sep">سبتمبر</string>
+    <string name="oct">اكتوبر</string>
+    <string name="nov">نوفمبر</string>
+    <string name="dec">ديسمبر</string>
 
     <string-array name="list_month">
         <item> يناير</item>

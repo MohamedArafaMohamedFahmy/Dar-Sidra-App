@@ -30,11 +30,24 @@
             android:padding="5dp"
             >
 
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_jan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment"
+                android:textColor="@color/black_gray"
+                android:theme="@style/style_check_box"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:checked="false"
+                />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/jan_layout"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:hint="@string/status"
                 android:textColorHint="@color/black_gray"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -56,14 +69,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="@string/jan"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black_gray"
                 android:fontFamily="@font/aladin"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 />
         </LinearLayout>
 
@@ -74,12 +87,23 @@
             android:layout_gravity="center"
             android:padding="5dp"
             >
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_feb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment"
+                android:textColor="@color/black_gray"
+                android:theme="@style/style_check_box"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/feb_layout"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:hint="@string/status"
                 android:textColorHint="@color/black_gray"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -101,14 +125,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="@string/feb"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black_gray"
                 android:fontFamily="@font/aladin"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 />
         </LinearLayout>
 
@@ -119,12 +143,23 @@
             android:layout_gravity="center"
             android:padding="5dp"
             >
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_mar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment"
+                android:textColor="@color/black_gray"
+                android:theme="@style/style_check_box"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/mar_layout"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:hint="@string/status"
                 android:textColorHint="@color/black_gray"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -146,14 +181,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="@string/mar"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black_gray"
                 android:fontFamily="@font/aladin"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 />
         </LinearLayout>
 
@@ -165,11 +200,23 @@
             android:padding="5dp"
             >
 
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_apr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment"
+                android:textColor="@color/black_gray"
+                android:theme="@style/style_check_box"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/apr_layout"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:hint="@string/status"
                 android:textColorHint="@color/black_gray"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -191,14 +238,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="@string/apr"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black_gray"
                 android:fontFamily="@font/aladin"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 />
         </LinearLayout>
 
@@ -209,12 +256,23 @@
             android:layout_gravity="center"
             android:padding="5dp"
             >
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_may"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment"
+                android:textColor="@color/black_gray"
+                android:theme="@style/style_check_box"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/may_layout"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:hint="@string/status"
                 android:textColorHint="@color/black_gray"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -236,14 +294,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="@string/may"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black_gray"
                 android:fontFamily="@font/aladin"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 />
         </LinearLayout>
 
@@ -255,11 +313,23 @@
             android:padding="5dp"
             >
 
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_jun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment"
+                android:textColor="@color/black_gray"
+                android:theme="@style/style_check_box"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/jun_layout"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:hint="@string/status"
                 android:textColorHint="@color/black_gray"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -281,14 +351,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="@string/jun"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black_gray"
                 android:fontFamily="@font/aladin"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 />
         </LinearLayout>
 
@@ -300,11 +370,23 @@
             android:padding="5dp"
             >
 
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_jul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment"
+                android:textColor="@color/black_gray"
+                android:theme="@style/style_check_box"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/jul_layout"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:hint="@string/status"
                 android:textColorHint="@color/black_gray"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -326,14 +408,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="@string/jul"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black_gray"
                 android:fontFamily="@font/aladin"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 />
         </LinearLayout>
 
@@ -344,12 +426,23 @@
             android:layout_gravity="center"
             android:padding="5dp"
             >
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_aug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment"
+                android:textColor="@color/black_gray"
+                android:theme="@style/style_check_box"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/aug_layout"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:hint="@string/status"
                 android:textColorHint="@color/black_gray"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -371,14 +464,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:text="@string/aug"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black_gray"
                 android:fontFamily="@font/aladin"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 />
         </LinearLayout>
 
@@ -389,12 +482,23 @@
             android:layout_gravity="center"
             android:padding="5dp"
             >
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_sep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment"
+                android:textColor="@color/black_gray"
+                android:theme="@style/style_check_box"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/sep_layout"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:hint="@string/status"
                 android:textColorHint="@color/black_gray"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -416,14 +520,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="@string/sep"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black_gray"
                 android:fontFamily="@font/aladin"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 />
         </LinearLayout>
 
@@ -434,12 +538,23 @@
             android:layout_gravity="center"
             android:padding="5dp"
             >
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_oct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment"
+                android:textColor="@color/black_gray"
+                android:theme="@style/style_check_box"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/oct_layout"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:hint="@string/status"
                 android:textColorHint="@color/black_gray"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -461,14 +576,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="@string/oct"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black_gray"
                 android:fontFamily="@font/aladin"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 />
         </LinearLayout>
 
@@ -479,12 +594,23 @@
             android:layout_gravity="center"
             android:padding="5dp"
             >
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_nov"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment"
+                android:textColor="@color/black_gray"
+                android:theme="@style/style_check_box"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nov_layout"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:hint="@string/status"
                 android:textColorHint="@color/black_gray"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -506,14 +632,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="@string/nov"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black_gray"
                 android:fontFamily="@font/aladin"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 />
         </LinearLayout>
 
@@ -524,12 +650,23 @@
             android:layout_gravity="center"
             android:padding="5dp"
             >
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_dec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/payment"
+                android:textColor="@color/black_gray"
+                android:theme="@style/style_check_box"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:padding="10dp"
+                />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/dec_layout"
-                android:layout_width="150dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:hint="@string/status"
                 android:textColorHint="@color/black_gray"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -551,14 +688,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="@string/dec"
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/black_gray"
                 android:fontFamily="@font/aladin"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 />
         </LinearLayout>
 
@@ -574,7 +711,8 @@
         app:tint="@color/white"
         app:borderWidth="0dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:src="@drawable/ic_baseline_add_24"
         android:contentDescription="@string/add_status" />

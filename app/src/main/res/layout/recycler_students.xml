@@ -56,9 +56,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000"
-            android:gravity="start"
-            android:layout_alignParentEnd="true"
-
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="2dp"
             />
 
        <androidx.appcompat.widget.AppCompatTextView
@@ -71,9 +70,27 @@
            android:textSize="20sp"
            android:textStyle="bold"
            android:textColor="#000"
+           android:gravity="start"
            android:layout_alignParentEnd="true"
+           android:layout_marginHorizontal="2dp"
            android:layout_below="@id/text_code_students"
            />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_class_student"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_student"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="2dp"
+                android:gravity="start"
+                android:layout_below="@id/text_name_students"
+                />
 
         </RelativeLayout>
 

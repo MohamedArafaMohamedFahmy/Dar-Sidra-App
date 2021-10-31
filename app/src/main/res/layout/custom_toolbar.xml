@@ -61,6 +61,26 @@
    </com.balysv.materialripple.MaterialRippleLayout>
 
    <com.balysv.materialripple.MaterialRippleLayout
+       android:id="@+id/ripple_filter"
+       style="@style/RippleStyleGrey"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_toEndOf="@id/ripple_student_details"
+       android:layout_marginStart="15dp"
+       >
+
+      <androidx.appcompat.widget.AppCompatImageButton
+          android:id="@+id/button_filter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_baseline_filter_24"
+          android:background="@color/transparent"
+          android:visibility="gone"
+
+          />
+   </com.balysv.materialripple.MaterialRippleLayout>
+
+   <com.balysv.materialripple.MaterialRippleLayout
        android:id="@+id/ripple_student_details"
        style="@style/RippleStyleGrey"
        android:layout_width="wrap_content"

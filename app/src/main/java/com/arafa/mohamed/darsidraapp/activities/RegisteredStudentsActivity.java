@@ -8,20 +8,14 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
-
 import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.adapter.StudentsAdapter;
 import com.arafa.mohamed.darsidraapp.models.StudentModel;
@@ -31,13 +25,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 
 public class RegisteredStudentsActivity extends AppCompatActivity {
 
     AppCompatTextView tvToolbar;
-    AppCompatImageButton btBackArrow,btLogout,btStudentDetails;
+    AppCompatImageButton btBackArrow, btLogout, btStudentDetails, btFilter;
     AppCompatButton btYes,btNo;
     DatabaseReference databaseReference;
     StudentModel studentModel;
@@ -53,6 +46,7 @@ public class RegisteredStudentsActivity extends AppCompatActivity {
 
         btBackArrow = findViewById(R.id.button_back_arrow);
         btLogout = findViewById(R.id.button_log_out);
+        btFilter = findViewById(R.id.button_filter);
         btStudentDetails = findViewById(R.id.button_student_details);
         tvToolbar = findViewById(R.id.text_toolbar);
         recStudents = findViewById(R.id.rec_student);
@@ -63,16 +57,13 @@ public class RegisteredStudentsActivity extends AppCompatActivity {
         btBackArrow.setVisibility(View.GONE);
         btBackArrow.setOnClickListener(v -> finish());
         btLogout.setVisibility(View.VISIBLE);
+        btFilter.setVisibility(View.VISIBLE);
         btStudentDetails.setVisibility(View.VISIBLE);
 
-        btLogout.setOnClickListener(v -> {
-            showCustomDialog();
-        });
+        btLogout.setOnClickListener(v -> showCustomDialog());
 
-        btStudentDetails.setOnClickListener(v -> {
-            startActivity(new Intent(RegisteredStudentsActivity.this,StudentDetailsActivity.class));
-        });
-
+        btStudentDetails.setOnClickListener(v -> startActivity(new Intent(RegisteredStudentsActivity.this,StudentDetailsActivity.class)));
+        btFilter.setOnClickListener(v -> startActivity(new Intent(RegisteredStudentsActivity.this,FilterSubscriptionActivity.class)));
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
         databaseReference.child("StudentsData").addValueEventListener(new ValueEventListener() {

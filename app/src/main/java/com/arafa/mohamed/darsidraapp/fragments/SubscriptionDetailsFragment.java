@@ -3,10 +3,12 @@ package com.arafa.mohamed.darsidraapp.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.models.SubscriptionModel;
@@ -22,15 +24,19 @@ import java.util.Objects;
 
 public class SubscriptionDetailsFragment extends Fragment {
     TextInputEditText etJan, etFeb, etMar, etApr, etMay, etJun, etJul, etAug, etSep, etOct, etNov, etDec;
+    AppCompatCheckBox chxJan, chxFeb, chxMar, chxApr, chxMay, chxJun, chxJul, chxAug, chxSep, chxOct, chxNov, chxDec;
     FloatingActionButton btAddSubscription;
     String jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec;
     SubscriptionModel subscriptionModel;
     DatabaseReference databaseReference;
-    String codeStudent;
+    String codeStudent, nameStudent, classStudent;
 
-    public SubscriptionDetailsFragment(String codeStudent) {
+    public SubscriptionDetailsFragment(String codeStudent, String nameStudent, String classStudent) {
         this.codeStudent = codeStudent;
+        this.nameStudent = nameStudent;
+        this.classStudent = classStudent;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,6 +55,141 @@ public class SubscriptionDetailsFragment extends Fragment {
         etOct = viewSubscription.findViewById(R.id.editText_oct);
         etNov = viewSubscription.findViewById(R.id.editText_nov);
         etDec = viewSubscription.findViewById(R.id.editText_dec);
+
+        chxJan = viewSubscription.findViewById(R.id.checkbox_jan);
+        chxFeb = viewSubscription.findViewById(R.id.checkbox_feb);
+        chxMar = viewSubscription.findViewById(R.id.checkbox_mar);
+        chxApr = viewSubscription.findViewById(R.id.checkbox_apr);
+        chxMay = viewSubscription.findViewById(R.id.checkbox_may);
+        chxJun = viewSubscription.findViewById(R.id.checkbox_jun);
+        chxJul = viewSubscription.findViewById(R.id.checkbox_jul);
+        chxAug = viewSubscription.findViewById(R.id.checkbox_aug);
+        chxSep = viewSubscription.findViewById(R.id.checkbox_sep);
+        chxOct = viewSubscription.findViewById(R.id.checkbox_oct);
+        chxNov = viewSubscription.findViewById(R.id.checkbox_nov);
+        chxDec = viewSubscription.findViewById(R.id.checkbox_dec);
+
+        chxJan.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(chxJan.isChecked()){
+                etJan.setText(R.string.payment);
+                etJan.setEnabled(false);
+            }else{
+                etJan.setText("");
+                etJan.setEnabled(true);
+            }
+        });
+
+        chxFeb.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(chxFeb.isChecked()){
+                etFeb.setText(R.string.payment);
+                etFeb.setEnabled(false);
+            }else{
+                etFeb.setText("");
+                etFeb.setEnabled(true);
+            }
+        });
+
+        chxMar.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(chxMar.isChecked()){
+                etMar.setText(R.string.payment);
+                etMar.setEnabled(false);
+            }else{
+                etMar.setText("");
+                etMar.setEnabled(true);
+            }
+        });
+
+        chxApr.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(chxApr.isChecked()){
+                etApr.setText(R.string.payment);
+                etApr.setEnabled(false);
+            }else{
+                etApr.setText("");
+                etApr.setEnabled(true);
+            }
+        });
+
+        chxMay.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(chxMay.isChecked()){
+                etMay.setText(R.string.payment);
+                etMay.setEnabled(false);
+            }else{
+                etMay.setText("");
+                etMay.setEnabled(true);
+            }
+        });
+
+        chxJun.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(chxJun.isChecked()){
+                etJun.setText(R.string.payment);
+                etJun.setEnabled(false);
+            }else{
+                etJun.setText("");
+                etJun.setEnabled(true);
+            }
+        });
+
+        chxJul.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(chxJul.isChecked()){
+                etJul.setText(R.string.payment);
+                etJul.setEnabled(false);
+            }else{
+                etJul.setText("");
+                etJul.setEnabled(true);
+            }
+        });
+
+        chxAug.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(chxAug.isChecked()){
+                etAug.setText(R.string.payment);
+                etAug.setEnabled(false);
+            }else{
+                etAug.setText("");
+                etAug.setEnabled(true);
+            }
+        });
+
+        chxSep.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(chxSep.isChecked()){
+                etSep.setText(R.string.payment);
+                etSep.setEnabled(false);
+            }else{
+                etSep.setText("");
+                etSep.setEnabled(true);
+            }
+        });
+
+        chxOct.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(chxOct.isChecked()){
+                etOct.setText(R.string.payment);
+                etOct.setEnabled(false);
+            }else{
+                etOct.setText("");
+                etOct.setEnabled(true);
+            }
+        });
+
+        chxNov.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(chxNov.isChecked()){
+                etNov.setText(R.string.payment);
+                etNov.setEnabled(false);
+            }else{
+                etNov.setText("");
+                etNov.setEnabled(true);
+            }
+        });
+
+        chxDec.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(chxDec.isChecked()){
+                etDec.setText(R.string.payment);
+                etDec.setEnabled(false);
+            }else{
+                etDec.setText("");
+                etDec.setEnabled(true);
+            }
+        });
+
+
         btAddSubscription = viewSubscription.findViewById(R.id.button_add_subscription);
 
         databaseReference.child("Subscription").child(codeStudent).addValueEventListener(new ValueEventListener() {
@@ -92,7 +233,7 @@ public class SubscriptionDetailsFragment extends Fragment {
             oct = Objects.requireNonNull(etOct.getText()).toString();
             nov = Objects.requireNonNull(etNov.getText()).toString();
             dec = Objects.requireNonNull(etDec.getText()).toString();
-            subscriptionModel = new SubscriptionModel(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec);
+            subscriptionModel = new SubscriptionModel(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec, codeStudent, nameStudent, classStudent );
             databaseReference.child("Subscription").child(codeStudent).setValue(subscriptionModel).addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
                     Toast.makeText(getActivity(), "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();

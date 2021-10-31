@@ -12,7 +12,7 @@
                 </shape>
             </item>
             <item android:drawable="@drawable/ic_baseline_arrow_drop_up_24"
-                android:gravity="end"/>
+                android:gravity="start"/>
         </layer-list>
     </item>
 </selector>

@@ -62,6 +62,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         Picasso.get().load(Uri.parse(downloadData.get(position).getUrlStudent())).into(holder.imgStudent);
         holder.tvNameStudent.setText(downloadData.get(position).getNameStudent());
         holder.tvCodeStudent.setText(downloadData.get(position).getCodeStudent());
+        holder.tvClassStudent.setText(downloadData.get(position).getClassStudent());
         holder.itemView.setOnClickListener(v -> {
             Intent intentDetailed = new Intent(context, StudentDetailsActivity.class);
             intentDetailed.putExtra("detailed",downloadData.get(position));
@@ -72,7 +73,6 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
             showCustomDialog(position);
             return false;
         });
-
     }
 
     @Override
@@ -112,14 +112,15 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
          }
      };
 
-         public class MyViewHolder extends RecyclerView.ViewHolder {
-        AppCompatTextView tvNameStudent,tvCodeStudent;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        AppCompatTextView tvNameStudent,tvCodeStudent,tvClassStudent;
         AppCompatImageView imgStudent;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNameStudent = itemView.findViewById(R.id.text_name_students);
             tvCodeStudent = itemView.findViewById(R.id.text_code_students);
+            tvClassStudent = itemView.findViewById(R.id.text_class_student);
             imgStudent = itemView.findViewById(R.id.image_student);
         }
     }

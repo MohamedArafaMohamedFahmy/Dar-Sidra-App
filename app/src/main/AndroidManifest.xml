@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_logo_sidra_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.DarSidraApp">
-        <activity android:name=".activities.FilterSubscriptionActivity"></activity>
+        <activity android:name=".activities.FilterSubscriptionActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"/>
         <activity
             android:name=".activities.SplashScreenActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar">

@@ -4,19 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textDirection="rtl"
+    android:layoutDirection="rtl"
+    android:background="@color/sub_color_app"
     tools:context=".activities.FilterSubscriptionActivity">
+
+    <include
+        android:id="@+id/toolbar_filter_subscription"
+        layout="@layout/custom_toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/linear_counter"
+        android:layout_below="@id/toolbar_filter_subscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_gray"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_number"
+            android:textColor="@color/black_gray"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginStart="10dp"
+            />
+
+    </LinearLayout>
 
     <com.arafa.mohamed.darsidraapp.models.CustomSpinner
         android:id="@+id/spinner_month"
+        android:layout_below="@id/linear_counter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:overScrollMode="ifContentScrolls"
         android:elevation="3dp"
+        android:padding="6dp"
         android:popupElevation="2dp"
-        android:popupBackground="#FFF4E6"
+        android:popupBackground="@color/sub_color_app"
         android:dropDownVerticalOffset="50dp"
         android:background="@drawable/bg_spinner_blood_type"
         />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rec_filter_subscription"
+        android:layout_below="@id/spinner_month"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>
