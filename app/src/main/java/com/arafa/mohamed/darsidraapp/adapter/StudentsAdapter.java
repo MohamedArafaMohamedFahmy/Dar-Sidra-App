@@ -30,6 +30,7 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 
 public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyViewHolder> implements Filterable {
@@ -85,7 +86,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         return patientFilter;
     }
 
-     private final Filter patientFilter = new Filter() {
+     private  Filter patientFilter = new Filter() {
          @Override
          protected FilterResults performFiltering(CharSequence constraint) {
              ArrayList<StudentModel> filteredList = new ArrayList<>();
@@ -95,6 +96,9 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
                  String filterPattern = constraint.toString().toLowerCase().trim();
                  for (StudentModel item : dataListFilter) {
                      if (item.getCodeStudent().toLowerCase().contains(filterPattern)) {
+                         filteredList.add(item);
+                     }
+                     if (item.getClassStudent().toLowerCase().contains(filterPattern)) {
                          filteredList.add(item);
                      }
                  }
@@ -107,7 +111,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
          @Override
          protected void publishResults(CharSequence constraint, FilterResults results) {
              downloadData.clear();
-             downloadData.addAll((ArrayList<StudentModel>) results.values);
+             downloadData.addAll((Collection<? extends StudentModel>) results.values);
              notifyDataSetChanged();
          }
      };

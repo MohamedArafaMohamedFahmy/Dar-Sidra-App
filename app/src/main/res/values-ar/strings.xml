@@ -23,7 +23,7 @@
     <string name="reset_password_appbar">تغيير كلمة السر</string>
     <string name="do_you_want_to_delete_this_item">هل تريد حذف هذا الطالب ؟</string>
     <string name="do_you_want_to_log_out">هل تريد تسجيل الخروج؟</string>
-    <string name="registered_student_appbar">الطلاب المسجلين</string>
+    <string name="main_home_appbar">الصفحة الرئيسية</string>
     <string name="name_student">اسم الطالب</string>
     <string name="joining_date">تاريخ الالتحاق</string>
     <string name="rating_subscription_appbar">تفاصيل الاشتراك والتقييم</string>
@@ -37,6 +37,7 @@
     <string name="date_session">ميعاد الطالب</string>
     <string name="register_data">تسجيل البيانات</string>
     <string name="student_details_appbar">بيانات الطالب</string>
+    <string name="teacher_details_appbar">بيانات المعلم / المعلمة</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="status">الحاله</string>
     <string name="add_status">Add Status</string>
@@ -47,14 +48,32 @@
     <string name="absence">الغياب</string>
     <string name="total">المجموع</string>
     <string name="text_logo_sidra">دار سدرة المنتهى</string>
-    <string name="search_code_student">البحث بكود الطالب</string>
+    <string name="search_code_student">البحث بكود الطالب أو الفصل</string>
+    <string name="search_code_teacher">البحث بكود المعلم أو الاسم</string>
     <string name="born_date">تاريخ الميلاد</string>
     <string name="branch">الفرع</string>
     <string name="start_saving">بداية الحفظ</string>
     <string name="payment">تم الدفع</string>
     <string name="filter_month">فلترة الشهور</string>
-    <string name="total_number">العدد الاجمالى:</string>
-
+    <string name="total_number">العدد الاجمالى :</string>
+    <string name="name_teacher">اسم المعلم / المعلمة</string>
+    <string name="enrollment_teacher">تاريخ الانضمام</string>
+    <string name="code_teacher">كود المعلم / المعلمة</string>
+    <string name="mobile_number">التليفون</string>
+    <string name="attendance_and_departure">الالتزام بميعاد الحضور و الإنصراف</string>
+    <string name="number_ten">10</string>
+    <string name="notes">الملاحظات</string>
+    <string name="cleanliness_order_classroom">الحفاظ على نظافة و ترتيب الفصل</string>
+    <string name="value_game_material">تناول قيمه او لعبه مع الماده العلميه</string>
+    <string name="Dealing_with_students">التعامل مع الطلاب و الجو العام</string>
+    <string name="time_management">ادارة الوقت</string>
+    <string name="number_fifty">50</string>
+    <string name="which_select">أى اختيار تريد؟</string>
+    <string name="button_register_teacher">تسجيل معلم / معلمة</string>
+    <string name="button_register_student">تسجيل طالب</string>
+    <string name="days_of_absence">ايام الغياب</string>
+    <string name="days_increase">الايام الزيادة</string>
+    <string name="salary">الراتب</string>
 
     <string name="jan">يناير</string>
     <string name="feb">فبراير</string>

@@ -126,7 +126,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             if(task1.isSuccessful()){
                                 linearProgressBar.setVisibility(View.GONE);
                                 Toast.makeText(RegistrationActivity.this, "تم التسجيل بنجاح", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(RegistrationActivity.this, RegisteredStudentsActivity.class));
+                                startActivity(new Intent(RegistrationActivity.this, RegisteredTeachersStudentsActivity.class));
                                 finish();
                             }
                         });
@@ -183,7 +183,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void updateUI() {
-        startActivity(new Intent(RegistrationActivity.this, RegisteredStudentsActivity.class));
+        startActivity(new Intent(RegistrationActivity.this, RegisteredTeachersStudentsActivity.class));
     }
     private void closeKeyboard() {
         View view = this.getCurrentFocus();

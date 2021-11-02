@@ -77,18 +77,19 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
 
-                                    }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        Toast.makeText(FilterSubscriptionActivity.this, "لاتوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                                     }
+
                                     tvCounter.setText(String.valueOf(listFilterStudent.size()));
+
+                                } else{
+                                    filterSubscriptionAdapter.notifyDataSetChanged();
+                                    tvCounter.setText("لاتوجد بيانات");
                                 }
                             }
                         }
                         @Override
                         public void onCancelled(@NonNull  DatabaseError error) {
                             Toast.makeText(FilterSubscriptionActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     });
                 }
@@ -108,18 +109,19 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         filterSubscriptionAdapter.notifyDataSetChanged();
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-                                    }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        Toast.makeText(FilterSubscriptionActivity.this, "لاتوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                                     }
+
                                     tvCounter.setText(String.valueOf(listFilterStudent.size()));
+
+                                } else{
+                                    filterSubscriptionAdapter.notifyDataSetChanged();
+                                    tvCounter.setText("لاتوجد بيانات");
                                 }
                             }
                         }
                         @Override
                         public void onCancelled(@NonNull  DatabaseError error) {
                             Toast.makeText(FilterSubscriptionActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     });
                 }
@@ -139,18 +141,19 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         filterSubscriptionAdapter.notifyDataSetChanged();
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-                                    }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        Toast.makeText(FilterSubscriptionActivity.this, "لاتوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                                     }
+
                                     tvCounter.setText(String.valueOf(listFilterStudent.size()));
+
+                                } else{
+                                    filterSubscriptionAdapter.notifyDataSetChanged();
+                                    tvCounter.setText("لاتوجد بيانات");
                                 }
                             }
                         }
                         @Override
                         public void onCancelled(@NonNull  DatabaseError error) {
                             Toast.makeText(FilterSubscriptionActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     });
                 }
@@ -170,19 +173,19 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         filterSubscriptionAdapter.notifyDataSetChanged();
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-
-                                    }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        Toast.makeText(FilterSubscriptionActivity.this, "لاتوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                                     }
+
                                     tvCounter.setText(String.valueOf(listFilterStudent.size()));
+
+                                } else{
+                                    filterSubscriptionAdapter.notifyDataSetChanged();
+                                    tvCounter.setText("لاتوجد بيانات");
                                 }
                             }
                         }
                         @Override
                         public void onCancelled(@NonNull  DatabaseError error) {
                             Toast.makeText(FilterSubscriptionActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     });
                 }
@@ -202,11 +205,13 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         filterSubscriptionAdapter.notifyDataSetChanged();
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-                                    }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        Toast.makeText(FilterSubscriptionActivity.this, "لاتوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                                     }
+
                                     tvCounter.setText(String.valueOf(listFilterStudent.size()));
+
+                                } else{
+                                    filterSubscriptionAdapter.notifyDataSetChanged();
+                                    tvCounter.setText("لاتوجد بيانات");
                                 }
                             }
                         }
@@ -233,18 +238,19 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
 
-                                    }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        Toast.makeText(FilterSubscriptionActivity.this, "لاتوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                                     }
+
                                     tvCounter.setText(String.valueOf(listFilterStudent.size()));
+
+                                } else{
+                                    filterSubscriptionAdapter.notifyDataSetChanged();
+                                    tvCounter.setText("لاتوجد بيانات");
                                 }
                             }
                         }
                         @Override
                         public void onCancelled(@NonNull  DatabaseError error) {
                             Toast.makeText(FilterSubscriptionActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     });
                 }
@@ -264,19 +270,19 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         filterSubscriptionAdapter.notifyDataSetChanged();
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-
-                                    }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        Toast.makeText(FilterSubscriptionActivity.this, "لاتوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                                     }
+
                                     tvCounter.setText(String.valueOf(listFilterStudent.size()));
+
+                                } else{
+                                    filterSubscriptionAdapter.notifyDataSetChanged();
+                                    tvCounter.setText("لاتوجد بيانات");
                                 }
                             }
                         }
                         @Override
                         public void onCancelled(@NonNull  DatabaseError error) {
                             Toast.makeText(FilterSubscriptionActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     });
                 }
@@ -296,19 +302,19 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         filterSubscriptionAdapter.notifyDataSetChanged();
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-
-                                    }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        Toast.makeText(FilterSubscriptionActivity.this, "لاتوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                                     }
+
                                     tvCounter.setText(String.valueOf(listFilterStudent.size()));
+
+                                } else{
+                                    filterSubscriptionAdapter.notifyDataSetChanged();
+                                    tvCounter.setText("لاتوجد بيانات");
                                 }
                             }
                         }
                         @Override
                         public void onCancelled(@NonNull  DatabaseError error) {
                             Toast.makeText(FilterSubscriptionActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     });
                 }
@@ -329,18 +335,19 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
 
-                                    }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        Toast.makeText(FilterSubscriptionActivity.this, "لاتوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                                     }
+
                                     tvCounter.setText(String.valueOf(listFilterStudent.size()));
+
+                                } else{
+                                    filterSubscriptionAdapter.notifyDataSetChanged();
+                                    tvCounter.setText("لاتوجد بيانات");
                                 }
                             }
                         }
                         @Override
                         public void onCancelled(@NonNull  DatabaseError error) {
                             Toast.makeText(FilterSubscriptionActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     });
                 }
@@ -360,19 +367,19 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         filterSubscriptionAdapter.notifyDataSetChanged();
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-
-                                    }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        Toast.makeText(FilterSubscriptionActivity.this, "لاتوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                                     }
+
                                     tvCounter.setText(String.valueOf(listFilterStudent.size()));
+
+                                } else{
+                                    filterSubscriptionAdapter.notifyDataSetChanged();
+                                    tvCounter.setText("لاتوجد بيانات");
                                 }
                             }
                         }
                         @Override
                         public void onCancelled(@NonNull  DatabaseError error) {
                             Toast.makeText(FilterSubscriptionActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     });
                 }
@@ -392,12 +399,12 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         filterSubscriptionAdapter.notifyDataSetChanged();
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-
-                                    }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        Toast.makeText(FilterSubscriptionActivity.this, "لاتوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                                     }
                                     tvCounter.setText(String.valueOf(listFilterStudent.size()));
+                                }
+                                else{
+                                    filterSubscriptionAdapter.notifyDataSetChanged();
+                                    tvCounter.setText("لاتوجد بيانات");
                                 }
                             }
                         }
@@ -423,12 +430,13 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         filterSubscriptionAdapter.notifyDataSetChanged();
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-
-                                    }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        Toast.makeText(FilterSubscriptionActivity.this, "لاتوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                                     }
+
                                     tvCounter.setText(String.valueOf(listFilterStudent.size()));
+
+                                } else{
+                                    filterSubscriptionAdapter.notifyDataSetChanged();
+                                    tvCounter.setText("لاتوجد بيانات");
                                 }
                             }
                         }

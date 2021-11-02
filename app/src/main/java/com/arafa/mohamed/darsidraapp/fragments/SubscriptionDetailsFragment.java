@@ -197,18 +197,55 @@ public class SubscriptionDetailsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 subscriptionModel = snapshot.getValue(SubscriptionModel.class);
                 if(subscriptionModel != null){
-                    etJan.setText(subscriptionModel.getJan());
-                    etFeb.setText(subscriptionModel.getFeb());
-                    etMar.setText(subscriptionModel.getMar());
-                    etApr.setText(subscriptionModel.getApr());
-                    etMay.setText(subscriptionModel.getMay());
-                    etJun.setText(subscriptionModel.getJun());
-                    etJul.setText(subscriptionModel.getJul());
-                    etAug.setText(subscriptionModel.getAug());
-                    etSep.setText(subscriptionModel.getSep());
-                    etOct.setText(subscriptionModel.getOct());
-                    etNov.setText(subscriptionModel.getNov());
-                    etDec.setText(subscriptionModel.getDec());
+                    if (subscriptionModel.getJan().equals("تم الدفع")){
+                        etJan.setText(subscriptionModel.getJan());
+                        chxJan.setChecked(true);
+                    }
+                    if (subscriptionModel.getFeb().equals("تم الدفع")){
+                        etFeb.setText(subscriptionModel.getFeb());
+                        chxFeb.setChecked(true);
+                    }
+                    if (subscriptionModel.getMar().equals("تم الدفع")){
+                        etMar.setText(subscriptionModel.getMar());
+                        chxMar.setChecked(true);
+                    }
+                    if (subscriptionModel.getApr().equals("تم الدفع")){
+                        etApr.setText(subscriptionModel.getApr());
+                        chxApr.setChecked(true);
+                    }
+                    if (subscriptionModel.getMay().equals("تم الدفع")){
+                        etMay.setText(subscriptionModel.getMay());
+                        chxMay.setChecked(true);
+                    }
+                    if (subscriptionModel.getJun().equals("تم الدفع")){
+                        etJun.setText(subscriptionModel.getJun());
+                        chxJun.setChecked(true);
+                    }
+                    if (subscriptionModel.getJul().equals("تم الدفع")){
+                        etJul.setText(subscriptionModel.getJul());
+                        chxJul.setChecked(true);
+                    }
+                    if (subscriptionModel.getAug().equals("تم الدفع")){
+                        etAug.setText(subscriptionModel.getAug());
+                        chxAug.setChecked(true);
+                    }
+                    if (subscriptionModel.getSep().equals("تم الدفع")){
+                        etSep.setText(subscriptionModel.getSep());
+                        chxSep.setChecked(true);
+                    }
+                    if (subscriptionModel.getOct().equals("تم الدفع")){
+                        etOct.setText(subscriptionModel.getOct());
+                        chxOct.setChecked(true);
+                    }
+                    if (subscriptionModel.getNov().equals("تم الدفع")){
+                        etNov.setText(subscriptionModel.getNov());
+                        chxNov.setChecked(true);
+                    }
+                    if (subscriptionModel.getDec().equals("تم الدفع")){
+                        etDec.setText(subscriptionModel.getDec());
+                        chxDec.setChecked(true);
+                    }
+
                 }else{
                     Toast.makeText(getActivity(), "لا يوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                 }

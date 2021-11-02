@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:textDirection="rtl"
     android:layoutDirection="rtl"
     android:padding="16dp"
@@ -36,12 +35,12 @@
        android:textStyle="bold"
        android:textSize="20sp"
        android:layout_alignParentEnd="true"
-       android:layout_toStartOf="@id/ripple_student_details"
+       android:layout_toStartOf="@id/ripple_registered"
        android:layout_marginEnd="30dp"
        />
 
    <com.balysv.materialripple.MaterialRippleLayout
-       android:id="@+id/ripple_subscription_rating"
+       android:id="@+id/ripple_rating"
        style="@style/RippleStyleGrey"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
@@ -50,7 +49,7 @@
        >
 
    <androidx.appcompat.widget.AppCompatImageButton
-       android:id="@+id/button_subscription_rating"
+       android:id="@+id/button_rating"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:src="@drawable/ic_baseline_sub_rating_24"
@@ -65,7 +64,7 @@
        style="@style/RippleStyleGrey"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_toEndOf="@id/ripple_student_details"
+       android:layout_toEndOf="@id/ripple_registered"
        android:layout_marginStart="15dp"
        >
 
@@ -81,7 +80,7 @@
    </com.balysv.materialripple.MaterialRippleLayout>
 
    <com.balysv.materialripple.MaterialRippleLayout
-       android:id="@+id/ripple_student_details"
+       android:id="@+id/ripple_registered"
        style="@style/RippleStyleGrey"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
@@ -90,7 +89,7 @@
        >
 
    <androidx.appcompat.widget.AppCompatImageButton
-       android:id="@+id/button_student_details"
+       android:id="@+id/button_registered"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:src="@drawable/ic_baseline_add_student_24"

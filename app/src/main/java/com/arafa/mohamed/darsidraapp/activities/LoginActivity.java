@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         linearProgressBar.setVisibility(View.GONE);
                         Toast.makeText(LoginActivity.this, "تم تسجيل الدخول بنجاح", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, RegisteredStudentsActivity.class));
+                        startActivity(new Intent(LoginActivity.this, RegisteredTeachersStudentsActivity.class));
                         finish();
                     }
                     else{

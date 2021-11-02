@@ -12,8 +12,16 @@
         android:roundIcon="@mipmap/ic_logo_sidra_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.DarSidraApp">
-        <activity android:name=".activities.FilterSubscriptionActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar"/>
+        <activity android:name=".activities.RatingSalaryActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity android:name=".activities.TeacherDetailsActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity
+            android:name=".activities.RegisteredTeachersStudentsActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity
+            android:name=".activities.FilterSubscriptionActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".activities.SplashScreenActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar">
@@ -29,13 +37,6 @@
         <activity
             android:name=".activities.StudentDetailsActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
-        <activity
-            android:name=".activities.RegisteredStudentsActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activities.ForgotPasswordActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />

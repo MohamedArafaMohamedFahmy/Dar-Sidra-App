@@ -63,7 +63,7 @@ public class StudentDetailsActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_student_details);
 
         btBackArrow = findViewById(R.id.button_back_arrow);
-        btSubRating = findViewById(R.id.button_subscription_rating);
+        btSubRating = findViewById(R.id.button_rating);
         tvToolbar = findViewById(R.id.text_toolbar);
         etNameStudent = findViewById(R.id.editText_name_student);
         etEnrollmentStudent = findViewById(R.id.editText_date_student);
@@ -107,7 +107,6 @@ public class StudentDetailsActivity extends AppCompatActivity  {
             etBranch.setText(retrieveDataStudent.getBranch());
             etStartSaving.setText(retrieveDataStudent.getStartSaving());
             generateQRCode(retrieveDataStudent.getCodeStudent());
-
 
         }
 
@@ -290,16 +289,15 @@ public class StudentDetailsActivity extends AppCompatActivity  {
             Bitmap bitmap = Bitmap.createBitmap(1000, 1000, Bitmap.Config.RGB_565);
             for (int x = 0; x < 1000; x++) {
                 for (int y = 0; y < 1000; y++) {
+                    linearProgressBar.setVisibility(View.VISIBLE);
                     bitmap.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.parseColor("#DBEFD6"));
                 }
             }
-
             imgQRCode.setImageBitmap(bitmap);
+           linearProgressBar.setVisibility(View.GONE);
 
         } catch (Exception e) {
             Toast.makeText(StudentDetailsActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
     }
-
 }

@@ -33,12 +33,10 @@
                 >
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/review_layout"
+                    android:id="@+id/number_days_of_absence_layout"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
-                    android:hint="@string/score"
-                    android:textColorHint="@color/black_gray"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
@@ -48,19 +46,19 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editText_review"
+                        android:id="@+id/editText_number_days_of_absence"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black_gray"
-                        android:inputType="text"
+                        android:inputType="number"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/review"
+                    android:text="@string/days_of_absence"
                     android:textStyle="bold"
                     android:textSize="25sp"
                     android:textColor="@color/black_gray"
@@ -78,12 +76,10 @@
                 >
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/preservation_layout"
+                    android:id="@+id/number_days_increase_layout"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
-                    android:hint="@string/score"
-                    android:textColorHint="@color/black_gray"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
@@ -93,19 +89,19 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editText_preservation"
+                        android:id="@+id/editText_number_days_increase"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black_gray"
-                        android:inputType="text"
+                        android:inputType="number"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/preservation"
+                    android:text="@string/days_increase"
                     android:textStyle="bold"
                     android:textSize="25sp"
                     android:textColor="@color/black_gray"
@@ -118,17 +114,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="50dp"
                 android:layout_gravity="center"
                 android:padding="5dp"
                 >
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/audience_layout"
+                    android:id="@+id/salary_layout"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
-                    android:hint="@string/score"
-                    android:textColorHint="@color/black_gray"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
@@ -138,19 +133,19 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editText_audience"
+                        android:id="@+id/editText_salary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black_gray"
-                        android:inputType="text"
+                        android:inputType="number"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/audience"
+                    android:text="@string/salary"
                     android:textStyle="bold"
                     android:textSize="25sp"
                     android:textColor="@color/black_gray"
@@ -159,111 +154,22 @@
                     />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:padding="5dp"
-                >
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/absence_layout"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:hint="@string/score"
-                    android:textColorHint="@color/black_gray"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeColor="@color/black_gray"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editText_absence"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black_gray"
-                        android:inputType="text"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/absence"
-                    android:textStyle="bold"
-                    android:textSize="25sp"
-                    android:textColor="@color/black_gray"
-                    android:fontFamily="@font/aladin"
-                    android:layout_marginStart="15dp"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:padding="5dp"
-                >
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/total_layout"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:hint="@string/score"
-                    android:textColorHint="@color/black_gray"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeColor="@color/black_gray"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editText_total"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black_gray"
-                        android:inputType="text"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/total"
-                    android:textStyle="bold"
-                    android:textSize="25sp"
-                    android:textColor="@color/black_gray"
-                    android:fontFamily="@font/aladin"
-                    android:layout_marginStart="15dp"
-                    />
-            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/button_add_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/general_app"
-            app:tint="@color/white"
-            app:borderWidth="0dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginBottom="15dp"
-            android:src="@drawable/ic_baseline_add_24"
-            android:contentDescription="@string/add_status" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_add_salary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/general_app"
+        app:tint="@color/white"
+        app:borderWidth="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/ic_baseline_add_24"
+        android:contentDescription="@string/add_status" />
 
 </RelativeLayout>

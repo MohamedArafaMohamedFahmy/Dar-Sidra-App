@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.RegisteredTeachersStudentsActivity">
+
+    <include
+        android:id="@+id/toolbar_registered"
+        layout="@layout/custom_toolbar"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs_item_registered"
+        android:layout_below="@id/toolbar_registered"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabTextColor="@color/general_app"
+        android:background="@color/sub_color_app"
+        app:tabBackground="@color/black_gray"
+
+        />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_below="@id/tabs_item_registered"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+
+</RelativeLayout>
