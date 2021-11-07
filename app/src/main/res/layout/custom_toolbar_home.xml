@@ -15,6 +15,7 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="18sp"
+        android:layout_toEndOf="@id/ripple_registered"
         android:fontFamily="@font/cairo_extralight"
         android:layout_alignParentEnd="true"
 
@@ -23,9 +24,8 @@
     <com.balysv.materialripple.MaterialRippleLayout
         android:id="@+id/ripple_registered"
         style="@style/RippleStyleGrey"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/text_toolbar"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_toEndOf="@id/ripple_filter"
         android:layout_marginStart="20dp"
         >

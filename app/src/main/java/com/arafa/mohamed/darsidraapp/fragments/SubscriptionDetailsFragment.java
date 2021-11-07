@@ -26,10 +26,9 @@ public class SubscriptionDetailsFragment extends Fragment {
     TextInputEditText etJan, etFeb, etMar, etApr, etMay, etJun, etJul, etAug, etSep, etOct, etNov, etDec;
     AppCompatCheckBox chxJan, chxFeb, chxMar, chxApr, chxMay, chxJun, chxJul, chxAug, chxSep, chxOct, chxNov, chxDec;
     FloatingActionButton btAddSubscription;
-    String jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec;
+    String jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec, codeStudent, nameStudent, classStudent;
     SubscriptionModel subscriptionModel;
     DatabaseReference databaseReference;
-    String codeStudent, nameStudent, classStudent;
 
     public SubscriptionDetailsFragment(String codeStudent, String nameStudent, String classStudent) {
         this.codeStudent = codeStudent;

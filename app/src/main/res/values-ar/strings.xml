@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">دار سدرة المنتهى</string>
+    <string name="app_name">إدارة سدرة المنتهى</string>
     <string name="sign_in">تسجيل دخول</string>
     <string name="email_address">البريد الالكترونى</string>
     <string name="password">كلمة السر</string>
