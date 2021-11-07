@@ -12,6 +12,8 @@ import androidx.appcompat.widget.AppCompatTextView;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -41,7 +43,7 @@ import java.util.Objects;
 public class StudentDetailsActivity extends AppCompatActivity  {
 
     AppCompatTextView tvToolbar;
-    AppCompatImageButton btBackArrow,btSubRating;
+    AppCompatImageButton btBackArrow,btSubRating, btWhatsAppFather, btWhatsAppMother, btCallNumberFather, btCallNumberMother;
     TextInputEditText etNameStudent,etEnrollmentStudent,etCodeStudent,etMobileFather,etMobileMother,etClassStudent,
             etDateSession, etBornDate, etBranch, etStartSaving;
     TextInputLayout layoutEnrollmentStudent, layoutBornDate;
@@ -64,6 +66,10 @@ public class StudentDetailsActivity extends AppCompatActivity  {
 
         btBackArrow = findViewById(R.id.button_back_arrow);
         btSubRating = findViewById(R.id.button_rating);
+        btWhatsAppFather = findViewById(R.id.whats_app);
+        btWhatsAppMother = findViewById(R.id.whats_app_mother);
+        btCallNumberFather = findViewById(R.id.call_number);
+        btCallNumberMother = findViewById(R.id.call_number_mother);
         tvToolbar = findViewById(R.id.text_toolbar);
         etNameStudent = findViewById(R.id.editText_name_student);
         etEnrollmentStudent = findViewById(R.id.editText_date_student);
@@ -93,6 +99,11 @@ public class StudentDetailsActivity extends AppCompatActivity  {
 
         if(retrieveDataStudent != null){
 
+            btWhatsAppFather.setVisibility(View.VISIBLE);
+            btWhatsAppMother.setVisibility(View.VISIBLE);
+            btCallNumberFather.setVisibility(View.VISIBLE);
+            btCallNumberMother.setVisibility(View.VISIBLE);
+
             btSubRating.setVisibility(View.VISIBLE);
             btRegisterData.setText("تحديث البيانات");
             Picasso.get().load(Uri.parse(retrieveDataStudent.getUrlStudent())).into(imgStudent);
@@ -109,6 +120,24 @@ public class StudentDetailsActivity extends AppCompatActivity  {
             generateQRCode(retrieveDataStudent.getCodeStudent());
 
         }
+
+        btWhatsAppFather.setOnClickListener(v -> {
+            openWhatsappContact(retrieveDataStudent.getMobileFather());
+        });
+
+        btCallNumberFather.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+retrieveDataStudent.getMobileFather()));
+            startActivity(intent);
+        });
+
+        btWhatsAppMother.setOnClickListener(v -> {
+            openWhatsappContact(retrieveDataStudent.getMobileMother());
+        });
+
+        btCallNumberMother.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+retrieveDataStudent.getMobileMother()));
+            startActivity(intent);
+        });
 
         btSubRating.setOnClickListener(v -> {
             Intent intentRatingSubscription = new Intent(StudentDetailsActivity.this,RatingSubscriptionDetailsActivity.class);
@@ -298,6 +327,21 @@ public class StudentDetailsActivity extends AppCompatActivity  {
 
         } catch (Exception e) {
             Toast.makeText(StudentDetailsActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    void openWhatsappContact(String number) {
+        PackageManager pm=getPackageManager();
+        try {
+
+            Uri uri = Uri.parse("smsto:" + number);
+            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+            pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+            i.setPackage("com.whatsapp");
+            startActivity(Intent.createChooser(i, ""));
+
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(StudentDetailsActivity.this, "WhatsApp not Installed", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -33,7 +33,7 @@
        android:layout_height="wrap_content"
        android:textColor="@color/white"
        android:textStyle="bold"
-       android:textSize="20sp"
+       android:textSize="18sp"
        android:fontFamily="@font/cairo_extralight"
        android:layout_toEndOf="@id/ripple_rating"
        android:layout_alignParentEnd="true"

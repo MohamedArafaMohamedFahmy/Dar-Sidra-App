@@ -7,6 +7,8 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -24,7 +26,7 @@ import java.util.Objects;
 public class TeacherDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     AppCompatTextView tvToolbar;
-    AppCompatImageButton btBackArrow,btSalaryRating;
+    AppCompatImageButton btBackArrow,btSalaryRating, btWhatsAppTeacher, btCallNumberTeacher;
     TextInputEditText etNameTeacher,etEnrollmentTeacher,etCodeTeacher,etMobileTeacher;
     TextInputLayout layoutEnrollmentTeacher;
     AppCompatButton btRegisterData;
@@ -40,6 +42,8 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
 
         btBackArrow = findViewById(R.id.button_back_arrow);
         btSalaryRating = findViewById(R.id.button_rating);
+        btWhatsAppTeacher = findViewById(R.id.whats_app_teacher);
+        btCallNumberTeacher = findViewById(R.id.call_number_teacher);
         tvToolbar = findViewById(R.id.text_toolbar);
         etNameTeacher = findViewById(R.id.editText_name_teacher);
         etEnrollmentTeacher = findViewById(R.id.editText_enrollment_teacher);
@@ -57,7 +61,8 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
         retrieveDataTeacher = (TeachersModel) objDetailed;
 
         if(retrieveDataTeacher != null){
-
+            btCallNumberTeacher.setVisibility(View.VISIBLE);
+            btWhatsAppTeacher.setVisibility(View.VISIBLE);
             btSalaryRating.setVisibility(View.VISIBLE);
             btRegisterData.setText("تحديث البيانات");
             etNameTeacher.setText(retrieveDataTeacher.getNameTeacher());
@@ -65,6 +70,15 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
             etCodeTeacher.setText(retrieveDataTeacher.getCodeTeacher());
             etMobileTeacher.setText(retrieveDataTeacher.getPhoneNumber());
         }
+
+        btWhatsAppTeacher.setOnClickListener(v -> {
+            openWhatsappContact(retrieveDataTeacher.getPhoneNumber());
+        });
+
+        btCallNumberTeacher.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+retrieveDataTeacher.getPhoneNumber()));
+            startActivity(intent);
+        });
 
         btRegisterData.setOnClickListener(v -> {
             nameTeacher = Objects.requireNonNull(etNameTeacher.getText()).toString();
@@ -123,5 +137,21 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         date = dayOfMonth + " - " + (month + 1) + " - " + year;
         etEnrollmentTeacher.setText(date);
+    }
+
+    void openWhatsappContact(String number) {
+        PackageManager pm=getPackageManager();
+        try {
+
+            Uri uri = Uri.parse("smsto:" + number);
+            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+            pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+            i.setPackage("com.whatsapp");
+            startActivity(Intent.createChooser(i, ""));
+
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(TeacherDetailsActivity.this, "WhatsApp not Installed", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
