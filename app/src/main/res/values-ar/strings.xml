@@ -27,6 +27,8 @@
     <string name="name_student">اسم الطالب</string>
     <string name="joining_date">تاريخ الالتحاق</string>
     <string name="rating_subscription_appbar">تفاصيل الاشتراك والتقييم</string>
+    <string name="rating_salary_appbar">تفاصيل الراتب والتقييم</string>
+
     <string name="cancel">إلغاء</string>
     <string name="accept">موافق</string>
     <string name="notification">تنبيه</string>

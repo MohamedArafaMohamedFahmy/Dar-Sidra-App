@@ -8,7 +8,7 @@
     android:textDirection="rtl"
     android:background="@color/sub_color_app"
     android:layout_marginTop="10dp"
-    tools:context=".fragments.SubscriptionDetailsFragment">
+    tools:context=".fragments.RatingTeacherFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,15 +25,29 @@
 
             >
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="end"
 
                 >
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_attendance_and_departure"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_toEndOf="@id/text_view_score_attendance_and_departure"
+                    android:padding="6dp"
+                    android:fontFamily="@font/cairo_extralight"
+                    android:text="@string/attendance_and_departure"
+                    android:textColor="@color/black_gray"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_score_attendance_and_departure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/number_ten"
@@ -41,23 +55,13 @@
                     android:textStyle="bold"
                     android:textColor="@color/general_app"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="35dp"
+                    android:layout_marginEnd="30dp"
 
                     />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:padding="6dp"
-                    android:fontFamily="@font/aladin"
-                    android:text="@string/attendance_and_departure"
-                    android:textColor="@color/black_gray"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
 
-            </LinearLayout>
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -71,7 +75,7 @@
                     android:id="@+id/score_attendance_and_departure_layout"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="30dp"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
@@ -86,6 +90,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black_gray"
                         android:inputType="number"
+                        android:maxLength="2"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -94,7 +99,7 @@
                     android:id="@+id/attendance_and_departure_layout"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="5dp"
                     android:hint="@string/notes"
                     android:textColorHint="@color/black_gray"
                     app:boxCornerRadiusBottomEnd="10dp"
@@ -126,13 +131,29 @@
                 android:focusable="true"
             >
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="end"
+                android:layout_marginTop="25dp"
                 >
+
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_cleanliness_order_classroom"
+                    android:layout_width="270dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/text_view_score_cleanliness_order_classroom"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="6dp"
+                    android:padding="6dp"
+                    android:fontFamily="@font/cairo_extralight"
+                    android:text="@string/cleanliness_order_classroom"
+                    android:textColor="@color/black_gray"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_view_score_cleanliness_order_classroom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/number_ten"
@@ -140,23 +161,12 @@
                     android:textStyle="bold"
                     android:textColor="@color/general_app"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="35dp"
+                    android:layout_marginEnd="30dp"
 
                     />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:padding="6dp"
-                    android:fontFamily="@font/aladin"
-                    android:text="@string/cleanliness_order_classroom"
-                    android:textColor="@color/black_gray"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -170,7 +180,7 @@
                     android:id="@+id/score_cleanliness_order_classroom_layout"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="30dp"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
@@ -185,6 +195,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black_gray"
                         android:inputType="number"
+                        android:maxLength="2"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -193,7 +204,7 @@
                     android:id="@+id/cleanliness_order_classroom_layout"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="5dp"
                     android:hint="@string/notes"
                     android:textColorHint="@color/black_gray"
                     app:boxCornerRadiusBottomEnd="10dp"
@@ -224,15 +235,30 @@
                 android:orientation="vertical"
                 android:focusableInTouchMode="true"
                 android:focusable="true"
+                android:layout_marginTop="25dp"
                 >
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_gravity="end"
                     >
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_value_game_material"
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/text_view_score_value_game_material"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="6dp"
+                        android:padding="6dp"
+                        android:fontFamily="@font/cairo_extralight"
+                        android:text="@string/value_game_material"
+                        android:textColor="@color/black_gray"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_score_value_game_material"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/number_ten"
@@ -240,23 +266,11 @@
                         android:textStyle="bold"
                         android:textColor="@color/general_app"
                         android:layout_marginTop="10dp"
-                        android:layout_marginEnd="35dp"
+                        android:layout_marginEnd="30dp"
 
                         />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="5dp"
-                        android:padding="6dp"
-                        android:fontFamily="@font/aladin"
-                        android:text="@string/value_game_material"
-                        android:textColor="@color/black_gray"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
+                </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -270,7 +284,7 @@
                         android:id="@+id/score_value_game_material_layout"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginEnd="30dp"
                         app:boxCornerRadiusBottomEnd="10dp"
                         app:boxCornerRadiusBottomStart="10dp"
                         app:boxCornerRadiusTopEnd="10dp"
@@ -285,6 +299,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/black_gray"
                             android:inputType="number"
+                            android:maxLength="2"
                             />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -293,7 +308,7 @@
                         android:id="@+id/value_game_material_layout"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginEnd="5dp"
                         android:hint="@string/notes"
                         android:textColorHint="@color/black_gray"
                         app:boxCornerRadiusBottomEnd="10dp"
@@ -325,15 +340,31 @@
                 android:orientation="vertical"
                 android:focusableInTouchMode="true"
                 android:focusable="true"
+                android:layout_marginTop="25dp"
                 >
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_gravity="end"
                     >
+
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_dealing_with_students"
+                        android:layout_toEndOf="@id/text_view_score_dealing_with_students"
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="6dp"
+                        android:padding="6dp"
+                        android:fontFamily="@font/cairo_extralight"
+                        android:text="@string/Dealing_with_students"
+                        android:textColor="@color/black_gray"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_score_dealing_with_students"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/number_ten"
@@ -341,23 +372,13 @@
                         android:textStyle="bold"
                         android:textColor="@color/general_app"
                         android:layout_marginTop="10dp"
-                        android:layout_marginEnd="65dp"
+                        android:layout_marginEnd="30dp"
 
                         />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="5dp"
-                        android:padding="6dp"
-                        android:fontFamily="@font/aladin"
-                        android:text="@string/Dealing_with_students"
-                        android:textColor="@color/black_gray"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
 
-                </LinearLayout>
+
+                </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -371,7 +392,7 @@
                         android:id="@+id/score_dealing_with_students_layout"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginEnd="30dp"
                         app:boxCornerRadiusBottomEnd="10dp"
                         app:boxCornerRadiusBottomStart="10dp"
                         app:boxCornerRadiusTopEnd="10dp"
@@ -386,6 +407,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/black_gray"
                             android:inputType="number"
+                            android:maxLength="2"
                             />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -394,7 +416,7 @@
                         android:id="@+id/dealing_with_students_layout"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginEnd="5dp"
                         android:hint="@string/notes"
                         android:textColorHint="@color/black_gray"
                         app:boxCornerRadiusBottomEnd="10dp"
@@ -425,15 +447,31 @@
                 android:orientation="vertical"
                 android:focusableInTouchMode="true"
                 android:focusable="true"
+                android:layout_marginTop="25dp"
                 >
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_gravity="end"
                     >
+
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_time_management"
+                        android:layout_toEndOf="@id/text_view_score_time_management"
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="6dp"
+                        android:padding="6dp"
+                        android:fontFamily="@font/cairo_extralight"
+                        android:text="@string/time_management"
+                        android:textColor="@color/black_gray"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_score_time_management"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/number_ten"
@@ -441,23 +479,13 @@
                         android:textStyle="bold"
                         android:textColor="@color/general_app"
                         android:layout_marginTop="10dp"
-                        android:layout_marginEnd="200dp"
+                        android:layout_marginEnd="30dp"
 
                         />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="5dp"
-                        android:padding="6dp"
-                        android:fontFamily="@font/aladin"
-                        android:text="@string/time_management"
-                        android:textColor="@color/black_gray"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
 
-                </LinearLayout>
+
+                </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -471,7 +499,7 @@
                         android:id="@+id/score_time_management_layout"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginEnd="30dp"
                         app:boxCornerRadiusBottomEnd="10dp"
                         app:boxCornerRadiusBottomStart="10dp"
                         app:boxCornerRadiusTopEnd="10dp"
@@ -486,6 +514,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/black_gray"
                             android:inputType="number"
+                            android:maxLength="2"
                             />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -494,7 +523,7 @@
                         android:id="@+id/time_management_layout"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginEnd="5dp"
                         android:hint="@string/notes"
                         android:textColorHint="@color/black_gray"
                         app:boxCornerRadiusBottomEnd="10dp"
@@ -520,63 +549,76 @@
             </LinearLayout>
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:gravity="center"
-                    >
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="25dp"
-                        android:text="@string/number_fifty"
-                        android:gravity="center"
-                        android:layout_gravity="center"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/general_app"
-
-                        />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/score_total_layout"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="15dp"
-                        app:boxCornerRadiusBottomEnd="10dp"
-                        app:boxCornerRadiusBottomStart="10dp"
-                        app:boxCornerRadiusTopEnd="10dp"
-                        app:boxCornerRadiusTopStart="10dp"
-                        app:boxStrokeColor="@color/black_gray"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:gravity="end"
+                        android:layout_marginTop="25dp"
                         >
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editText_score_total"
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:id="@+id/linear_score_total"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="15dp"
+                            >
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/text_view_score_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/number_fifty"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/general_app"
+                                android:layout_marginTop="10dp"
+                                android:layout_gravity="center"
+
+                                />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/score_total_layout"
+                                android:baselineAligned="true"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                app:boxCornerRadiusBottomEnd="10dp"
+                                app:boxCornerRadiusBottomStart="10dp"
+                                app:boxCornerRadiusTopEnd="10dp"
+                                app:boxCornerRadiusTopStart="10dp"
+                                app:boxStrokeColor="@color/black_gray"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                >
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/editText_score_total"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/black_gray"
+                                    android:inputType="number"
+                                    android:maxLength="2"
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/text_view_total"
+                            android:layout_toEndOf="@id/linear_score_total"
+                            android:layout_width="270dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="6dp"
+                            android:padding="6dp"
+                            android:fontFamily="@font/cairo_extralight"
+                            android:text="@string/total"
                             android:textColor="@color/black_gray"
-                            android:inputType="number"
-                            />
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_marginEnd="5dp"
-                        android:padding="6dp"
-                        android:fontFamily="@font/aladin"
-                        android:text="@string/total"
-                        android:textColor="@color/black_gray"
-                        android:textSize="25sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
+                    </RelativeLayout>
 
         </LinearLayout>
 

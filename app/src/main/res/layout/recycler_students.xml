@@ -46,28 +46,27 @@
             android:layout_marginEnd="25dp"
             >
 
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_code_students"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/code_student"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:layout_centerHorizontal="true"
-            android:layout_marginHorizontal="2dp"
-            />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_code_students"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="2dp"
+                android:fontFamily="@font/amaranth"
+                android:text="@string/code_student"
+                android:textColor="#000"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
        <androidx.appcompat.widget.AppCompatTextView
            android:id="@+id/text_name_students"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:text="@string/name_student"
+           android:fontFamily="@font/cairo_extralight"
            android:maxLines="1"
            android:ellipsize="end"
-           android:textSize="20sp"
+           android:textSize="17sp"
            android:textStyle="bold"
            android:textColor="#000"
            android:gravity="start"
@@ -81,10 +80,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/class_student"
+                android:fontFamily="@font/cairo_extralight"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="17sp"
                 android:textColor="#000"
                 android:layout_alignParentEnd="true"
                 android:layout_marginHorizontal="2dp"

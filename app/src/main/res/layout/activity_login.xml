@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:layout_marginBottom="40dp"
-            android:fontFamily="@font/aladin"
+            android:fontFamily="@font/amaranth"
             android:gravity="center"
             android:padding="5dp"
             android:text="@string/sign_in"
@@ -119,10 +119,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/amaranth"
                 android:textColor="@color/general_app"
                 android:text="@string/forgot_password"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold" />
 
         </com.balysv.materialripple.MaterialRippleLayout>
@@ -148,12 +148,12 @@
                     android:id="@+id/button_signIn"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:textColor="@color/white"
                     android:background="@drawable/bg_button"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/amaranth"
                     android:text="@string/sign_in"
-                    />
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
             </com.balysv.materialripple.MaterialRippleLayout>
 
@@ -179,10 +179,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:fontFamily="@font/aladin"
+                    android:fontFamily="@font/amaranth"
                     android:text="@string/sign_up"
                     android:textColor="@color/general_app"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
             </com.balysv.materialripple.MaterialRippleLayout>
@@ -192,10 +192,10 @@
                 android:id="@+id/text_doNot_have_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/amaranth"
                 android:textColor="@color/general_app"
                 android:text="@string/do_not_have_an_account"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 />
 
         </LinearLayout>

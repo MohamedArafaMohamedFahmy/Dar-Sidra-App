@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textDirection="rtl"
+    android:layoutDirection="rtl"
+    android:padding="16dp"
+    android:background="@color/general_app"
+    >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:fontFamily="@font/cairo_extralight"
+        android:layout_alignParentEnd="true"
+
+        />
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/ripple_registered"
+        style="@style/RippleStyleGrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/text_toolbar"
+        android:layout_toEndOf="@id/ripple_filter"
+        android:layout_marginStart="20dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/button_registered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_add_student_24"
+            android:background="@color/transparent"
+            android:visibility="visible"
+
+            />
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/ripple_filter"
+        style="@style/RippleStyleGrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/ripple_log_out"
+        android:layout_marginStart="15dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/button_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_filter_24"
+            android:background="@color/transparent"
+            android:visibility="visible"
+
+            />
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/ripple_log_out"
+        style="@style/RippleStyleGrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/button_log_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logout"
+            android:background="@color/transparent"
+            android:visibility="visible"
+
+            />
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+</RelativeLayout>

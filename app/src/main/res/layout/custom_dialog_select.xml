@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:text="@string/which_select"
             android:textColor="#000"
-            android:fontFamily="@font/aladin"
+            android:fontFamily="@font/cairo_extralight"
             android:textSize="18sp"
             android:padding="10dp"
             android:layout_centerHorizontal="true"

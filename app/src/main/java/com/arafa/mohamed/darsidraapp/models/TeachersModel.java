@@ -3,7 +3,7 @@ package com.arafa.mohamed.darsidraapp.models;
 import java.io.Serializable;
 
 public class TeachersModel implements Serializable {
-    private String codeTeacher, nameTeacher, phoneNumber, dateEnrollment;
+    private String codeTeacher, nameTeacher, phoneNumber, dateEnrollment ;
 
     public TeachersModel() {
     }

@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:layout_marginBottom="40dp"
-            android:fontFamily="@font/aladin"
+            android:fontFamily="@font/amaranth"
             android:textColor="@color/general_app"
             android:gravity="center"
             android:text="@string/sign_up"
@@ -47,7 +47,6 @@
             app:boxCornerRadiusTopStart="10dp"
             app:boxStrokeColor="@color/black_gray"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -232,10 +231,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:fontFamily="@font/aladin"
+                    android:fontFamily="@font/amaranth"
                     android:textColor="@color/general_app"
                     android:text="@string/sign_in"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
             </com.balysv.materialripple.MaterialRippleLayout>
@@ -245,10 +244,10 @@
                 android:id="@+id/text_already_have_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/amaranth"
                 android:textColor="@color/general_app"
                 android:text="@string/already_have_an_account"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 />
 
 

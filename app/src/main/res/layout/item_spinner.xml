@@ -10,7 +10,7 @@
         android:id="@+id/text_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/aladin"
+        android:fontFamily="@font/cairo_extralight"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/black_gray"

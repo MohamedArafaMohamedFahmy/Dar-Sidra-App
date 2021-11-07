@@ -5,11 +5,9 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.viewpager2.widget.ViewPager2;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.adapter.TabsRegisteredAdapter;
@@ -22,7 +20,7 @@ import java.util.ArrayList;
 public class RegisteredTeachersStudentsActivity extends AppCompatActivity {
 
     AppCompatTextView tvToolbar;
-    AppCompatImageButton btBackArrow, btLogout, btRegistered, btFilter;
+    AppCompatImageButton  btLogout, btRegistered, btFilter;
     AppCompatButton btYes,btNo,btRegisterStudent,btRegisterTeacher;
     TabLayout tabsItemsRegistered;
     ViewPager2 viewPager;
@@ -34,20 +32,13 @@ public class RegisteredTeachersStudentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registered_teachers_students);
 
-        btBackArrow = findViewById(R.id.button_back_arrow);
         btLogout = findViewById(R.id.button_log_out);
         btFilter = findViewById(R.id.button_filter);
         btRegistered = findViewById(R.id.button_registered);
         tvToolbar = findViewById(R.id.text_toolbar);
 
         tvToolbar.setText(R.string.main_home_appbar);
-        btBackArrow.setVisibility(View.GONE);
-        btLogout.setVisibility(View.VISIBLE);
-        btFilter.setVisibility(View.VISIBLE);
-        btRegistered.setVisibility(View.VISIBLE);
-
         btLogout.setOnClickListener(v -> showCustomDialog());
-
         btRegistered.setOnClickListener(v -> showCustomDialogSelected() );
         btFilter.setOnClickListener(v -> startActivity(new Intent(RegisteredTeachersStudentsActivity.this,FilterSubscriptionActivity.class)));
 

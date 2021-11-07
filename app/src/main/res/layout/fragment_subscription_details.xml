@@ -75,9 +75,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/jan"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/black_gray"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_marginStart="10dp"
                 />
         </LinearLayout>
@@ -131,9 +131,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/feb"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/black_gray"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_marginStart="10dp"
                 />
         </LinearLayout>
@@ -187,9 +187,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/mar"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/black_gray"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_marginStart="10dp"
                 />
         </LinearLayout>
@@ -244,9 +244,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/apr"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/black_gray"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_marginStart="10dp"
                 />
         </LinearLayout>
@@ -300,9 +300,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/may"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/black_gray"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_marginStart="10dp"
                 />
         </LinearLayout>
@@ -357,9 +357,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/jun"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/black_gray"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_marginStart="10dp"
                 />
         </LinearLayout>
@@ -414,9 +414,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/jul"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/black_gray"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_marginStart="10dp"
                 />
         </LinearLayout>
@@ -470,9 +470,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/aug"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/black_gray"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_marginStart="10dp"
                 />
         </LinearLayout>
@@ -526,9 +526,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sep"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/black_gray"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_marginStart="10dp"
                 />
         </LinearLayout>
@@ -582,9 +582,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/oct"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/black_gray"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_marginStart="10dp"
                 />
         </LinearLayout>
@@ -638,9 +638,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/nov"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/black_gray"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_marginStart="10dp"
                 />
         </LinearLayout>
@@ -694,9 +694,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/dec"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textColor="@color/black_gray"
-                android:fontFamily="@font/aladin"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_marginStart="10dp"
                 />
         </LinearLayout>

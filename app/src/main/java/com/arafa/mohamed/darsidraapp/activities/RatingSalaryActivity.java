@@ -22,6 +22,7 @@ public class RatingSalaryActivity extends AppCompatActivity {
     ViewPager2 viewPager;
     TabsSalaryRatingAdapter tabsSalaryRatingAdapter;
     ArrayList<String> itemsSalaryRating;
+    Bundle extra ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +32,9 @@ public class RatingSalaryActivity extends AppCompatActivity {
         btBackArrow = findViewById(R.id.button_back_arrow);
         tvToolbar = findViewById(R.id.text_toolbar);
 
-        tvToolbar.setText(R.string.rating_subscription_appbar);
+        tvToolbar.setText(R.string.rating_salary_appbar);
         btBackArrow.setOnClickListener(v -> finish());
+        extra = getIntent().getExtras();
 
         tabsItemsSalaryRating = findViewById(R.id.tabs_item);
         viewPager = findViewById(R.id.view_pager);
@@ -41,7 +43,7 @@ public class RatingSalaryActivity extends AppCompatActivity {
         itemsSalaryRating.add("تفاصيل الراتب");
         itemsSalaryRating.add("تفاصيل التقييم");
 
-        tabsSalaryRatingAdapter = new TabsSalaryRatingAdapter(this);
+        tabsSalaryRatingAdapter = new TabsSalaryRatingAdapter(this,extra.getString("codeTeacher"),extra.getString("nameTeacher"));
         viewPager.setAdapter(tabsSalaryRatingAdapter);
         new TabLayoutMediator(tabsItemsSalaryRating, viewPager, (tab, position) -> tab.setText(itemsSalaryRating.get(position))).attach();
     }

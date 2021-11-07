@@ -7,7 +7,7 @@
     android:layoutDirection="rtl"
     android:textDirection="rtl"
     android:background="@color/sub_color_app"
-    tools:context=".activities.StudentDetailsActivity">
+    tools:context=".activities.TeacherDetailsActivity">
 
     <include
         android:id="@+id/toolbar_student_details"

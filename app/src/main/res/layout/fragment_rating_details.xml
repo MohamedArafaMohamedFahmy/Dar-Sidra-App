@@ -8,7 +8,7 @@
     android:textDirection="rtl"
     android:background="@color/sub_color_app"
     android:layout_marginTop="10dp"
-    tools:context=".fragments.SubscriptionDetailsFragment">
+    tools:context=".fragments.RatingDetailsFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -64,7 +64,7 @@
                     android:textStyle="bold"
                     android:textSize="25sp"
                     android:textColor="@color/black_gray"
-                    android:fontFamily="@font/aladin"
+                    android:fontFamily="@font/cairo_extralight"
                     android:layout_marginStart="15dp"
                     />
             </LinearLayout>
@@ -109,7 +109,7 @@
                     android:textStyle="bold"
                     android:textSize="25sp"
                     android:textColor="@color/black_gray"
-                    android:fontFamily="@font/aladin"
+                    android:fontFamily="@font/cairo_extralight"
                     android:layout_marginStart="15dp"
                     />
             </LinearLayout>
@@ -154,7 +154,7 @@
                     android:textStyle="bold"
                     android:textSize="25sp"
                     android:textColor="@color/black_gray"
-                    android:fontFamily="@font/aladin"
+                    android:fontFamily="@font/cairo_extralight"
                     android:layout_marginStart="15dp"
                     />
             </LinearLayout>
@@ -199,7 +199,7 @@
                     android:textStyle="bold"
                     android:textSize="25sp"
                     android:textColor="@color/black_gray"
-                    android:fontFamily="@font/aladin"
+                    android:fontFamily="@font/cairo_extralight"
                     android:layout_marginStart="15dp"
                     />
             </LinearLayout>
@@ -244,7 +244,7 @@
                     android:textStyle="bold"
                     android:textSize="25sp"
                     android:textColor="@color/black_gray"
-                    android:fontFamily="@font/aladin"
+                    android:fontFamily="@font/cairo_extralight"
                     android:layout_marginStart="15dp"
                     />
             </LinearLayout>

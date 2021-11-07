@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.arafa.mohamed.darsidraapp.R;
@@ -16,11 +18,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import java.util.Calendar;
 import java.util.Objects;
 
-
-public class TeacherDetailsActivity extends AppCompatActivity {
+public class TeacherDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     AppCompatTextView tvToolbar;
     AppCompatImageButton btBackArrow,btSalaryRating;
@@ -30,7 +31,7 @@ public class TeacherDetailsActivity extends AppCompatActivity {
     LinearLayout linearProgressBar;
     DatabaseReference databaseReference;
     TeachersModel teachersModel, retrieveDataTeacher;
-    String codeTeacher, nameTeacher, phoneNumber, dateEnrollment;
+    String codeTeacher, nameTeacher, phoneNumber, dateEnrollment, date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +101,27 @@ public class TeacherDetailsActivity extends AppCompatActivity {
         });
 
         btSalaryRating.setOnClickListener(v -> {
-            Intent intentRatingSubscription = new Intent(TeacherDetailsActivity.this,RatingSalaryActivity.class);
-            startActivity(intentRatingSubscription);
+            Intent intentRatingSalary = new Intent(TeacherDetailsActivity.this,RatingSalaryActivity.class);
+            intentRatingSalary.putExtra("codeTeacher",retrieveDataTeacher.getCodeTeacher());
+            intentRatingSalary.putExtra("nameTeacher",retrieveDataTeacher.getNameTeacher());
+            startActivity(intentRatingSalary);
         });
+
+        layoutEnrollmentTeacher.setStartIconOnClickListener(v -> showDatePickerDialog());
+    }
+
+    public void showDatePickerDialog() {
+        DatePickerDialog datePickerDialogBorn = new DatePickerDialog(
+                this ,
+                this,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        datePickerDialogBorn.show();
+    }
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        date = dayOfMonth + " - " + (month + 1) + " - " + year;
+        etEnrollmentTeacher.setText(date);
     }
 }

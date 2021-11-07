@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/toolbar_registered"
-        layout="@layout/custom_toolbar"/>
+        layout="@layout/custom_toolbar_home"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs_item_registered"
@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"
         app:tabTextColor="@color/general_app"
         android:background="@color/sub_color_app"
-        app:tabBackground="@color/black_gray"
+        app:tabBackground="@color/sub_color_app"
+
 
         />
 

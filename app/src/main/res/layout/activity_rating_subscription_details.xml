@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         app:tabTextColor="@color/general_app"
         android:background="@color/sub_color_app"
-        app:tabBackground="@color/black_gray"
+        app:tabBackground="@color/sub_color_app"
 
         />
 
