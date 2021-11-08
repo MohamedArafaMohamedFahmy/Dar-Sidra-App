@@ -18,10 +18,13 @@ import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.activities.StudentDetailsActivity;
 import com.arafa.mohamed.darsidraapp.activities.TeacherDetailsActivity;
 import com.arafa.mohamed.darsidraapp.models.TeachersModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 
 public class TeachersAdapter extends RecyclerView.Adapter<TeachersAdapter.MyViewHolder> implements Filterable {
     Context context;
@@ -29,6 +32,7 @@ public class TeachersAdapter extends RecyclerView.Adapter<TeachersAdapter.MyView
     ArrayList<TeachersModel> dataListFilter;
     DatabaseReference databaseReference;
     AppCompatButton btYes,btNo;
+    AppCompatTextView tvMessage;
 
 
     public TeachersAdapter(Context context, ArrayList<TeachersModel> downloadData) {
@@ -95,7 +99,7 @@ public class TeachersAdapter extends RecyclerView.Adapter<TeachersAdapter.MyView
             results.values = filteredList;
             return results;
         }
-
+        @SuppressWarnings("unchecked")
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             downloadData.clear();
@@ -125,15 +129,22 @@ public class TeachersAdapter extends RecyclerView.Adapter<TeachersAdapter.MyView
 
         btYes = dialog.findViewById(R.id.button_yes);
         btNo = dialog.findViewById(R.id.button_no);
+        tvMessage = dialog.findViewById(R.id.text_message);
 
+        tvMessage.setText(R.string.do_you_want_to_delete_this_teacher);
         btYes.setOnClickListener(v -> {
 
 
-                    databaseReference.child("TeachersData").child(downloadData.get(position).getCodeTeacher()).removeValue();
-                    /*databaseReference.child("Rating").child(downloadData.get(position).getCodeStudent()).removeValue();
-                    databaseReference.child("Subscription").child(downloadData.get(position).getCodeStudent()).removeValue();*/
-                    Toast.makeText(context, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
+                    databaseReference.child("TeachersData").child(downloadData.get(position).getCodeTeacher()).removeValue().addOnCompleteListener(task -> {
+                        if (task.isSuccessful()){
+                            databaseReference.child("RatingTeachers").child(downloadData.get(position).getCodeTeacher()).removeValue();
+                            databaseReference.child("SalaryTeachers").child(downloadData.get(position).getCodeTeacher()).removeValue();
+                            Toast.makeText(context, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
+                        } else{
+                            Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                        }
 
+                    });
 
             dialog.dismiss();
         });

@@ -19,7 +19,8 @@
     <string name="message_forgot_password"> %1$s تحقق من بريدك الإلكتروني لإعادة تعيين كلمة السر الخاصة بك  </string>
     <string name="reset_password">إعادة تعيين كلمة السر</string>
     <string name="reset_password_appbar">تغيير كلمة السر</string>
-    <string name="do_you_want_to_delete_this_item">هل تريد حذف هذا الطالب ؟</string>
+    <string name="do_you_want_to_delete_this_student">هل تريد حذف الطالب ؟</string>
+    <string name="do_you_want_to_delete_this_teacher">هل تريد حذف المعلم / المعلمة  ؟</string>
     <string name="do_you_want_to_log_out">هل تريد تسجيل الخروج؟</string>
     <string name="main_home_appbar">الصفحة الرئيسية</string>
     <string name="name_student">اسم الطالب</string>

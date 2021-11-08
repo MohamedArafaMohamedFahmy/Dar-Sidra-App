@@ -40,6 +40,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
     DatabaseReference databaseReference;
     StorageReference storageReference;
     AppCompatButton btYes,btNo;
+    AppCompatTextView tvMessage;
 
 
     public StudentsAdapter(Context context, ArrayList<StudentModel> downloadData) {
@@ -107,7 +108,7 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
              results.values = filteredList;
              return results;
          }
-
+         @SuppressWarnings("unchecked")
          @Override
          protected void publishResults(CharSequence constraint, FilterResults results) {
              downloadData.clear();
@@ -139,16 +140,27 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
 
         btYes = dialog.findViewById(R.id.button_yes);
         btNo = dialog.findViewById(R.id.button_no);
+        tvMessage = dialog.findViewById(R.id.text_message);
 
+        tvMessage.setText(R.string.do_you_want_to_delete_this_student);
         btYes.setOnClickListener(v -> {
 
             storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(downloadData.get(position).getUrlStudent());
             storageReference.delete().addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
-                    databaseReference.child("StudentsData").child(downloadData.get(position).getCodeStudent()).removeValue();
-                    databaseReference.child("Rating").child(downloadData.get(position).getCodeStudent()).removeValue();
-                    databaseReference.child("Subscription").child(downloadData.get(position).getCodeStudent()).removeValue();
-                    Toast.makeText(context, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
+                    databaseReference.child("StudentsData").child(downloadData.get(position).getCodeStudent()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull  Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                databaseReference.child("Rating").child(downloadData.get(position).getCodeStudent()).removeValue();
+                                databaseReference.child("Subscription").child(downloadData.get(position).getCodeStudent()).removeValue();
+                                Toast.makeText(context, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
                 }else {
                     Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }

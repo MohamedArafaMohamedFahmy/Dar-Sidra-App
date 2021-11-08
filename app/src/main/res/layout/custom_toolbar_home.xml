@@ -27,7 +27,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_toEndOf="@id/ripple_filter"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         >
 
         <androidx.appcompat.widget.AppCompatImageButton

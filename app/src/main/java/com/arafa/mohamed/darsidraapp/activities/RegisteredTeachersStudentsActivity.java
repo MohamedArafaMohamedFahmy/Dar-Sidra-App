@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Window;
 import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.adapter.TabsRegisteredAdapter;
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +22,8 @@ public class RegisteredTeachersStudentsActivity extends AppCompatActivity {
 
     AppCompatTextView tvToolbar;
     AppCompatImageButton  btLogout, btRegistered, btFilter;
-    AppCompatButton btYes,btNo,btRegisterStudent,btRegisterTeacher;
+    MaterialRippleLayout rippleRegisterTeacher, rippleRegisterStudent;
+    AppCompatButton btYes,btNo;
     TabLayout tabsItemsRegistered;
     ViewPager2 viewPager;
     TabsRegisteredAdapter tabsAdapter;
@@ -64,18 +66,18 @@ public class RegisteredTeachersStudentsActivity extends AppCompatActivity {
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.custom_dialog_select);
 
-        btRegisterStudent = dialog.findViewById(R.id.button_register_student);
-        btRegisterTeacher = dialog.findViewById(R.id.button_register_teacher);
+        rippleRegisterStudent = dialog.findViewById(R.id.ripple_button_register_student);
+        rippleRegisterTeacher = dialog.findViewById(R.id.ripple_button_register_teacher);
 
-        btRegisterStudent.setOnClickListener(v -> {
+        rippleRegisterStudent.setOnClickListener(v -> {
             dialog.dismiss();
             startActivity(new Intent(RegisteredTeachersStudentsActivity.this,StudentDetailsActivity.class));
 
         });
 
-        btRegisterTeacher.setOnClickListener(v -> {
-            startActivity(new Intent(RegisteredTeachersStudentsActivity.this,TeacherDetailsActivity.class));
-            dialog.dismiss(); });
+        rippleRegisterTeacher.setOnClickListener(v -> {
+            dialog.dismiss();
+            startActivity(new Intent(RegisteredTeachersStudentsActivity.this,TeacherDetailsActivity.class)); });
         dialog.show();
 
     }

@@ -32,7 +32,6 @@
             android:layout_below="@id/text_notification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/do_you_want_to_delete_this_item"
             android:layout_marginEnd="15dp"
             android:textColor="#000"
             android:fontFamily="@font/cairo_extralight"
