@@ -27,14 +27,14 @@ public class TabsAdapter extends FragmentStateAdapter {
 
         switch (position){
             case 0:
-                return new RatingDetailsFragment(codeStudent);
+                return new RatingDetailsFragment(codeStudent,fragmentActivity);
 
             case 1:
-                return new  SubscriptionDetailsFragment(codeStudent, nameStudent, classStudent);
+                return new  SubscriptionDetailsFragment(codeStudent, nameStudent, classStudent,fragmentActivity);
             default:
                 Toast.makeText(fragmentActivity, "No Page", Toast.LENGTH_SHORT).show();
         }
-        return new SubscriptionDetailsFragment(codeStudent, nameStudent, classStudent);
+        return new SubscriptionDetailsFragment(codeStudent, nameStudent, classStudent,fragmentActivity);
     }
 
     @Override

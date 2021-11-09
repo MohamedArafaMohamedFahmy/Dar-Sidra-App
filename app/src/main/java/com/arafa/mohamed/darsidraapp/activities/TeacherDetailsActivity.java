@@ -88,11 +88,15 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
 
             if (!nameTeacher.isEmpty() && !codeTeacher.isEmpty() && phoneNumber.length() == 11 && !dateEnrollment.isEmpty()){
 
+                linearProgressBar.setVisibility(View.VISIBLE);
+
                 teachersModel = new TeachersModel(codeTeacher, nameTeacher, phoneNumber, dateEnrollment);
                 databaseReference.child("TeachersData").child(codeTeacher).setValue(teachersModel).addOnCompleteListener(task -> {
                     if (task.isSuccessful()){
+                        linearProgressBar.setVisibility(View.GONE);
                         Toast.makeText(this, "تم التسجيل بنجاح", Toast.LENGTH_SHORT).show();
                     }else{
+                        linearProgressBar.setVisibility(View.GONE);
                         Toast.makeText(this, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                     }
 

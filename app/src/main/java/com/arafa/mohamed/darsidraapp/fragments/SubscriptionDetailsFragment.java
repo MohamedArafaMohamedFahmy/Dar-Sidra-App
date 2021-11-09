@@ -1,5 +1,6 @@
 package com.arafa.mohamed.darsidraapp.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,11 +30,13 @@ public class SubscriptionDetailsFragment extends Fragment {
     String jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec, codeStudent, nameStudent, classStudent;
     SubscriptionModel subscriptionModel;
     DatabaseReference databaseReference;
+    Context context;
 
-    public SubscriptionDetailsFragment(String codeStudent, String nameStudent, String classStudent) {
+    public SubscriptionDetailsFragment(String codeStudent, String nameStudent, String classStudent, Context context) {
         this.codeStudent = codeStudent;
         this.nameStudent = nameStudent;
         this.classStudent = classStudent;
+        this.context = context;
     }
 
     @Override
@@ -244,15 +247,12 @@ public class SubscriptionDetailsFragment extends Fragment {
                         etDec.setText(subscriptionModel.getDec());
                         chxDec.setChecked(true);
                     }
-
-                }else{
-                    Toast.makeText(getActivity(), "لا يوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull  DatabaseError error) {
-                Toast.makeText(getActivity(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -272,9 +272,9 @@ public class SubscriptionDetailsFragment extends Fragment {
             subscriptionModel = new SubscriptionModel(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec, codeStudent, nameStudent, classStudent );
             databaseReference.child("Subscription").child(codeStudent).setValue(subscriptionModel).addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
-                    Toast.makeText(getActivity(), "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(getActivity(), ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 

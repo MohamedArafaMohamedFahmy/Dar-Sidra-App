@@ -1,5 +1,6 @@
 package com.arafa.mohamed.darsidraapp.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Filter;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.arafa.mohamed.darsidraapp.R;
@@ -34,10 +36,13 @@ public class RegisteredStudentsFragment extends Fragment {
     SearchView searchStudent;
     LinearLayout linearProgressBar;
     AppCompatTextView tvMessage;
-
+    Context context;
 
     public RegisteredStudentsFragment() {
-        // Required empty public constructor
+
+    }
+    public RegisteredStudentsFragment(Context context) {
+        this.context = context;
     }
 
     @Override
@@ -83,7 +88,7 @@ public class RegisteredStudentsFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -92,17 +97,25 @@ public class RegisteredStudentsFragment extends Fragment {
         searchStudent.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                if (studentsAdapter != null) {
+                    studentsAdapter.notifyDataSetChanged();
+                    Filter filter = studentsAdapter.getFilter();
+                    if (filter != null){
+                        filter.filter(query);
+                    }
+                }
+
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if (!newText.isEmpty()) {
-                    studentsAdapter.getFilter().filter(newText);
+                if (studentsAdapter != null) {
                     studentsAdapter.notifyDataSetChanged();
-                }else{
-                    studentsAdapter.getFilter().filter(newText);
-                    studentsAdapter.notifyDataSetChanged();
+                    Filter filter = studentsAdapter.getFilter();
+                    if (filter != null){
+                        filter.filter(newText);
+                    }
                 }
                 return false;
             }

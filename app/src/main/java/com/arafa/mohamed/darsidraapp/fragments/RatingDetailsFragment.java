@@ -1,5 +1,6 @@
 package com.arafa.mohamed.darsidraapp.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -28,9 +29,11 @@ public class RatingDetailsFragment extends Fragment {
     String codeStudent,review, preservation, audience, absence,total;
     DatabaseReference databaseReference;
     RatingModel ratingModel;
+    Context context;
 
-    public RatingDetailsFragment(String codeStudent) {
+    public RatingDetailsFragment(String codeStudent, Context context) {
         this.codeStudent = codeStudent;
+        this.context = context;
     }
 
 
@@ -47,27 +50,27 @@ public class RatingDetailsFragment extends Fragment {
         etTotal = viewRating.findViewById(R.id.editText_total);
         btAddRating = viewRating.findViewById(R.id.button_add_rating);
 
-        databaseReference.child("Rating").child(codeStudent).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ratingModel = snapshot.getValue(RatingModel.class);
-                if(ratingModel != null){
-                    etReview.setText(ratingModel.getReview());
-                    etPreservation.setText(ratingModel.getPreservation());
-                    etAudience.setText(ratingModel.getAudience());
-                    etAbsence.setText(ratingModel.getAbsence());
-                    etTotal.setText(ratingModel.getTotal());
+        if (!codeStudent.isEmpty()) {
+            databaseReference.child("Rating").child(codeStudent).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    ratingModel = snapshot.getValue(RatingModel.class);
+                    if (ratingModel != null) {
+                        etReview.setText(ratingModel.getReview());
+                        etPreservation.setText(ratingModel.getPreservation());
+                        etAudience.setText(ratingModel.getAudience());
+                        etAbsence.setText(ratingModel.getAbsence());
+                        etTotal.setText(ratingModel.getTotal());
 
-                }else{
-                    Toast.makeText(getActivity(), "لا يوجد بيانات حاليا", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(context, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
         btAddRating.setOnClickListener(v -> {
             review = Objects.requireNonNull(etReview.getText()).toString();
@@ -79,9 +82,9 @@ public class RatingDetailsFragment extends Fragment {
             ratingModel = new RatingModel(review, preservation, audience, absence,total);
             databaseReference.child("Rating").child(codeStudent).setValue(ratingModel).addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
-                    Toast.makeText(getActivity(), "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getActivity(), ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 

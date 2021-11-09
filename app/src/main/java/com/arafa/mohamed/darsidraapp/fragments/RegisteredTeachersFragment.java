@@ -1,5 +1,6 @@
 package com.arafa.mohamed.darsidraapp.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Filter;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.arafa.mohamed.darsidraapp.R;
@@ -21,8 +23,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
+
 
 public class RegisteredTeachersFragment extends Fragment {
 
@@ -34,15 +36,20 @@ public class RegisteredTeachersFragment extends Fragment {
     SearchView searchTeacher;
     LinearLayout linearProgressBar;
     AppCompatTextView tvMessage;
-
+    Context context;
 
     public RegisteredTeachersFragment() {
-        // Required empty public constructor
+
+    }
+
+    public RegisteredTeachersFragment(Context context) {
+        this.context = context;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         View viewStudents = inflater.inflate(R.layout.fragment_registered_teachers, container, false);
 
         recTeacher = viewStudents.findViewById(R.id.rec_teacher);
@@ -82,7 +89,7 @@ public class RegisteredTeachersFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -91,18 +98,26 @@ public class RegisteredTeachersFragment extends Fragment {
         searchTeacher.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                if (teachersAdapter != null) {
+                    teachersAdapter.notifyDataSetChanged();
+                    Filter filter = teachersAdapter.getFilter();
+                    if (filter != null){
+                        filter.filter(query);
+                    }
+                }
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if (!newText.isEmpty()) {
-                    teachersAdapter.getFilter().filter(newText);
+                if (teachersAdapter != null) {
                     teachersAdapter.notifyDataSetChanged();
-                }else{
-                    teachersAdapter.getFilter().filter(newText);
-                    teachersAdapter.notifyDataSetChanged();
+                    Filter filter = teachersAdapter.getFilter();
+                    if (filter != null){
+                        filter.filter(newText);
+                    }
                 }
+
                 return false;
             }
         });

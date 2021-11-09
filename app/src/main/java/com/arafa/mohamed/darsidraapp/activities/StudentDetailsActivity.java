@@ -249,7 +249,6 @@ public class StudentDetailsActivity extends AppCompatActivity  {
 
             }
 
-
             if (nameStudent.isEmpty()){
                 etNameStudent.setError("من فضلك ادخل اسم الطالب");
             }
@@ -282,7 +281,6 @@ public class StudentDetailsActivity extends AppCompatActivity  {
             }
 
         });
-
 
     }
 

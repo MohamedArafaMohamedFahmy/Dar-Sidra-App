@@ -22,14 +22,14 @@ public class TabsRegisteredAdapter extends FragmentStateAdapter {
 
         switch (position){
             case 0:
-                return new RegisteredStudentsFragment();
+                return new RegisteredStudentsFragment(fragmentActivity);
 
             case 1:
-                return new RegisteredTeachersFragment();
+                return new RegisteredTeachersFragment(fragmentActivity);
             default:
                 Toast.makeText(fragmentActivity, "No Page", Toast.LENGTH_SHORT).show();
         }
-        return new RegisteredStudentsFragment();
+        return new RegisteredStudentsFragment(fragmentActivity);
     }
 
     @Override

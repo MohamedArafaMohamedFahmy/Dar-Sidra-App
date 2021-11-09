@@ -1,5 +1,6 @@
 package com.arafa.mohamed.darsidraapp.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -33,14 +34,16 @@ public class SalaryFragment extends Fragment {
     String daysIncrease, daysAbsence, totalSalary,codeTeacher,nameTeacher;
     DatabaseReference databaseReference;
     SalaryTeacherModel salaryTeacherModel;
+    Context context;
 
 
     public SalaryFragment() {
         // Required empty public constructor
     }
-    public SalaryFragment(String codeTeacher, String nameTeacher) {
+    public SalaryFragment(String codeTeacher, String nameTeacher, Context context) {
         this.codeTeacher = codeTeacher;
         this.nameTeacher = nameTeacher;
+        this.context = context;
     }
 
     @Override
@@ -73,7 +76,7 @@ public class SalaryFragment extends Fragment {
 
              @Override
              public void onCancelled(@NonNull  DatabaseError error) {
-                 Toast.makeText(getActivity(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                 Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
              }
          });
 
@@ -86,9 +89,9 @@ public class SalaryFragment extends Fragment {
                   salaryTeacherModel = new SalaryTeacherModel(daysIncrease, daysAbsence, totalSalary);
                   databaseReference.child("SalaryTeachers").child(codeTeacher).setValue(salaryTeacherModel).addOnCompleteListener(task -> {
                       if (task.isSuccessful()){
-                          Toast.makeText(getActivity(), "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
+                          Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
                       }else{
-                          Toast.makeText(getActivity(), ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                          Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                       }
                   });
 
