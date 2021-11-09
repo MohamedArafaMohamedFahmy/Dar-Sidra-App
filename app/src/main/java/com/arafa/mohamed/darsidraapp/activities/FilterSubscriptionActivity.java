@@ -68,24 +68,22 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                             listFilterStudent.clear();
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 value = postSnapshot.child("jan").getValue(String.class);
-                                if(value != null && !value.equals("تم الدفع")){
+                                if(value != null && !value.equals("تم الدفع")) {
                                     studentModel = postSnapshot.getValue(StudentModel.class);
                                     listFilterStudent.add(studentModel);
+                                }
+                            }
                                     if (!listFilterStudent.isEmpty()){
                                         filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this,listFilterStudent);
                                         filterSubscriptionAdapter.notifyDataSetChanged();
                                         recFilterSubscription.setAdapter(filterSubscriptionAdapter);
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-
+                                        tvCounter.setText(String.valueOf(listFilterStudent.size()));
+                                    }else{
+                                        filterSubscriptionAdapter.notifyDataSetChanged();
+                                        tvCounter.setText("لاتوجد بيانات");
                                     }
 
-                                    tvCounter.setText(String.valueOf(listFilterStudent.size()));
-
-                                } else{
-                                    filterSubscriptionAdapter.notifyDataSetChanged();
-                                    tvCounter.setText("لاتوجد بيانات");
-                                }
-                            }
                         }
                         @Override
                         public void onCancelled(@NonNull  DatabaseError error) {
@@ -97,26 +95,24 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                 if (indexMonth == 1) {
                     databaseReference.child("Subscription").addValueEventListener(new ValueEventListener() {
                         @Override
-                        public void onDataChange(@NonNull  DataSnapshot snapshot) {
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
                             listFilterStudent.clear();
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 value = postSnapshot.child("feb").getValue(String.class);
-                                if(value != null && !value.equals("تم الدفع")){
+                                if (value != null && !value.equals("تم الدفع")) {
                                     studentModel = postSnapshot.getValue(StudentModel.class);
                                     listFilterStudent.add(studentModel);
-                                    if (!listFilterStudent.isEmpty()){
-                                        filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this,listFilterStudent);
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        recFilterSubscription.setAdapter(filterSubscriptionAdapter);
-                                        recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-                                    }
-
-                                    tvCounter.setText(String.valueOf(listFilterStudent.size()));
-
-                                } else{
-                                    filterSubscriptionAdapter.notifyDataSetChanged();
-                                    tvCounter.setText("لاتوجد بيانات");
                                 }
+                            }
+                            if (!listFilterStudent.isEmpty()) {
+                                filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this, listFilterStudent);
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                recFilterSubscription.setAdapter(filterSubscriptionAdapter);
+                                recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
+                                tvCounter.setText(String.valueOf(listFilterStudent.size()));
+                            } else {
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                tvCounter.setText("لاتوجد بيانات");
                             }
                         }
                         @Override
@@ -133,22 +129,20 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                             listFilterStudent.clear();
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 value = postSnapshot.child("mar").getValue(String.class);
-                                if(value != null && !value.equals("تم الدفع")){
+                                if (value != null && !value.equals("تم الدفع")) {
                                     studentModel = postSnapshot.getValue(StudentModel.class);
                                     listFilterStudent.add(studentModel);
-                                    if (!listFilterStudent.isEmpty()){
-                                        filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this,listFilterStudent);
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        recFilterSubscription.setAdapter(filterSubscriptionAdapter);
-                                        recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-                                    }
-
-                                    tvCounter.setText(String.valueOf(listFilterStudent.size()));
-
-                                } else{
-                                    filterSubscriptionAdapter.notifyDataSetChanged();
-                                    tvCounter.setText("لاتوجد بيانات");
                                 }
+                            }
+                            if (!listFilterStudent.isEmpty()) {
+                                filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this, listFilterStudent);
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                recFilterSubscription.setAdapter(filterSubscriptionAdapter);
+                                recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
+                                tvCounter.setText(String.valueOf(listFilterStudent.size()));
+                            } else {
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                tvCounter.setText("لاتوجد بيانات");
                             }
                         }
                         @Override
@@ -165,22 +159,20 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                             listFilterStudent.clear();
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 value = postSnapshot.child("apr").getValue(String.class);
-                                if(value != null && !value.equals("تم الدفع")){
+                                if (value != null && !value.equals("تم الدفع")) {
                                     studentModel = postSnapshot.getValue(StudentModel.class);
                                     listFilterStudent.add(studentModel);
-                                    if (!listFilterStudent.isEmpty()){
-                                        filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this,listFilterStudent);
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        recFilterSubscription.setAdapter(filterSubscriptionAdapter);
-                                        recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-                                    }
-
-                                    tvCounter.setText(String.valueOf(listFilterStudent.size()));
-
-                                } else{
-                                    filterSubscriptionAdapter.notifyDataSetChanged();
-                                    tvCounter.setText("لاتوجد بيانات");
                                 }
+                            }
+                            if (!listFilterStudent.isEmpty()) {
+                                filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this, listFilterStudent);
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                recFilterSubscription.setAdapter(filterSubscriptionAdapter);
+                                recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
+                                tvCounter.setText(String.valueOf(listFilterStudent.size()));
+                            } else {
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                tvCounter.setText("لاتوجد بيانات");
                             }
                         }
                         @Override
@@ -197,22 +189,20 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                             listFilterStudent.clear();
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 value = postSnapshot.child("may").getValue(String.class);
-                                if(value != null && !value.equals("تم الدفع")){
+                                if (value != null && !value.equals("تم الدفع")) {
                                     studentModel = postSnapshot.getValue(StudentModel.class);
                                     listFilterStudent.add(studentModel);
-                                    if (!listFilterStudent.isEmpty()){
-                                        filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this,listFilterStudent);
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        recFilterSubscription.setAdapter(filterSubscriptionAdapter);
-                                        recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-                                    }
-
-                                    tvCounter.setText(String.valueOf(listFilterStudent.size()));
-
-                                } else{
-                                    filterSubscriptionAdapter.notifyDataSetChanged();
-                                    tvCounter.setText("لاتوجد بيانات");
                                 }
+                            }
+                            if (!listFilterStudent.isEmpty()) {
+                                filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this, listFilterStudent);
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                recFilterSubscription.setAdapter(filterSubscriptionAdapter);
+                                recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
+                                tvCounter.setText(String.valueOf(listFilterStudent.size()));
+                            } else {
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                tvCounter.setText("لاتوجد بيانات");
                             }
                         }
                         @Override
@@ -229,23 +219,21 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                             listFilterStudent.clear();
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 value = postSnapshot.child("jun").getValue(String.class);
-                                if(value != null && !value.equals("تم الدفع")){
+                                if (value != null && !value.equals("تم الدفع")) {
                                     studentModel = postSnapshot.getValue(StudentModel.class);
                                     listFilterStudent.add(studentModel);
-                                    if (!listFilterStudent.isEmpty()){
-                                        filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this,listFilterStudent);
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        recFilterSubscription.setAdapter(filterSubscriptionAdapter);
-                                        recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-
-                                    }
-
-                                    tvCounter.setText(String.valueOf(listFilterStudent.size()));
-
-                                } else{
-                                    filterSubscriptionAdapter.notifyDataSetChanged();
-                                    tvCounter.setText("لاتوجد بيانات");
                                 }
+                            }
+                            if (!listFilterStudent.isEmpty()) {
+                                filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this, listFilterStudent);
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                recFilterSubscription.setAdapter(filterSubscriptionAdapter);
+                                recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
+                                tvCounter.setText(String.valueOf(listFilterStudent.size()));
+
+                            } else {
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                tvCounter.setText("لاتوجد بيانات");
                             }
                         }
                         @Override
@@ -262,22 +250,20 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                             listFilterStudent.clear();
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 value = postSnapshot.child("jul").getValue(String.class);
-                                if(value != null && !value.equals("تم الدفع")){
+                                if (value != null && !value.equals("تم الدفع")) {
                                     studentModel = postSnapshot.getValue(StudentModel.class);
                                     listFilterStudent.add(studentModel);
-                                    if (!listFilterStudent.isEmpty()){
-                                        filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this,listFilterStudent);
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        recFilterSubscription.setAdapter(filterSubscriptionAdapter);
-                                        recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-                                    }
-
-                                    tvCounter.setText(String.valueOf(listFilterStudent.size()));
-
-                                } else{
-                                    filterSubscriptionAdapter.notifyDataSetChanged();
-                                    tvCounter.setText("لاتوجد بيانات");
                                 }
+                            }
+                            if (!listFilterStudent.isEmpty()) {
+                                filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this, listFilterStudent);
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                recFilterSubscription.setAdapter(filterSubscriptionAdapter);
+                                recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
+                                tvCounter.setText(String.valueOf(listFilterStudent.size()));
+                            } else {
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                tvCounter.setText("لاتوجد بيانات");
                             }
                         }
                         @Override
@@ -294,22 +280,20 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                             listFilterStudent.clear();
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 value = postSnapshot.child("aug").getValue(String.class);
-                                if(value != null && !value.equals("تم الدفع")){
+                                if (value != null && !value.equals("تم الدفع")) {
                                     studentModel = postSnapshot.getValue(StudentModel.class);
                                     listFilterStudent.add(studentModel);
-                                    if (!listFilterStudent.isEmpty()){
-                                        filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this,listFilterStudent);
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        recFilterSubscription.setAdapter(filterSubscriptionAdapter);
-                                        recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-                                    }
-
-                                    tvCounter.setText(String.valueOf(listFilterStudent.size()));
-
-                                } else{
-                                    filterSubscriptionAdapter.notifyDataSetChanged();
-                                    tvCounter.setText("لاتوجد بيانات");
                                 }
+                            }
+                            if (!listFilterStudent.isEmpty()) {
+                                filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this, listFilterStudent);
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                recFilterSubscription.setAdapter(filterSubscriptionAdapter);
+                                recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
+                                tvCounter.setText(String.valueOf(listFilterStudent.size()));
+                            } else {
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                tvCounter.setText("لاتوجد بيانات");
                             }
                         }
                         @Override
@@ -326,23 +310,20 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                             listFilterStudent.clear();
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 value = postSnapshot.child("sep").getValue(String.class);
-                                if(value != null && !value.equals("تم الدفع")){
+                                if (value != null && !value.equals("تم الدفع")) {
                                     studentModel = postSnapshot.getValue(StudentModel.class);
                                     listFilterStudent.add(studentModel);
-                                    if (!listFilterStudent.isEmpty()){
-                                        filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this,listFilterStudent);
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        recFilterSubscription.setAdapter(filterSubscriptionAdapter);
-                                        recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-
-                                    }
-
-                                    tvCounter.setText(String.valueOf(listFilterStudent.size()));
-
-                                } else{
-                                    filterSubscriptionAdapter.notifyDataSetChanged();
-                                    tvCounter.setText("لاتوجد بيانات");
                                 }
+                            }
+                            if (!listFilterStudent.isEmpty()) {
+                                filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this, listFilterStudent);
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                recFilterSubscription.setAdapter(filterSubscriptionAdapter);
+                                recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
+                                tvCounter.setText(String.valueOf(listFilterStudent.size()));
+                            } else {
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                tvCounter.setText("لاتوجد بيانات");
                             }
                         }
                         @Override
@@ -359,22 +340,20 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                             listFilterStudent.clear();
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 value = postSnapshot.child("oct").getValue(String.class);
-                                if(value != null && !value.equals("تم الدفع")){
+                                if (value != null && !value.equals("تم الدفع")) {
                                     studentModel = postSnapshot.getValue(StudentModel.class);
                                     listFilterStudent.add(studentModel);
-                                    if (!listFilterStudent.isEmpty()){
-                                        filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this,listFilterStudent);
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        recFilterSubscription.setAdapter(filterSubscriptionAdapter);
-                                        recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-                                    }
-
-                                    tvCounter.setText(String.valueOf(listFilterStudent.size()));
-
-                                } else{
-                                    filterSubscriptionAdapter.notifyDataSetChanged();
-                                    tvCounter.setText("لاتوجد بيانات");
                                 }
+                            }
+                            if (!listFilterStudent.isEmpty()) {
+                                filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this, listFilterStudent);
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                recFilterSubscription.setAdapter(filterSubscriptionAdapter);
+                                recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
+                                tvCounter.setText(String.valueOf(listFilterStudent.size()));
+                            } else {
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                tvCounter.setText("لاتوجد بيانات");
                             }
                         }
                         @Override
@@ -391,21 +370,20 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                             listFilterStudent.clear();
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 value = postSnapshot.child("nov").getValue(String.class);
-                                if(value != null && !value.equals("تم الدفع")){
+                                if (value != null && !value.equals("تم الدفع")) {
                                     studentModel = postSnapshot.getValue(StudentModel.class);
                                     listFilterStudent.add(studentModel);
-                                    if (!listFilterStudent.isEmpty()){
-                                        filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this,listFilterStudent);
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        recFilterSubscription.setAdapter(filterSubscriptionAdapter);
-                                        recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-                                    }
-                                    tvCounter.setText(String.valueOf(listFilterStudent.size()));
                                 }
-                                else{
-                                    filterSubscriptionAdapter.notifyDataSetChanged();
-                                    tvCounter.setText("لاتوجد بيانات");
-                                }
+                            }
+                            if (!listFilterStudent.isEmpty()) {
+                                filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this, listFilterStudent);
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                recFilterSubscription.setAdapter(filterSubscriptionAdapter);
+                                recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
+                                tvCounter.setText(String.valueOf(listFilterStudent.size()));
+                            } else {
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                tvCounter.setText("لاتوجد بيانات");
                             }
                         }
                         @Override
@@ -422,22 +400,20 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                             listFilterStudent.clear();
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 value = postSnapshot.child("dec").getValue(String.class);
-                                if(value != null && !value.equals("تم الدفع")){
+                                if (value != null && !value.equals("تم الدفع")) {
                                     studentModel = postSnapshot.getValue(StudentModel.class);
                                     listFilterStudent.add(studentModel);
-                                    if (!listFilterStudent.isEmpty()){
-                                        filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this,listFilterStudent);
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
-                                        recFilterSubscription.setAdapter(filterSubscriptionAdapter);
-                                        recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
-                                    }
-
-                                    tvCounter.setText(String.valueOf(listFilterStudent.size()));
-
-                                } else{
-                                    filterSubscriptionAdapter.notifyDataSetChanged();
-                                    tvCounter.setText("لاتوجد بيانات");
                                 }
+                            }
+                            if (!listFilterStudent.isEmpty()) {
+                                filterSubscriptionAdapter = new FilterSubscriptionAdapter(FilterSubscriptionActivity.this, listFilterStudent);
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                recFilterSubscription.setAdapter(filterSubscriptionAdapter);
+                                recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
+                                tvCounter.setText(String.valueOf(listFilterStudent.size()));
+                            } else {
+                                filterSubscriptionAdapter.notifyDataSetChanged();
+                                tvCounter.setText("لاتوجد بيانات");
                             }
                         }
                         @Override

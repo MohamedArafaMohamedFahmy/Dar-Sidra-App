@@ -1,24 +1,20 @@
 package com.arafa.mohamed.darsidraapp.fragments;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import com.arafa.mohamed.darsidraapp.R;
-import com.arafa.mohamed.darsidraapp.adapter.StudentsAdapter;
 import com.arafa.mohamed.darsidraapp.adapter.TeachersAdapter;
-import com.arafa.mohamed.darsidraapp.models.StudentModel;
 import com.arafa.mohamed.darsidraapp.models.TeachersModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +33,7 @@ public class RegisteredTeachersFragment extends Fragment {
     RecyclerView recTeacher;
     SearchView searchTeacher;
     LinearLayout linearProgressBar;
+    AppCompatTextView tvMessage;
 
 
     public RegisteredTeachersFragment() {
@@ -51,6 +48,7 @@ public class RegisteredTeachersFragment extends Fragment {
         recTeacher = viewStudents.findViewById(R.id.rec_teacher);
         searchTeacher = viewStudents.findViewById(R.id.search_teacher);
         linearProgressBar = viewStudents.findViewById(R.id.linear_progress_bar);
+        tvMessage = viewStudents.findViewById(R.id.text_message);
         listTeacher = new ArrayList<>();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -65,16 +63,20 @@ public class RegisteredTeachersFragment extends Fragment {
                     listTeacher.add(teachersModel);
                 }
                 if(!listTeacher.isEmpty()){
+
                     teachersAdapter = new TeachersAdapter(getActivity(),listTeacher);
                     teachersAdapter.notifyDataSetChanged();
                     recTeacher.setAdapter(teachersAdapter);
                     recTeacher.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    recTeacher.setVisibility(View.VISIBLE);
+                    tvMessage.setVisibility(View.GONE);
                     linearProgressBar.setVisibility(View.GONE);
 
-                }else {
-                    teachersAdapter.notifyDataSetChanged();
+                } else {
                     linearProgressBar.setVisibility(View.GONE);
-                    Toast.makeText(getActivity(), "لا يوجد معلمين مسجلين", Toast.LENGTH_SHORT).show();
+                    recTeacher.setVisibility(View.GONE);
+                    tvMessage.setVisibility(View.VISIBLE);
+                    tvMessage.setText(R.string.message_not_data_teacher);
                 }
             }
 

@@ -3,6 +3,7 @@ package com.arafa.mohamed.darsidraapp.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,13 +33,12 @@ public class RegisteredStudentsFragment extends Fragment {
     RecyclerView recStudents;
     SearchView searchStudent;
     LinearLayout linearProgressBar;
+    AppCompatTextView tvMessage;
 
 
     public RegisteredStudentsFragment() {
         // Required empty public constructor
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +49,8 @@ public class RegisteredStudentsFragment extends Fragment {
         recStudents = viewStudents.findViewById(R.id.rec_student);
         searchStudent = viewStudents.findViewById(R.id.search_student);
         linearProgressBar = viewStudents.findViewById(R.id.linear_progress_bar);
+        tvMessage = viewStudents.findViewById(R.id.text_message);
+
         listStudent = new ArrayList<>();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -67,12 +69,15 @@ public class RegisteredStudentsFragment extends Fragment {
                     studentsAdapter.notifyDataSetChanged();
                     recStudents.setAdapter(studentsAdapter);
                     recStudents.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    recStudents.setVisibility(View.VISIBLE);
+                    tvMessage.setVisibility(View.GONE);
                     linearProgressBar.setVisibility(View.GONE);
 
                 }else {
-                    studentsAdapter.notifyDataSetChanged();
                     linearProgressBar.setVisibility(View.GONE);
-                    Toast.makeText(getActivity(), "لا يوجد طلبه مسجلين", Toast.LENGTH_SHORT).show();
+                    recStudents.setVisibility(View.GONE);
+                    tvMessage.setVisibility(View.VISIBLE);
+                    tvMessage.setText(R.string.message_not_data_student);
                 }
             }
 

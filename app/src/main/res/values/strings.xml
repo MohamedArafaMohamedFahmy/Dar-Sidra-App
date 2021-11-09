@@ -38,7 +38,6 @@
     <string name="register_data">تسجيل البيانات</string>
     <string name="student_details_appbar">بيانات الطالب</string>
     <string name="teacher_details_appbar">بيانات المعلم / المعلمة</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="status">الحاله</string>
     <string name="add_status">Add Status</string>
     <string name="review">المراجعة</string>
@@ -74,6 +73,8 @@
     <string name="days_of_absence">ايام الغياب</string>
     <string name="days_increase">الايام الزيادة</string>
     <string name="salary">الراتب</string>
+    <string name="message_not_data_teacher">لا يوجد معلمين مسجلين</string>
+    <string name="message_not_data_student">لا يوجد طلبه مسجلين</string>
 
 
     <string name="jan">يناير</string>

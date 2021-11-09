@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,11 +39,6 @@ public class FilterSubscriptionAdapter extends RecyclerView.Adapter<FilterSubscr
         holder.tvNameStudent.setText(downloadData.get(position).getNameStudent());
         holder.tvCodeStudent.setText(downloadData.get(position).getCodeStudent());
         holder.tvClassStudent.setText(downloadData.get(position).getClassStudent());
-        holder.itemView.setOnClickListener(v -> {
-            Intent intentDetailed = new Intent(context, StudentDetailsActivity.class);
-            intentDetailed.putExtra("detailed",downloadData.get(position));
-            context.startActivity(intentDetailed);
-        });
 
     }
 

@@ -71,7 +71,7 @@
            android:textColor="#000"
            android:gravity="start"
            android:layout_alignParentEnd="true"
-           android:layout_marginHorizontal="2dp"
+           android:padding="10dp"
            android:layout_below="@id/text_code_students"
            />
 

@@ -103,7 +103,6 @@ public class StudentDetailsActivity extends AppCompatActivity  {
             btWhatsAppMother.setVisibility(View.VISIBLE);
             btCallNumberFather.setVisibility(View.VISIBLE);
             btCallNumberMother.setVisibility(View.VISIBLE);
-
             btSubRating.setVisibility(View.VISIBLE);
             btRegisterData.setText("تحديث البيانات");
             Picasso.get().load(Uri.parse(retrieveDataStudent.getUrlStudent())).into(imgStudent);
@@ -265,6 +264,12 @@ public class StudentDetailsActivity extends AppCompatActivity  {
             }
             if (mobileMother.isEmpty()){
                 etMobileMother.setError("من فضلك ادخل تليفون الام");
+            }
+            if (mobileFather.length() < 11){
+                etMobileFather.setError("من فضلك ادخل 11 رقم");
+            }
+            if (mobileMother.length() < 11){
+                etMobileMother.setError("من فضلك ادخل 11 رقم");
             }
             if (classStudent.isEmpty()){
                 etClassStudent.setError("من فضلك ادخل فصل الطالب");

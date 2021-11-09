@@ -11,24 +11,19 @@ import android.view.Window;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.activities.StudentDetailsActivity;
 import com.arafa.mohamed.darsidraapp.models.StudentModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
@@ -148,16 +143,13 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
             storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(downloadData.get(position).getUrlStudent());
             storageReference.delete().addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
-                    databaseReference.child("StudentsData").child(downloadData.get(position).getCodeStudent()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull  Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                databaseReference.child("Rating").child(downloadData.get(position).getCodeStudent()).removeValue();
-                                databaseReference.child("Subscription").child(downloadData.get(position).getCodeStudent()).removeValue();
-                                Toast.makeText(context, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
-                            }else {
-                                Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-                            }
+                    databaseReference.child("Rating").child(downloadData.get(position).getCodeStudent()).removeValue();
+                    databaseReference.child("Subscription").child(downloadData.get(position).getCodeStudent()).removeValue();
+                    databaseReference.child("StudentsData").child(downloadData.get(position).getCodeStudent()).removeValue().addOnCompleteListener(task1 -> {
+                        if (task1.isSuccessful()) {
+                            Toast.makeText(context, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(context, ""+ Objects.requireNonNull(task1.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
 

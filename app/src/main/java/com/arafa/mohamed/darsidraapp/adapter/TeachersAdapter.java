@@ -15,11 +15,8 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.arafa.mohamed.darsidraapp.R;
-import com.arafa.mohamed.darsidraapp.activities.StudentDetailsActivity;
 import com.arafa.mohamed.darsidraapp.activities.TeacherDetailsActivity;
 import com.arafa.mohamed.darsidraapp.models.TeachersModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
@@ -134,16 +131,14 @@ public class TeachersAdapter extends RecyclerView.Adapter<TeachersAdapter.MyView
         tvMessage.setText(R.string.do_you_want_to_delete_this_teacher);
         btYes.setOnClickListener(v -> {
 
-
+                    databaseReference.child("RatingTeachers").child(downloadData.get(position).getCodeTeacher()).removeValue();
+                    databaseReference.child("SalaryTeachers").child(downloadData.get(position).getCodeTeacher()).removeValue();
                     databaseReference.child("TeachersData").child(downloadData.get(position).getCodeTeacher()).removeValue().addOnCompleteListener(task -> {
                         if (task.isSuccessful()){
-                            databaseReference.child("RatingTeachers").child(downloadData.get(position).getCodeTeacher()).removeValue();
-                            databaseReference.child("SalaryTeachers").child(downloadData.get(position).getCodeTeacher()).removeValue();
                             Toast.makeText(context, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
                         } else{
                             Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                         }
-
                     });
 
             dialog.dismiss();
