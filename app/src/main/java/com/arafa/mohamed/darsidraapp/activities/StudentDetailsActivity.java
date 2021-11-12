@@ -120,18 +120,14 @@ public class StudentDetailsActivity extends AppCompatActivity  {
 
         }
 
-        btWhatsAppFather.setOnClickListener(v -> {
-            openWhatsappContact(retrieveDataStudent.getMobileFather());
-        });
+        btWhatsAppFather.setOnClickListener(v -> openWhatsappContact(retrieveDataStudent.getMobileFather()));
 
         btCallNumberFather.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+retrieveDataStudent.getMobileFather()));
             startActivity(intent);
         });
 
-        btWhatsAppMother.setOnClickListener(v -> {
-            openWhatsappContact(retrieveDataStudent.getMobileMother());
-        });
+        btWhatsAppMother.setOnClickListener(v -> openWhatsappContact(retrieveDataStudent.getMobileMother()));
 
         btCallNumberMother.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+retrieveDataStudent.getMobileMother()));
@@ -190,6 +186,18 @@ public class StudentDetailsActivity extends AppCompatActivity  {
                        if (task1.isSuccessful()){
                            linearProgressBar.setVisibility(View.GONE);
                            Toast.makeText(this, "تم التسجيل بنجاح", Toast.LENGTH_LONG).show();
+                           imgUri = null;
+                           imgStudent.setImageResource(R.drawable.ic_upload_image);
+                           etNameStudent.getText().clear();
+                           etEnrollmentStudent.getText().clear();
+                           etBornDate.getText().clear();
+                           etCodeStudent.getText().clear();
+                           etMobileFather.getText().clear();
+                           etMobileMother.getText().clear();
+                           etClassStudent.getText().clear();
+                           etBranch.getText().clear();
+                           etDateSession.getText().clear();
+                           etStartSaving.getText().clear();
                        }else{
                            linearProgressBar.setVisibility(View.GONE);
                            Toast.makeText(this, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();

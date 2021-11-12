@@ -7,13 +7,13 @@
     android:layoutDirection="rtl"
     android:textDirection="rtl"
     android:background="@color/sub_color_app"
-    android:layout_marginTop="10dp"
     tools:context=".fragments.RatingTeacherFragment">
 
     <ScrollView
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="50dp"
         >
 
         <LinearLayout
@@ -54,11 +54,11 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/general_app"
+                    android:padding="5dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="30dp"
 
                     />
-
 
 
             </RelativeLayout>
@@ -149,7 +149,7 @@
                     android:fontFamily="@font/cairo_extralight"
                     android:text="@string/cleanliness_order_classroom"
                     android:textColor="@color/black_gray"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -160,6 +160,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/general_app"
+                    android:padding="5dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="30dp"
 
@@ -254,7 +255,7 @@
                         android:fontFamily="@font/cairo_extralight"
                         android:text="@string/value_game_material"
                         android:textColor="@color/black_gray"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -265,6 +266,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:textColor="@color/general_app"
+                        android:padding="5dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="30dp"
 
@@ -360,7 +362,7 @@
                         android:fontFamily="@font/cairo_extralight"
                         android:text="@string/Dealing_with_students"
                         android:textColor="@color/black_gray"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -371,6 +373,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:textColor="@color/general_app"
+                        android:padding="5dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="30dp"
 
@@ -467,7 +470,7 @@
                         android:fontFamily="@font/cairo_extralight"
                         android:text="@string/time_management"
                         android:textColor="@color/black_gray"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -478,6 +481,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:textColor="@color/general_app"
+                        android:padding="5dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="30dp"
 
@@ -562,6 +566,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="25dp"
                             >
 
                             <androidx.appcompat.widget.AppCompatTextView
@@ -572,6 +577,7 @@
                                 android:textSize="20sp"
                                 android:textStyle="bold"
                                 android:textColor="@color/general_app"
+                                android:padding="5dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_gravity="center"
 
@@ -614,7 +620,7 @@
                             android:fontFamily="@font/cairo_extralight"
                             android:text="@string/total"
                             android:textColor="@color/black_gray"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
 

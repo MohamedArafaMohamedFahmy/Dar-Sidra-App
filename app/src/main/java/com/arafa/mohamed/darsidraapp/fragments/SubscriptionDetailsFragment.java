@@ -32,6 +32,10 @@ public class SubscriptionDetailsFragment extends Fragment {
     DatabaseReference databaseReference;
     Context context;
 
+    public SubscriptionDetailsFragment() {
+
+    }
+
     public SubscriptionDetailsFragment(String codeStudent, String nameStudent, String classStudent, Context context) {
         this.codeStudent = codeStudent;
         this.nameStudent = nameStudent;

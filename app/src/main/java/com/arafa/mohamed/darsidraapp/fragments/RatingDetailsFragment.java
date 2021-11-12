@@ -31,6 +31,10 @@ public class RatingDetailsFragment extends Fragment {
     RatingModel ratingModel;
     Context context;
 
+    public RatingDetailsFragment() {
+
+    }
+
     public RatingDetailsFragment(String codeStudent, Context context) {
         this.codeStudent = codeStudent;
         this.context = context;

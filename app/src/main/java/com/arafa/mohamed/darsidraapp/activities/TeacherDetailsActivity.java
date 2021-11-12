@@ -71,9 +71,7 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
             etMobileTeacher.setText(retrieveDataTeacher.getPhoneNumber());
         }
 
-        btWhatsAppTeacher.setOnClickListener(v -> {
-            openWhatsappContact(retrieveDataTeacher.getPhoneNumber());
-        });
+        btWhatsAppTeacher.setOnClickListener(v -> openWhatsappContact(retrieveDataTeacher.getPhoneNumber()));
 
         btCallNumberTeacher.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+retrieveDataTeacher.getPhoneNumber()));
@@ -86,7 +84,7 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
             phoneNumber = Objects.requireNonNull(etMobileTeacher.getText()).toString();
             dateEnrollment = Objects.requireNonNull(etEnrollmentTeacher.getText()).toString();
 
-            if (!nameTeacher.isEmpty() && !codeTeacher.isEmpty() && phoneNumber.length() == 11 && !dateEnrollment.isEmpty()){
+            if (!nameTeacher.isEmpty() && !codeTeacher.isEmpty() && phoneNumber.length() == 11 && !dateEnrollment.isEmpty() && retrieveDataTeacher == null){
 
                 linearProgressBar.setVisibility(View.VISIBLE);
 
@@ -95,6 +93,27 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
                     if (task.isSuccessful()){
                         linearProgressBar.setVisibility(View.GONE);
                         Toast.makeText(this, "تم التسجيل بنجاح", Toast.LENGTH_SHORT).show();
+                        etNameTeacher.getText().clear();
+                        etCodeTeacher.getText().clear();
+                        etEnrollmentTeacher.getText().clear();
+                        etMobileTeacher.getText().clear();
+                    }else{
+                        linearProgressBar.setVisibility(View.GONE);
+                        Toast.makeText(this, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                });
+            }
+
+            if (!nameTeacher.isEmpty() && !codeTeacher.isEmpty() && retrieveDataTeacher != null  && phoneNumber.length() == 11 && !dateEnrollment.isEmpty()){
+
+                linearProgressBar.setVisibility(View.VISIBLE);
+
+                teachersModel = new TeachersModel(codeTeacher, nameTeacher, phoneNumber, dateEnrollment);
+                databaseReference.child("TeachersData").child(codeTeacher).setValue(teachersModel).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        linearProgressBar.setVisibility(View.GONE);
+                        Toast.makeText(this, "تم التحديث بنجاح", Toast.LENGTH_SHORT).show();
                     }else{
                         linearProgressBar.setVisibility(View.GONE);
                         Toast.makeText(this, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();

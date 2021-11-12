@@ -80,7 +80,6 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                         recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
                                         tvCounter.setText(String.valueOf(listFilterStudent.size()));
                                     }else{
-                                        filterSubscriptionAdapter.notifyDataSetChanged();
                                         tvCounter.setText("لاتوجد بيانات");
                                     }
 
@@ -111,7 +110,6 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                 recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
                                 tvCounter.setText(String.valueOf(listFilterStudent.size()));
                             } else {
-                                filterSubscriptionAdapter.notifyDataSetChanged();
                                 tvCounter.setText("لاتوجد بيانات");
                             }
                         }
@@ -141,7 +139,6 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                 recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
                                 tvCounter.setText(String.valueOf(listFilterStudent.size()));
                             } else {
-                                filterSubscriptionAdapter.notifyDataSetChanged();
                                 tvCounter.setText("لاتوجد بيانات");
                             }
                         }
@@ -171,7 +168,6 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                 recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
                                 tvCounter.setText(String.valueOf(listFilterStudent.size()));
                             } else {
-                                filterSubscriptionAdapter.notifyDataSetChanged();
                                 tvCounter.setText("لاتوجد بيانات");
                             }
                         }
@@ -201,7 +197,6 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                 recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
                                 tvCounter.setText(String.valueOf(listFilterStudent.size()));
                             } else {
-                                filterSubscriptionAdapter.notifyDataSetChanged();
                                 tvCounter.setText("لاتوجد بيانات");
                             }
                         }
@@ -232,7 +227,6 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                 tvCounter.setText(String.valueOf(listFilterStudent.size()));
 
                             } else {
-                                filterSubscriptionAdapter.notifyDataSetChanged();
                                 tvCounter.setText("لاتوجد بيانات");
                             }
                         }
@@ -262,7 +256,6 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                 recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
                                 tvCounter.setText(String.valueOf(listFilterStudent.size()));
                             } else {
-                                filterSubscriptionAdapter.notifyDataSetChanged();
                                 tvCounter.setText("لاتوجد بيانات");
                             }
                         }
@@ -292,7 +285,6 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                 recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
                                 tvCounter.setText(String.valueOf(listFilterStudent.size()));
                             } else {
-                                filterSubscriptionAdapter.notifyDataSetChanged();
                                 tvCounter.setText("لاتوجد بيانات");
                             }
                         }
@@ -322,7 +314,6 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                 recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
                                 tvCounter.setText(String.valueOf(listFilterStudent.size()));
                             } else {
-                                filterSubscriptionAdapter.notifyDataSetChanged();
                                 tvCounter.setText("لاتوجد بيانات");
                             }
                         }
@@ -352,7 +343,6 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                 recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
                                 tvCounter.setText(String.valueOf(listFilterStudent.size()));
                             } else {
-                                filterSubscriptionAdapter.notifyDataSetChanged();
                                 tvCounter.setText("لاتوجد بيانات");
                             }
                         }
@@ -382,7 +372,6 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                 recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
                                 tvCounter.setText(String.valueOf(listFilterStudent.size()));
                             } else {
-                                filterSubscriptionAdapter.notifyDataSetChanged();
                                 tvCounter.setText("لاتوجد بيانات");
                             }
                         }
@@ -412,7 +401,6 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
                                 recFilterSubscription.setLayoutManager(new LinearLayoutManager(FilterSubscriptionActivity.this));
                                 tvCounter.setText(String.valueOf(listFilterStudent.size()));
                             } else {
-                                filterSubscriptionAdapter.notifyDataSetChanged();
                                 tvCounter.setText("لاتوجد بيانات");
                             }
                         }

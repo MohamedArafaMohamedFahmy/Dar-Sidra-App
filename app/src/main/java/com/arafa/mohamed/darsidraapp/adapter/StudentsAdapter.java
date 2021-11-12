@@ -97,6 +97,9 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
                      if (item.getClassStudent().toLowerCase().contains(filterPattern)) {
                          filteredList.add(item);
                      }
+                     if (item.getNameStudent().toLowerCase().contains(filterPattern)) {
+                         filteredList.add(item);
+                     }
                  }
              }
              FilterResults results = new FilterResults();

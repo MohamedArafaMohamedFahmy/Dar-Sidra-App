@@ -46,7 +46,7 @@
     <string name="audience">الحضور</string>
     <string name="absence">الغياب</string>
     <string name="text_logo_sidra">دار سدرة المنتهى</string>
-    <string name="search_code_student">البحث بكود الطالب أو الفصل</string>
+    <string name="search_code_student">البحث بكود الطالب أو الاسم أو الفصل</string>
     <string name="search_code_teacher">البحث بكود المعلم أو الاسم</string>
     <string name="born_date">تاريخ الميلاد</string>
     <string name="branch">الفرع</string>
