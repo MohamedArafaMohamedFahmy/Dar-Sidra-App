@@ -76,6 +76,8 @@
     <string name="salary">الراتب</string>
     <string name="message_not_data_teacher">لا يوجد معلمين مسجلين</string>
     <string name="message_not_data_student">لا يوجد طلبه مسجلين</string>
+    <string name="number_student">عدد الطلاب :</string>
+    <string name="number_teacher">عدد المعلمين :</string>
 
 
     <string name="jan">يناير</string>

@@ -35,7 +35,7 @@ public class RegisteredStudentsFragment extends Fragment {
     RecyclerView recStudents;
     SearchView searchStudent;
     LinearLayout linearProgressBar;
-    AppCompatTextView tvMessage;
+    AppCompatTextView tvMessage,tvNumberStudent;
     Context context;
 
     public RegisteredStudentsFragment() {
@@ -55,6 +55,7 @@ public class RegisteredStudentsFragment extends Fragment {
         searchStudent = viewStudents.findViewById(R.id.search_student);
         linearProgressBar = viewStudents.findViewById(R.id.linear_progress_bar);
         tvMessage = viewStudents.findViewById(R.id.text_message);
+        tvNumberStudent = viewStudents.findViewById(R.id.number_student);
 
         listStudent = new ArrayList<>();
 
@@ -75,6 +76,7 @@ public class RegisteredStudentsFragment extends Fragment {
                     recStudents.setAdapter(studentsAdapter);
                     recStudents.setLayoutManager(new LinearLayoutManager(getActivity()));
                     recStudents.setVisibility(View.VISIBLE);
+                    tvNumberStudent.setText(String.valueOf(listStudent.size()));
                     tvMessage.setVisibility(View.GONE);
                     linearProgressBar.setVisibility(View.GONE);
 
@@ -83,6 +85,7 @@ public class RegisteredStudentsFragment extends Fragment {
                     recStudents.setVisibility(View.GONE);
                     tvMessage.setVisibility(View.VISIBLE);
                     tvMessage.setText(R.string.message_not_data_student);
+                    tvNumberStudent.setText(R.string.message_not_data_student);
                 }
             }
 

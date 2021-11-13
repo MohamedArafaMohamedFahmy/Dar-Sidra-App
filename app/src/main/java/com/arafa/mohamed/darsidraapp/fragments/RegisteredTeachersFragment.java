@@ -35,7 +35,7 @@ public class RegisteredTeachersFragment extends Fragment {
     RecyclerView recTeacher;
     SearchView searchTeacher;
     LinearLayout linearProgressBar;
-    AppCompatTextView tvMessage;
+    AppCompatTextView tvMessage,tvNumberTeacher;
     Context context;
 
     public RegisteredTeachersFragment() {
@@ -56,6 +56,7 @@ public class RegisteredTeachersFragment extends Fragment {
         searchTeacher = viewStudents.findViewById(R.id.search_teacher);
         linearProgressBar = viewStudents.findViewById(R.id.linear_progress_bar);
         tvMessage = viewStudents.findViewById(R.id.text_message);
+        tvNumberTeacher = viewStudents.findViewById(R.id.number_teacher);
         listTeacher = new ArrayList<>();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -76,6 +77,7 @@ public class RegisteredTeachersFragment extends Fragment {
                     recTeacher.setAdapter(teachersAdapter);
                     recTeacher.setLayoutManager(new LinearLayoutManager(getActivity()));
                     recTeacher.setVisibility(View.VISIBLE);
+                    tvNumberTeacher.setText(String.valueOf(listTeacher.size()));
                     tvMessage.setVisibility(View.GONE);
                     linearProgressBar.setVisibility(View.GONE);
 
@@ -84,6 +86,7 @@ public class RegisteredTeachersFragment extends Fragment {
                     recTeacher.setVisibility(View.GONE);
                     tvMessage.setVisibility(View.VISIBLE);
                     tvMessage.setText(R.string.message_not_data_teacher);
+                    tvNumberTeacher.setText(R.string.message_not_data_teacher);
                 }
             }
 

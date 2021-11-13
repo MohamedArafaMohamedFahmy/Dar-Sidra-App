@@ -8,9 +8,46 @@
     android:textDirection="rtl"
     tools:context=".fragments.RegisteredTeachersFragment">
 
+    <LinearLayout
+        android:id="@+id/text_number_teacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_margin="6dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/number_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:maxLength="10"
+            android:textColor="@color/black_gray"
+            android:textSize="18sp"
+            android:maxLines="2"
+            android:fontFamily="@font/cairo_extralight"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:text="@string/number_teacher"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/black_gray"
+            android:textSize="18sp"
+            android:fontFamily="@font/cairo_extralight"
+            />
+
+
+    </LinearLayout>
+
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_teacher"
+        android:layout_below="@id/text_number_teacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/general_app"
