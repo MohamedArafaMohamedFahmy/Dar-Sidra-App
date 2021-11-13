@@ -12,8 +12,6 @@ import androidx.appcompat.widget.AppCompatTextView;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -139,6 +137,8 @@ public class StudentDetailsActivity extends AppCompatActivity  {
             intentRatingSubscription.putExtra("codeStudent",retrieveDataStudent.getCodeStudent());
             intentRatingSubscription.putExtra("nameStudent",retrieveDataStudent.getNameStudent());
             intentRatingSubscription.putExtra("classStudent",retrieveDataStudent.getClassStudent());
+            intentRatingSubscription.putExtra("mobileFather",retrieveDataStudent.getMobileFather());
+            intentRatingSubscription.putExtra("mobileMother",retrieveDataStudent.getMobileMother());
             startActivity(intentRatingSubscription);
         });
 
@@ -342,17 +342,14 @@ public class StudentDetailsActivity extends AppCompatActivity  {
     }
 
     void openWhatsappContact(String number) {
-        PackageManager pm=getPackageManager();
         try {
-
-            Uri uri = Uri.parse("smsto:" + number);
-            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
-            pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            String url = "https://api.whatsapp.com/send?phone="+"+2"+number;
+            i.setData(Uri.parse(url));
             i.setPackage("com.whatsapp");
-            startActivity(Intent.createChooser(i, ""));
-
-        } catch (PackageManager.NameNotFoundException e) {
-            Toast.makeText(StudentDetailsActivity.this, "WhatsApp not Installed", Toast.LENGTH_SHORT).show();
+            startActivity(i);
+        }catch (Exception e){
+            Toast.makeText(StudentDetailsActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 }

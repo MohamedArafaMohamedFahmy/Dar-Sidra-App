@@ -39,7 +39,9 @@ public class RatingSubscriptionDetailsActivity extends AppCompatActivity {
         items.add("تفاصيل التقييم");
         items.add("تفاصيل الاشتراك");
 
-        tabsAdapter = new TabsAdapter(this,extra.getString("codeStudent"), extra.getString("nameStudent"), extra.getString("classStudent"));
+        tabsAdapter = new TabsAdapter(this,extra.getString("codeStudent"),
+                extra.getString("nameStudent"), extra.getString("classStudent"),
+                extra.getString("mobileFather"), extra.getString("mobileMother"));
         viewPager.setAdapter(tabsAdapter);
         new TabLayoutMediator(tabsItems, viewPager, (tab, position) -> tab.setText(items.get(position))).attach();
 

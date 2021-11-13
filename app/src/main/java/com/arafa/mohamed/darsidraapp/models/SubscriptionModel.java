@@ -4,14 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class SubscriptionModel implements Serializable {
-    private String jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec, codeStudent, nameStudent, classStudent;
+    private String jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec, codeStudent,
+            nameStudent, classStudent, mobileFather, mobileMother;
 
     public SubscriptionModel() {
     }
 
     public SubscriptionModel(String jan, String feb, String mar, String apr, String may, String jun, String jul,
                              String aug, String sep, String oct, String nov, String dec, String codeStudent,
-                             String nameStudent, String classStudent) {
+                             String nameStudent, String classStudent, String mobileFather, String mobileMother) {
         this.jan = jan;
         this.feb = feb;
         this.mar = mar;
@@ -27,6 +28,8 @@ public class SubscriptionModel implements Serializable {
         this.codeStudent = codeStudent;
         this.nameStudent = nameStudent;
         this.classStudent = classStudent;
+        this.mobileFather = mobileFather;
+        this.mobileMother = mobileMother;
     }
 
     public static ArrayList<MonthModel> getMonth(){
@@ -202,5 +205,21 @@ public class SubscriptionModel implements Serializable {
 
     public void setClassStudent(String classStudent) {
         this.classStudent = classStudent;
+    }
+
+    public String getMobileFather() {
+        return mobileFather;
+    }
+
+    public void setMobileFather(String mobileFather) {
+        this.mobileFather = mobileFather;
+    }
+
+    public String getMobileMother() {
+        return mobileMother;
+    }
+
+    public void setMobileMother(String mobileMother) {
+        this.mobileMother = mobileMother;
     }
 }

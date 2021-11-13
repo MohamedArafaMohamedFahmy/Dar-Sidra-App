@@ -10,14 +10,16 @@ import com.arafa.mohamed.darsidraapp.fragments.SubscriptionDetailsFragment;
 
 public class TabsAdapter extends FragmentStateAdapter {
     FragmentActivity fragmentActivity;
-    String codeStudent, nameStudent, classStudent;
+    String codeStudent, nameStudent, classStudent, mobileFather,mobileMother;
 
-    public TabsAdapter(@NonNull  FragmentActivity fragmentActivity, String codeStudent, String nameStudent, String classStudent) {
+    public TabsAdapter(@NonNull  FragmentActivity fragmentActivity, String codeStudent, String nameStudent, String classStudent, String mobileFather, String mobileMother) {
         super(fragmentActivity);
         this.fragmentActivity = fragmentActivity;
         this.codeStudent = codeStudent;
         this.nameStudent = nameStudent;
         this.classStudent = classStudent;
+        this.mobileFather = mobileFather;
+        this.mobileMother = mobileMother;
 
     }
 
@@ -30,11 +32,11 @@ public class TabsAdapter extends FragmentStateAdapter {
                 return new RatingDetailsFragment(codeStudent,fragmentActivity);
 
             case 1:
-                return new  SubscriptionDetailsFragment(codeStudent, nameStudent, classStudent,fragmentActivity);
+                return new  SubscriptionDetailsFragment(codeStudent, nameStudent, classStudent, mobileFather, mobileMother, fragmentActivity);
             default:
                 Toast.makeText(fragmentActivity, "No Page", Toast.LENGTH_SHORT).show();
         }
-        return new SubscriptionDetailsFragment(codeStudent, nameStudent, classStudent,fragmentActivity);
+        return new SubscriptionDetailsFragment(codeStudent, nameStudent, classStudent, mobileFather, mobileMother, fragmentActivity);
     }
 
     @Override

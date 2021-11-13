@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="25dp"
+            android:layout_marginEnd="10dp"
             android:padding="10dp"
             >
 
@@ -26,9 +26,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/code_student"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
-                android:textColor="#000"
+                android:textColor="@color/black"
+                android:fontFamily="@font/amaranth"
                 android:layout_centerHorizontal="true"
                 />
 
@@ -39,9 +40,10 @@
                 android:text="@string/name_student"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
-                android:textColor="#000"
+                android:textColor="@color/black"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/text_code_students"
                 />
@@ -53,12 +55,111 @@
                 android:text="@string/class_student"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
-                android:textColor="#000"
+                android:padding="6dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/cairo_extralight"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/text_name_students"
                 />
+
+            <LinearLayout
+                android:id="@+id/linear_father"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/text_class_student"
+                android:gravity="end"
+
+                >
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/whats_father"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_whatsapp"
+                        android:background="@color/transparent"
+                        />
+
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_mobile_father"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:fontFamily="@font/cairo_extralight"
+                    android:layout_marginHorizontal="5dp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/father"
+                    android:scaleType="centerCrop"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/linear_father"
+                android:gravity="end"
+
+                >
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    >
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/whats_mother"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_whatsapp"
+                        android:background="@color/transparent"
+
+                        />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_mobile_mother"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:padding="10dp"
+                    android:fontFamily="@font/cairo_extralight"
+                    android:layout_marginHorizontal="5dp"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/mother"
+                    android:scaleType="centerCrop"
+
+                    />
+
+            </LinearLayout>
 
         </RelativeLayout>
 

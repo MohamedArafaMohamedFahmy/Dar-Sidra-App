@@ -20,6 +20,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -71,7 +74,10 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
             etMobileTeacher.setText(retrieveDataTeacher.getPhoneNumber());
         }
 
-        btWhatsAppTeacher.setOnClickListener(v -> openWhatsappContact(retrieveDataTeacher.getPhoneNumber()));
+        btWhatsAppTeacher.setOnClickListener(v -> {
+
+                openWhatsappContact(retrieveDataTeacher.getPhoneNumber());
+        });
 
         btCallNumberTeacher.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+retrieveDataTeacher.getPhoneNumber()));
@@ -163,18 +169,16 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
     }
 
     void openWhatsappContact(String number) {
-        PackageManager pm=getPackageManager();
+
         try {
 
-            Uri uri = Uri.parse("smsto:" + number);
-            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
-            pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            String url = "https://api.whatsapp.com/send?phone="+"+2"+number;
+            i.setData(Uri.parse(url));
             i.setPackage("com.whatsapp");
-            startActivity(Intent.createChooser(i, ""));
-
-        } catch (PackageManager.NameNotFoundException e) {
-            Toast.makeText(TeacherDetailsActivity.this, "WhatsApp not Installed", Toast.LENGTH_SHORT).show();
+            startActivity(i);
+        }catch (Exception e){
+            Toast.makeText(TeacherDetailsActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
     }
 }

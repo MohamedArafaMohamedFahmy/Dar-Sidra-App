@@ -2,14 +2,12 @@ package com.arafa.mohamed.darsidraapp.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.Toast;
 import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.models.SubscriptionModel;
@@ -27,7 +25,8 @@ public class SubscriptionDetailsFragment extends Fragment {
     TextInputEditText etJan, etFeb, etMar, etApr, etMay, etJun, etJul, etAug, etSep, etOct, etNov, etDec;
     AppCompatCheckBox chxJan, chxFeb, chxMar, chxApr, chxMay, chxJun, chxJul, chxAug, chxSep, chxOct, chxNov, chxDec;
     FloatingActionButton btAddSubscription;
-    String jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec, codeStudent, nameStudent, classStudent;
+    String jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec, codeStudent, nameStudent,
+            classStudent, mobileFather, mobileMother;
     SubscriptionModel subscriptionModel;
     DatabaseReference databaseReference;
     Context context;
@@ -36,10 +35,12 @@ public class SubscriptionDetailsFragment extends Fragment {
 
     }
 
-    public SubscriptionDetailsFragment(String codeStudent, String nameStudent, String classStudent, Context context) {
+    public SubscriptionDetailsFragment(String codeStudent, String nameStudent, String classStudent, String mobileFather, String mobileMother, Context context) {
         this.codeStudent = codeStudent;
         this.nameStudent = nameStudent;
         this.classStudent = classStudent;
+        this.mobileFather = mobileFather;
+        this.mobileMother = mobileMother;
         this.context = context;
     }
 
@@ -273,7 +274,7 @@ public class SubscriptionDetailsFragment extends Fragment {
             oct = Objects.requireNonNull(etOct.getText()).toString();
             nov = Objects.requireNonNull(etNov.getText()).toString();
             dec = Objects.requireNonNull(etDec.getText()).toString();
-            subscriptionModel = new SubscriptionModel(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec, codeStudent, nameStudent, classStudent );
+            subscriptionModel = new SubscriptionModel(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec, codeStudent, nameStudent, classStudent, mobileFather, mobileMother );
             databaseReference.child("Subscription").child(codeStudent).setValue(subscriptionModel).addOnCompleteListener(task -> {
                 if (task.isSuccessful()){
                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
