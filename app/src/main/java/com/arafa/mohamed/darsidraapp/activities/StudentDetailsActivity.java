@@ -24,6 +24,7 @@ import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.models.DatePickerDialogBorn;
 import com.arafa.mohamed.darsidraapp.models.DatePickerDialogEnrollment;
 import com.arafa.mohamed.darsidraapp.models.StudentModel;
+import com.arafa.mohamed.darsidraapp.models.SubscriptionModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
@@ -51,6 +52,7 @@ public class StudentDetailsActivity extends AppCompatActivity  {
     DatabaseReference databaseReference;
     StorageReference storageReference;
     StudentModel studentModel, retrieveDataStudent ;
+    SubscriptionModel subscriptionModel;
     DatePickerDialogBorn datePickerDialogBorn;
     DatePickerDialogEnrollment datePickerDialogEnrollment;
     public Uri imgUri;
@@ -185,6 +187,8 @@ public class StudentDetailsActivity extends AppCompatActivity  {
                     databaseReference.child("StudentsData").child(codeStudent).setValue(studentModel).addOnCompleteListener(task1 -> {
                        if (task1.isSuccessful()){
                            linearProgressBar.setVisibility(View.GONE);
+                           subscriptionModel = new SubscriptionModel("0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", codeStudent, nameStudent, classStudent, mobileFather, mobileMother );
+                           databaseReference.child("Subscription").child(codeStudent).setValue(subscriptionModel);
                            Toast.makeText(this, "تم التسجيل بنجاح", Toast.LENGTH_LONG).show();
                            imgUri = null;
                            imgStudent.setImageResource(R.drawable.ic_upload_image);
