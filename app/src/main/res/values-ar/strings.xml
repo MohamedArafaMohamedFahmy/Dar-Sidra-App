@@ -13,14 +13,14 @@
     <string name="user_name">اسم المستخدم</string>
     <string name="confirm_password">تأكيد كلمة السر</string>
     <string name="already_have_an_account">هل لديك حساب ؟</string>
-    <string name="text_error1">الرجاء إدخال كلمة المرور</string>
-    <string name="text_error2">كلمة المرور قصيرة جدًا ، يجب أن تتكون كلمة المرور من 6 أحرف على الأقل </string>
-    <string name="text_error3">الرجاء إدخال تأكيد كلمة المرور</string>
-    <string name="text_error4">تأكيد كلمة المرور لا يتطابق مع كلمة المرور</string>
+    <string name="text_error1">الرجاء إدخال كلمة السر</string>
+    <string name="text_error2">كلمة المرور قصيرة جدًا ، يجب أن تتكون كلمة السر من 6 أحرف على الأقل </string>
+    <string name="text_error3">الرجاء إدخال تأكيد كلمة السر</string>
+    <string name="text_error4">تأكيد كلمة السر لا يتطابق مع كلمة السر</string>
     <string name="first_text">أولاً ، دعنا نعيد تعيين كلمة المرور لحسابك</string>
     <string name="second_text">رجاءا أدخل بريدك الإلكتروني</string>
-    <string name="message_forgot_password"> %1$s تحقق من بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك  </string>
-    <string name="reset_password">إعادة تعيين كلمة المرور</string>
+    <string name="message_forgot_password"> %1$s تحقق من بريدك الإلكتروني لإعادة تعيين كلمة السر الخاصة بك  </string>
+    <string name="reset_password">إعادة تعيين كلمة السر</string>
     <string name="reset_password_appbar">تغيير كلمة السر</string>
     <string name="do_you_want_to_delete_this_student">هل تريد حذف الطالب ؟</string>
     <string name="do_you_want_to_delete_this_teacher">هل تريد حذف المعلم / المعلمة  ؟</string>
@@ -48,7 +48,6 @@
     <string name="preservation">الحفظ</string>
     <string name="audience">الحضور</string>
     <string name="absence">الغياب</string>
-    <string name="total">المجموع</string>
     <string name="text_logo_sidra">دار سدرة المنتهى</string>
     <string name="search_code_student">البحث بكود الطالب أو الاسم أو الفصل</string>
     <string name="search_code_teacher">البحث بكود المعلم أو الاسم</string>
@@ -69,6 +68,7 @@
     <string name="value_game_material">تناول قيمه او لعبه مع الماده العلميه</string>
     <string name="Dealing_with_students">التعامل مع الطلاب و الجو العام</string>
     <string name="time_management">ادارة الوقت</string>
+    <string name="total">المجموع</string>
     <string name="number_fifty">50</string>
     <string name="which_select">أى اختيار تريد؟</string>
     <string name="button_register_teacher">تسجيل معلم / معلمة</string>
@@ -89,6 +89,8 @@
 
 ولكم منا جزيل الشكر و الإحترام 🌷</string>
 
+    <string name="add_admin_appbar">عرض المشرفين / المشرفات</string>
+
 
     <string name="jan">يناير</string>
     <string name="feb">فبراير</string>
@@ -102,6 +104,10 @@
     <string name="oct">اكتوبر</string>
     <string name="nov">نوفمبر</string>
     <string name="dec">ديسمبر</string>
+    <string name="add_admin">إضافة مشرف</string>
+    <string name="name_admin">اسم المشرف</string>
+    <string name="button_register_admin">تسجيل مشرف / مشرفة</string>
+
 
     <string-array name="list_month">
         <item> يناير</item>
@@ -117,6 +123,5 @@
         <item> نوفمبر </item>
         <item> ديسمبر </item>
     </string-array>
-
 
 </resources>

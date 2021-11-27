@@ -1,5 +1,6 @@
 package com.arafa.mohamed.darsidraapp.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatButton;
@@ -19,10 +20,17 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.arafa.mohamed.darsidraapp.R;
+import com.arafa.mohamed.darsidraapp.models.AdminModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -35,6 +43,9 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     LinearLayout linearProgressBar;
     boolean checkPassword;
+    AdminModel adminModel;
+    ArrayList<String> retrieveAdmins;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +61,10 @@ public class LoginActivity extends AppCompatActivity {
         textError=findViewById(R.id.text_error);
         linearProgressBar = findViewById(R.id.linear_progress_bar);
         textLayoutPassword = findViewById(R.id.password_layout);
+        databaseReference = FirebaseDatabase.getInstance().getReference();
         etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
         checkPassword = true;
+        retrieveAdmins = new ArrayList<>();
 
         textLayoutPassword.setStartIconOnClickListener(v -> {
             if(Objects.requireNonNull(AppCompatResources.getDrawable(LoginActivity.this, R.drawable.ic_eye)).isVisible() && checkPassword ){
@@ -63,6 +76,23 @@ public class LoginActivity extends AppCompatActivity {
                 textLayoutPassword.setStartIconDrawable(R.drawable.ic_eye);
                 etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 checkPassword = true;
+            }
+        });
+
+        databaseReference.child("AdminsData").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    adminModel = postSnapshot.getValue(AdminModel.class);
+                    if (adminModel != null) {
+                        retrieveAdmins.add(adminModel.getEmailAdmin());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(LoginActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -79,7 +109,8 @@ public class LoginActivity extends AppCompatActivity {
         btSignIn.setOnClickListener(v -> {
             emailAddress= Objects.requireNonNull(etEmailAddress.getText()).toString();
             password= Objects.requireNonNull(etPassword.getText()).toString();
-            if(!emailAddress.isEmpty() && !password.isEmpty() && password.length() >= 6){
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+            if(!emailAddress.isEmpty() && !password.isEmpty() && password.length() >= 6 && retrieveAdmins.contains(emailAddress)){
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                         WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 etPassword.setCursorVisible(false);
@@ -114,6 +145,9 @@ public class LoginActivity extends AppCompatActivity {
             {
                 textError.setVisibility(View.VISIBLE);
                 textError.setText(R.string.text_error2);
+            }
+            if(!retrieveAdmins.contains(emailAddress)){
+                Toast.makeText(this, "لا يمكن الدخول , هذا البريد الالكترونى غير مسجل ", Toast.LENGTH_LONG).show();
             }
         });
     }

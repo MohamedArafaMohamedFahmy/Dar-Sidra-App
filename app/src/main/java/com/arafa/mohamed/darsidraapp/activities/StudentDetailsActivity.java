@@ -350,7 +350,7 @@ public class StudentDetailsActivity extends AppCompatActivity  {
             Intent i = new Intent(Intent.ACTION_VIEW);
             String url = "https://api.whatsapp.com/send?phone="+"+2"+number;
             i.setData(Uri.parse(url));
-            i.setPackage("com.whatsapp");
+            i.setPackage("com.whatsapp.w4b");
             startActivity(i);
         }catch (Exception e){
             Toast.makeText(StudentDetailsActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();

@@ -1,5 +1,6 @@
 package com.arafa.mohamed.darsidraapp.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatButton;
@@ -23,18 +24,24 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.arafa.mohamed.darsidraapp.R;
+import com.arafa.mohamed.darsidraapp.models.AdminModel;
 import com.arafa.mohamed.darsidraapp.models.UserInformationModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 
 public class RegistrationActivity extends AppCompatActivity {
+
     AppCompatTextView btSignIn,textErrorPassword,textErrorConfirm;
     AppCompatButton btSignUp;
     AppCompatEditText etUserName,etEmailAddress,etPassword,etConfirmPassword;
@@ -43,8 +50,10 @@ public class RegistrationActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     String userName,emailAddress,password,confirmPassword,userId;
     UserInformationModel userInformationModel;
+    AdminModel adminModel;
     TextInputLayout textLayoutPassword,textLayoutConfirmPassword;
     boolean checkPassword,checkConfirmPassword;
+    ArrayList <String> retrieveAdmins;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +77,7 @@ public class RegistrationActivity extends AppCompatActivity {
         etConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
         checkPassword = true;
         checkConfirmPassword = true;
+        retrieveAdmins = new ArrayList<>();
 
         textLayoutPassword.setStartIconOnClickListener(v -> {
             if(Objects.requireNonNull(AppCompatResources.getDrawable(RegistrationActivity.this, R.drawable.ic_eye)).isVisible() && checkPassword ){
@@ -96,6 +106,23 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
+        databaseReference.child("AdminsData").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    adminModel = postSnapshot.getValue(AdminModel.class);
+                    if(adminModel != null){
+                        retrieveAdmins.add(adminModel.getEmailAdmin());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull  DatabaseError error) {
+                Toast.makeText(RegistrationActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         signIn();
         signUp();
 
@@ -109,7 +136,7 @@ public class RegistrationActivity extends AppCompatActivity {
             confirmPassword= Objects.requireNonNull(etConfirmPassword.getText()).toString();
 
 
-            if(!userName.isEmpty() && !emailAddress.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty() && password.length() >=6 && confirmPassword.equals(password)){
+            if(!userName.isEmpty() && !emailAddress.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty() && password.length() >=6 && confirmPassword.equals(password) && retrieveAdmins.contains(emailAddress)){
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                         WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 etConfirmPassword.setCursorVisible(false);
@@ -165,6 +192,9 @@ public class RegistrationActivity extends AppCompatActivity {
             if(!confirmPassword.equals(password)){
                 textErrorConfirm.setVisibility(View.VISIBLE);
                 textErrorConfirm.setText(R.string.text_error4);
+            }
+            if (!retrieveAdmins.contains(emailAddress)){
+                Toast.makeText(this, "لا يمكن الدخول , هذا البريد الالكترونى غير مسجل ", Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -22,7 +22,7 @@ public class RegisteredTeachersStudentsActivity extends AppCompatActivity {
 
     AppCompatTextView tvToolbar;
     AppCompatImageButton  btLogout, btRegistered, btFilter;
-    MaterialRippleLayout rippleRegisterTeacher, rippleRegisterStudent;
+    MaterialRippleLayout rippleRegisterTeacher, rippleRegisterStudent, rippleRegisterAdmins;
     AppCompatButton btYes,btNo;
     TabLayout tabsItemsRegistered;
     ViewPager2 viewPager;
@@ -68,6 +68,7 @@ public class RegisteredTeachersStudentsActivity extends AppCompatActivity {
 
         rippleRegisterStudent = dialog.findViewById(R.id.ripple_button_register_student);
         rippleRegisterTeacher = dialog.findViewById(R.id.ripple_button_register_teacher);
+        rippleRegisterAdmins = dialog.findViewById(R.id.ripple_button_register_admin);
 
         rippleRegisterStudent.setOnClickListener(v -> {
             dialog.dismiss();
@@ -78,6 +79,11 @@ public class RegisteredTeachersStudentsActivity extends AppCompatActivity {
         rippleRegisterTeacher.setOnClickListener(v -> {
             dialog.dismiss();
             startActivity(new Intent(RegisteredTeachersStudentsActivity.this,TeacherDetailsActivity.class)); });
+
+        rippleRegisterAdmins.setOnClickListener(v -> {
+            dialog.dismiss();
+            startActivity(new Intent(RegisteredTeachersStudentsActivity.this,AddAdminActivity.class));
+        });
         dialog.show();
 
     }

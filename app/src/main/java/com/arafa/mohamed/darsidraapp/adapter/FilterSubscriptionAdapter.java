@@ -80,7 +80,7 @@ public class FilterSubscriptionAdapter extends RecyclerView.Adapter<FilterSubscr
             PackageManager packageManager = context.getPackageManager();
             Intent i = new Intent(Intent.ACTION_VIEW);
             String url = "https://api.whatsapp.com/send?phone="+"+2"+number+"&text=" + URLEncoder.encode(downloadData.get(position).getCodeStudent()+"\n"+context.getResources().getString(R.string.message_payment_whatsapp), "UTF-8");
-            i.setPackage("com.whatsapp");
+            i.setPackage("com.whatsapp.w4b");
             i.setData(Uri.parse(url));
             if (i.resolveActivity(packageManager) != null) {
                 context.startActivity(i);

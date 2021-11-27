@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">إدارة سدرة المنتهى</string>
     <string name="sign_in">تسجيل دخول</string>
     <string name="email_address">البريد الالكترونى</string>
@@ -86,6 +87,8 @@
 
 ولكم منا جزيل الشكر و الإحترام 🌷</string>
 
+    <string name="add_admin_appbar">عرض المشرفين / المشرفات</string>
+
 
     <string name="jan">يناير</string>
     <string name="feb">فبراير</string>
@@ -99,6 +102,9 @@
     <string name="oct">اكتوبر</string>
     <string name="nov">نوفمبر</string>
     <string name="dec">ديسمبر</string>
+    <string name="add_admin">إضافة مشرف</string>
+    <string name="name_admin">اسم المشرف</string>
+    <string name="button_register_admin">تسجيل مشرف / مشرفة</string>
 
 
     <string-array name="list_month">
@@ -115,6 +121,5 @@
         <item> نوفمبر </item>
         <item> ديسمبر </item>
     </string-array>
-
 
 </resources>
