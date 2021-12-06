@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.viewpager2.widget.ViewPager2;
 import android.app.Dialog;
 import android.content.Intent;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 public class RegisteredTeachersStudentsActivity extends AppCompatActivity {
 
     AppCompatTextView tvToolbar;
-    AppCompatImageButton  btLogout, btRegistered, btFilter;
+    AppCompatImageButton  btPopUpMenu, btRegistered, btFilter;
     MaterialRippleLayout rippleRegisterTeacher, rippleRegisterStudent, rippleRegisterAdmins;
     AppCompatButton btYes,btNo;
     TabLayout tabsItemsRegistered;
@@ -34,19 +35,41 @@ public class RegisteredTeachersStudentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registered_teachers_students);
 
-        btLogout = findViewById(R.id.button_log_out);
         btFilter = findViewById(R.id.button_filter);
         btRegistered = findViewById(R.id.button_registered);
         tvToolbar = findViewById(R.id.text_toolbar);
+        btPopUpMenu = findViewById(R.id.button_popup_menu);
 
         tvToolbar.setText(R.string.main_home_appbar);
-        btLogout.setOnClickListener(v -> showCustomDialog());
         btRegistered.setOnClickListener(v -> showCustomDialogSelected() );
         btFilter.setOnClickListener(v -> startActivity(new Intent(RegisteredTeachersStudentsActivity.this,FilterSubscriptionActivity.class)));
 
         tabsItemsRegistered = findViewById(R.id.tabs_item_registered);
         viewPager = findViewById(R.id.view_pager);
         items = new ArrayList<>();
+
+        btPopUpMenu.setOnClickListener(v -> {
+            PopupMenu popup = new PopupMenu(RegisteredTeachersStudentsActivity.this, v);
+            popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+
+            popup.setOnMenuItemClickListener(item -> {
+
+                if (item.getItemId() == R.id.action_view_reservation){
+                    startActivity(new Intent(RegisteredTeachersStudentsActivity.this, ViewReservationActivity.class));
+                }
+
+                else if (item.getItemId() == R.id.action_add_branch){
+                    startActivity(new Intent(RegisteredTeachersStudentsActivity.this, AddBranchActivity.class));
+                }
+                else if(item.getItemId() == R.id.action_log_out){
+                    showCustomDialog();
+                }
+
+                return true;
+            });
+            popup.show();//showing popup menu
+
+        });
 
         items.add("الطلاب المسجلين");
         items.add("المعلمين المسجلين");

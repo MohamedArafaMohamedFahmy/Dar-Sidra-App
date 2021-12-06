@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.arafa.mohamed.darsidraapp.R;
@@ -31,7 +32,7 @@ public class AddAdminActivity extends AppCompatActivity {
     TextInputEditText etEmailAdmin, etNameAdmin;
     AppCompatButton btAddAdmin;
     AppCompatImageButton btBackArrow;
-    AppCompatTextView tvToolbar;
+    AppCompatTextView tvToolbar,tvMessage;
     DatabaseReference databaseReference;
     AdminModel adminData, retrieveAdminData;
     ArrayList<AdminModel> retrieveAdmins;
@@ -48,6 +49,7 @@ public class AddAdminActivity extends AppCompatActivity {
         etEmailAdmin = findViewById(R.id.editText_email_admin);
         btAddAdmin = findViewById(R.id.button_add_admin);
         recyclerViewAdmins = findViewById(R.id.recyclerView_admins);
+        tvMessage = findViewById(R.id.text_message_not_data_admin);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         retrieveAdmins = new ArrayList<>();
 
@@ -60,7 +62,7 @@ public class AddAdminActivity extends AppCompatActivity {
 
         btAddAdmin.setOnClickListener(v -> {
             nameAdmin = Objects.requireNonNull(etNameAdmin.getText()).toString();
-            emailAdmin = Objects.requireNonNull(etEmailAdmin.getText()).toString();
+            emailAdmin = Objects.requireNonNull(etEmailAdmin.getText()).toString().toLowerCase();
 
             if (!nameAdmin.isEmpty() && !emailAdmin.isEmpty()) {
                 idAdmin = databaseReference.push().getKey();
@@ -80,6 +82,7 @@ public class AddAdminActivity extends AppCompatActivity {
         databaseReference.child("AdminsData").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                 retrieveAdmins.clear();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                     retrieveAdminData = postSnapshot.getValue(AdminModel.class);
                     retrieveAdmins.add(retrieveAdminData);
@@ -87,12 +90,15 @@ public class AddAdminActivity extends AppCompatActivity {
 
                 if (!retrieveAdmins.isEmpty()) {
                     adminsAdapter = new AdminsAdapter(AddAdminActivity.this, retrieveAdmins);
+                    adminsAdapter.notifyDataSetChanged();
+                    tvMessage.setVisibility(View.GONE);
                     recyclerViewAdmins.setAdapter(adminsAdapter);
                     recyclerViewAdmins.setLayoutManager(new LinearLayoutManager(AddAdminActivity.this));
 
                 }
                 if (retrieveAdmins.isEmpty()) {
-                    Toast.makeText(AddAdminActivity.this, "لا يوجد مشرفين او مشرفات مسجلين", Toast.LENGTH_SHORT).show();
+                    tvMessage.setVisibility(View.VISIBLE);
+                    tvMessage.setText(R.string.message_not_data_admin);
                 }
             }
 

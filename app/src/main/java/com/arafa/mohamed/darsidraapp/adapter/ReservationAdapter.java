@@ -2,60 +2,60 @@ package com.arafa.mohamed.darsidraapp.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.arafa.mohamed.darsidraapp.R;
-import com.arafa.mohamed.darsidraapp.models.AdminModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.arafa.mohamed.darsidraapp.activities.ViewClassesActivity;
+import com.arafa.mohamed.darsidraapp.models.BranchModel;
+import com.arafa.mohamed.darsidraapp.models.ReservationModel;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class AdminsAdapter extends RecyclerView.Adapter<AdminsAdapter.MyViewHolder> {
+public class ReservationAdapter  extends RecyclerView.Adapter<ReservationAdapter.MyViewHolder> {
     Context context;
-    ArrayList<AdminModel> downloadData;
+    ArrayList<ReservationModel> downloadData;
     DatabaseReference databaseReference;
     AppCompatButton btYes,btNo;
     AppCompatTextView tvMessage;
 
 
-    public AdminsAdapter(Context context, ArrayList<AdminModel> downloadData ){
+    public ReservationAdapter(Context context, ArrayList<ReservationModel> downloadData ){
         this.context=context;
         this.downloadData=downloadData;
     }
 
     @NonNull
     @Override
-    public AdminsAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ReservationAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.recycler_admin, parent, false);
-        return new AdminsAdapter.MyViewHolder(view);
+        View view = layoutInflater.inflate(R.layout.recycler_reservations, parent, false);
+        return new ReservationAdapter.MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdminsAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ReservationAdapter.MyViewHolder holder, int position) {
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        holder.tvAdminName.setText(downloadData.get(position).getNameAdmin());
-        holder.tvAdminEmail.setText(downloadData.get(position).getEmailAdmin());
+        holder.tvNamePerson.setText(downloadData.get(position).getNamePerson());
+        holder.tvMobileNumber.setText(downloadData.get(position).getMobileNumber());
+        holder.tvDays.setText(downloadData.get(position).getDays());
+        holder.tvTiming.setText(downloadData.get(position).getTiming());
+        holder.tvNameClass.setText(downloadData.get(position).getNameClass());
 
         holder.itemView.setOnLongClickListener(v -> {
             showCustomDialog(position);
             return false;
         });
+
     }
 
     @Override
@@ -65,15 +65,15 @@ public class AdminsAdapter extends RecyclerView.Adapter<AdminsAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        AppCompatTextView tvAdminName, tvAdminEmail;
-        LinearLayout linearViewAdmin;
+        AppCompatTextView tvNamePerson, tvMobileNumber, tvDays, tvTiming, tvNameClass;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvAdminName = itemView.findViewById(R.id.text_admin_name);
-            tvAdminEmail = itemView.findViewById(R.id.text_admin_email);
-            linearViewAdmin = itemView.findViewById(R.id.linear_view_admins);
-
+            tvNamePerson = itemView.findViewById(R.id.text_name_person);
+            tvMobileNumber = itemView.findViewById(R.id.text_mobile_number);
+            tvDays = itemView.findViewById(R.id.text_days);
+            tvTiming = itemView.findViewById(R.id.text_timing);
+            tvNameClass = itemView.findViewById(R.id.text_name_class);
         }
     }
 
@@ -89,14 +89,14 @@ public class AdminsAdapter extends RecyclerView.Adapter<AdminsAdapter.MyViewHold
         btNo = dialog.findViewById(R.id.button_no);
         tvMessage = dialog.findViewById(R.id.text_message);
 
-        tvMessage.setText(R.string.do_you_want_to_delete_this_admin);
+        tvMessage.setText(R.string.do_you_want_to_delete_this_reservation);
         btYes.setOnClickListener(v -> {
-          databaseReference.child("AdminsData").child(downloadData.get(position).getIdAdmin()).removeValue().addOnCompleteListener(task -> {
-              if(task.isSuccessful()){
-                  dialog.dismiss();
-                  Toast.makeText(context, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
-              }
-          });
+            databaseReference.child("Reservations").child(downloadData.get(position).getIdReservation()).removeValue().addOnCompleteListener(task -> {
+                if(task.isSuccessful()){
+                    dialog.dismiss();
+                    Toast.makeText(context, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
         btNo.setOnClickListener(v -> dialog.dismiss());

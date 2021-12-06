@@ -22,6 +22,11 @@
     <string name="reset_password_appbar">تغيير كلمة السر</string>
     <string name="do_you_want_to_delete_this_student">هل تريد حذف الطالب ؟</string>
     <string name="do_you_want_to_delete_this_teacher">هل تريد حذف المعلم / المعلمة  ؟</string>
+    <string name="do_you_want_to_delete_this_admin">هل تريد حذف المشرف / المشرفة ؟</string>
+    <string name="do_you_want_to_delete_this_branch">هل تريد حذف هذا الفرع ؟</string>
+    <string name="do_you_want_to_delete_this_class">هل تريد حذف هذا الفصل ؟</string>
+    <string name="do_you_want_to_delete_this_reservation">هل تريد حذف هذا الحجز ؟</string>
+
     <string name="do_you_want_to_log_out">هل تريد تسجيل الخروج؟</string>
     <string name="main_home_appbar">الصفحة الرئيسية</string>
     <string name="name_student">اسم الطالب</string>
@@ -39,6 +44,11 @@
     <string name="register_data">تسجيل البيانات</string>
     <string name="student_details_appbar">بيانات الطالب</string>
     <string name="teacher_details_appbar">بيانات المعلم / المعلمة</string>
+    <string name="add_branch_appbar">اضافة فرع</string>
+    <string name="add_class_appbar">اضافة فصل</string>
+    <string name="view_classes_appbar">عرض الفصول</string>
+    <string name="reservations_appbar">الحجوزات</string>
+
     <string name="status">الحاله</string>
     <string name="add_status">Add Status</string>
     <string name="review">المراجعة</string>
@@ -76,6 +86,7 @@
     <string name="salary">الراتب</string>
     <string name="message_not_data_teacher">لا يوجد معلمين مسجلين</string>
     <string name="message_not_data_student">لا يوجد طلبه مسجلين</string>
+    <string name="message_not_data_admin">لا يوجد مشرفين / مشرفات مسجلين</string>
     <string name="number_student">عدد الطلاب :</string>
     <string name="number_teacher">عدد المعلمين :</string>
     <string name="message_payment_whatsapp">🔹السلام عليكم ورحمة الله وبركاته 🔹
@@ -88,6 +99,18 @@
 ولكم منا جزيل الشكر و الإحترام 🌷</string>
 
     <string name="add_admin_appbar">عرض المشرفين / المشرفات</string>
+    <string name="add_admin">إضافة مشرف</string>
+    <string name="name_admin">اسم المشرف</string>
+    <string name="button_register_admin">تسجيل مشرف / مشرفة</string>
+    <string name="add_branch">اضافة الفرع</string>
+    <string name="button_log_out">تسجيل الخروج</string>
+    <string name="button_add_branch">اضافة فرع</string>
+    <string name="button_add_class">اضافة فصل</string>
+    <string name="days">الايام</string>
+    <string name="timing">التوقيت</string>
+    <string name="name_class">اسم الفصل</string>
+    <string name="close">مغلق</string>
+    <string name="open">مفتوح</string>
 
 
     <string name="jan">يناير</string>
@@ -102,9 +125,7 @@
     <string name="oct">اكتوبر</string>
     <string name="nov">نوفمبر</string>
     <string name="dec">ديسمبر</string>
-    <string name="add_admin">إضافة مشرف</string>
-    <string name="name_admin">اسم المشرف</string>
-    <string name="button_register_admin">تسجيل مشرف / مشرفة</string>
+    <string name="view_reservation">عرض الحجوزات</string>
 
 
     <string-array name="list_month">

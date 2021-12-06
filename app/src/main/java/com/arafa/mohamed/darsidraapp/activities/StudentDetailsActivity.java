@@ -270,12 +270,7 @@ public class StudentDetailsActivity extends AppCompatActivity  {
             if (codeStudent.isEmpty()){
                 etCodeStudent.setError("من فضلك ادخل كود الطالب");
             }
-            if (mobileFather.isEmpty()){
-                etMobileFather.setError("من فضلك ادخل تليفون الاب");
-            }
-            if (mobileMother.isEmpty()){
-                etMobileMother.setError("من فضلك ادخل تليفون الام");
-            }
+
             if (mobileFather.length() < 11){
                 etMobileFather.setError("من فضلك ادخل 11 رقم");
             }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="3dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginHorizontal="6dp"
+    app:cardBackgroundColor="@color/transparent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_status"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sub_color_app"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_gray"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/cairo_extralight"
+            android:padding="10dp"
+            android:layout_marginEnd="3dp"
+            android:layout_alignParentEnd="true"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_timing"
+            android:layout_below="@id/text_days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_gray"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/cairo_extralight"
+            android:padding="10dp"
+            android:layout_marginEnd="3dp"
+            android:layout_alignParentEnd="true"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_name_class"
+            android:layout_below="@id/text_timing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_gray"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/cairo_extralight"
+            android:padding="10dp"
+            android:layout_marginEnd="3dp"
+            android:layout_alignParentEnd="true"
+            />
+
+    </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
