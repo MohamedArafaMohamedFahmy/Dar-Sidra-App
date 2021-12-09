@@ -98,7 +98,7 @@ public class StudentDetailsActivity extends AppCompatActivity  {
         retrieveDataStudent = (StudentModel) objDetailed;
 
         if(retrieveDataStudent != null){
-
+            linearProgressBar.setVisibility(View.VISIBLE);
             btWhatsAppFather.setVisibility(View.VISIBLE);
             btWhatsAppMother.setVisibility(View.VISIBLE);
             btCallNumberFather.setVisibility(View.VISIBLE);
@@ -328,7 +328,6 @@ public class StudentDetailsActivity extends AppCompatActivity  {
             Bitmap bitmap = Bitmap.createBitmap(1000, 1000, Bitmap.Config.RGB_565);
             for (int x = 0; x < 1000; x++) {
                 for (int y = 0; y < 1000; y++) {
-                    linearProgressBar.setVisibility(View.VISIBLE);
                     bitmap.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.parseColor("#DBEFD6"));
                 }
             }

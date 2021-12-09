@@ -1,17 +1,18 @@
 package com.arafa.mohamed.darsidraapp.models;
 
 public class RatingModel {
-    private String review, preservation, audience, absence,total;
+    private String review, preservation, audience, absence,total, notes;
 
     public RatingModel() {
     }
 
-    public RatingModel(String review, String preservation, String audience, String absence, String total) {
+    public RatingModel(String review, String preservation, String audience, String absence, String total, String notes) {
         this.review = review;
         this.preservation = preservation;
         this.audience = audience;
         this.absence = absence;
         this.total = total;
+        this.notes = notes;
     }
 
     public String getReview() {
@@ -52,5 +53,13 @@ public class RatingModel {
 
     public void setTotal(String total) {
         this.total = total;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

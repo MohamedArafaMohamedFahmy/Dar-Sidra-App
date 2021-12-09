@@ -54,7 +54,7 @@
         android:popupElevation="2dp"
         android:popupBackground="@color/sub_color_app"
         android:dropDownVerticalOffset="50dp"
-        android:background="@drawable/bg_spinner_blood_type"
+        android:background="@drawable/bg_spinner_month"
         />
 
     <androidx.recyclerview.widget.RecyclerView

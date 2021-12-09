@@ -46,7 +46,6 @@ public class FilterSubscriptionAdapter extends RecyclerView.Adapter<FilterSubscr
         holder.tvMobileMother.setText(downloadData.get(position).getMobileMother());
 
         holder.btWhatsFather.setOnClickListener(v -> openWhatsapp(downloadData.get(position).getMobileFather(),position));
-
         holder.btWhatsMother.setOnClickListener(v -> openWhatsapp(downloadData.get(position).getMobileMother(),position));
 
 

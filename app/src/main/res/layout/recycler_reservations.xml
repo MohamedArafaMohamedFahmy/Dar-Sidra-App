@@ -7,6 +7,7 @@
     app:cardElevation="3dp"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
+    android:padding="6dp"
     android:layout_marginHorizontal="10dp"
     app:cardBackgroundColor="@color/transparent"
     >
@@ -21,11 +22,11 @@
                 android:id="@+id/text_name_person"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black_gray"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/cairo_extralight"
-                android:padding="10dp"
+                android:fontFamily="@font/amaranth"
+                android:padding="6dp"
                 android:layout_marginEnd="3dp"
                 android:layout_alignParentEnd="true"
                 />
@@ -35,11 +36,11 @@
                 android:layout_below="@id/text_name_person"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black_gray"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/cairo_extralight"
-                android:padding="10dp"
+                android:fontFamily="@font/amaranth"
+                android:padding="6dp"
                 android:layout_marginEnd="3dp"
                 android:layout_alignParentEnd="true"
                 />
@@ -53,8 +54,9 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/cairo_extralight"
-                android:padding="10dp"
-                android:layout_centerHorizontal="true"
+                android:padding="6dp"
+                android:layout_alignParentEnd="true"
+
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -66,8 +68,9 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/cairo_extralight"
-                android:padding="10dp"
-                android:layout_centerHorizontal="true"
+                android:padding="6dp"
+                android:layout_alignParentEnd="true"
+
                 />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -79,8 +82,8 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/cairo_extralight"
-                android:padding="10dp"
-                android:layout_centerHorizontal="true"
+                android:padding="6dp"
+                android:layout_alignParentEnd="true"
                 />
 
         </RelativeLayout>

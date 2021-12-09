@@ -113,6 +113,9 @@
     <string name="name_class">اسم الفصل</string>
     <string name="close">مغلق</string>
     <string name="open">مفتوح</string>
+    <string name="view_reservation">عرض الحجوزات</string>
+    <string name="text_class">الفصل :</string>
+    <string name="text_timing">التوقيت :</string>
 
 
     <string name="jan">يناير</string>

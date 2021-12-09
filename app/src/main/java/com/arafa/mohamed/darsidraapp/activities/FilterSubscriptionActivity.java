@@ -420,11 +420,11 @@ public class FilterSubscriptionActivity extends AppCompatActivity implements Cus
 
     @Override
     public void onPopupWindowOpened(AppCompatSpinner spinner) {
-        spinnerMonth.setBackground(AppCompatResources.getDrawable(FilterSubscriptionActivity.this,R.drawable.bg_spinner_blood_type_up));
+        spinnerMonth.setBackground(AppCompatResources.getDrawable(FilterSubscriptionActivity.this,R.drawable.bg_spinner_month_up));
     }
 
     @Override
     public void onPopupWindowClosed(AppCompatSpinner spinner) {
-        spinnerMonth.setBackground(AppCompatResources.getDrawable(FilterSubscriptionActivity.this,R.drawable.bg_spinner_blood_type));
+        spinnerMonth.setBackground(AppCompatResources.getDrawable(FilterSubscriptionActivity.this,R.drawable.bg_spinner_month));
     }
 }
