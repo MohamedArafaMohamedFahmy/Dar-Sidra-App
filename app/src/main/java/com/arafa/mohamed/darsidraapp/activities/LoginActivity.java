@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
         btSignIn.setOnClickListener(v -> {
             emailAddress= Objects.requireNonNull(etEmailAddress.getText()).toString();
             password= Objects.requireNonNull(etPassword.getText()).toString();
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+
             if(!emailAddress.isEmpty() && !password.isEmpty() && password.length() >= 6 && retrieveAdmins.contains(emailAddress)){
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                         WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -129,7 +129,8 @@ public class LoginActivity extends AppCompatActivity {
                         linearProgressBar.setVisibility(View.GONE);
                         etPassword.setCursorVisible(true);
                         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                        Toast.makeText(LoginActivity.this, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, ""+ Objects.requireNonNull(task.getException()).getMessage(),Toast.LENGTH_LONG).show();
+
                     }
                 });
             }
