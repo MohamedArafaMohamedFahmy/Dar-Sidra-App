@@ -1,7 +1,7 @@
 package com.arafa.mohamed.darsidraapp.models;
 
 public class AdminModel {
-    String idAdmin, nameAdmin, emailAdmin;
+   private String idAdmin, nameAdmin, emailAdmin;
 
     public AdminModel() {
     }

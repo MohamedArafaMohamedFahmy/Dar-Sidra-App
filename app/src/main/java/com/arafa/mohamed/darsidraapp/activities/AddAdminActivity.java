@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.adapter.AdminsAdapter;
 import com.arafa.mohamed.darsidraapp.models.AdminModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -67,7 +69,16 @@ public class AddAdminActivity extends AppCompatActivity {
             if (!nameAdmin.isEmpty() && !emailAdmin.isEmpty()) {
                 idAdmin = databaseReference.push().getKey();
                 adminData = new AdminModel(nameAdmin, emailAdmin, idAdmin);
-                databaseReference.child("AdminsData").child(idAdmin).setValue(adminData).addOnCompleteListener(task -> Toast.makeText(AddAdminActivity.this, "تم الاضافه بنجاح", Toast.LENGTH_SHORT).show());
+                databaseReference.child("AdminsData").child(idAdmin).setValue(adminData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(AddAdminActivity.this, "تم الاضافه بنجاح", Toast.LENGTH_SHORT).show();
+                            etNameAdmin.getText().clear();
+                            etEmailAdmin.getText().clear();
+                        }
+                    }
+                });
 
             }
 
