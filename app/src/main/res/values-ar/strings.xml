@@ -1,151 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<resources>
-
-    <string name="app_name">إدارة سدرة المنتهى</string>
-    <string name="sign_in">تسجيل دخول</string>
-    <string name="email_address">البريد الالكترونى</string>
-    <string name="password">كلمة السر</string>
-    <string name="loading">تحميل ....</string>
-    <string name="sign_up">إنشاء حساب</string>
-    <string name="do_not_have_an_account">ليس لديك حساب؟</string>
-    <string name="forgot_password">هل نسيت كلمة السر؟</string>
-    <string name="user_name">اسم المستخدم</string>
-    <string name="confirm_password">تأكيد كلمة السر</string>
-    <string name="already_have_an_account">هل لديك حساب ؟</string>
-    <string name="text_error1">الرجاء إدخال كلمة السر</string>
-    <string name="text_error2">كلمة المرور قصيرة جدًا ، يجب أن تتكون كلمة السر من 6 أحرف على الأقل </string>
-    <string name="text_error3">الرجاء إدخال تأكيد كلمة السر</string>
-    <string name="text_error4">تأكيد كلمة السر لا يتطابق مع كلمة السر</string>
-    <string name="first_text">أولاً ، دعنا نعيد تعيين كلمة المرور لحسابك</string>
-    <string name="second_text">رجاءا أدخل بريدك الإلكتروني</string>
-    <string name="message_forgot_password"> %1$s تحقق من بريدك الإلكتروني لإعادة تعيين كلمة السر الخاصة بك  </string>
-    <string name="reset_password">إعادة تعيين كلمة السر</string>
-    <string name="reset_password_appbar">تغيير كلمة السر</string>
-    <string name="do_you_want_to_delete_this_student">هل تريد حذف الطالب ؟</string>
-    <string name="do_you_want_to_delete_this_teacher">هل تريد حذف المعلم / المعلمة  ؟</string>
-    <string name="do_you_want_to_delete_this_admin">هل تريد حذف المشرف / المشرفة ؟</string>
-    <string name="do_you_want_to_delete_this_branch">هل تريد حذف هذا الفرع ؟</string>
-    <string name="do_you_want_to_delete_this_class">هل تريد حذف هذا الفصل ؟</string>
-    <string name="do_you_want_to_delete_this_reservation">هل تريد حذف هذا الحجز ؟</string>
-
-    <string name="do_you_want_to_log_out">هل تريد تسجيل الخروج؟</string>
-    <string name="main_home_appbar">الصفحة الرئيسية</string>
-    <string name="name_student">اسم الطالب</string>
-    <string name="joining_date">تاريخ الالتحاق</string>
-    <string name="rating_subscription_appbar">تفاصيل الاشتراك والتقييم</string>
-    <string name="rating_salary_appbar">تفاصيل الراتب والتقييم</string>
-    <string name="cancel">إلغاء</string>
-    <string name="accept">موافق</string>
-    <string name="notification">تنبيه</string>
-    <string name="code_student">كود الطالب</string>
-    <string name="mobile_father">تليفون الاب</string>
-    <string name="mobile_mother">تليفون الام</string>
-    <string name="class_student">فصل الطالب</string>
-    <string name="date_session">ميعاد الطالب</string>
-    <string name="register_data">تسجيل البيانات</string>
-    <string name="student_details_appbar">بيانات الطالب</string>
-    <string name="teacher_details_appbar">بيانات المعلم / المعلمة</string>
-    <string name="add_branch_appbar">اضافة فرع</string>
-    <string name="add_class_appbar">اضافة فصل</string>
-    <string name="view_classes_appbar">عرض الفصول</string>
-    <string name="reservations_appbar">الحجوزات</string>
-
-    <string name="status">الحاله</string>
-    <string name="add_status">Add Status</string>
-    <string name="review">المراجعة</string>
-    <string name="score">الدرجة</string>
-    <string name="preservation">الحفظ</string>
-    <string name="audience">الحضور</string>
-    <string name="absence">الغياب</string>
-    <string name="text_logo_sidra">دار سدرة المنتهى</string>
-    <string name="search_code_student">البحث بكود الطالب أو الاسم أو الفصل</string>
-    <string name="search_code_teacher">البحث بكود المعلم أو الاسم</string>
-    <string name="born_date">تاريخ الميلاد</string>
-    <string name="branch">الفرع</string>
-    <string name="start_saving">بداية الحفظ</string>
-    <string name="payment">تم الدفع</string>
-    <string name="filter_month">فلترة الشهور</string>
-    <string name="total_number">العدد الاجمالى :</string>
-    <string name="name_teacher">اسم المعلم / المعلمة</string>
-    <string name="enrollment_teacher">تاريخ الانضمام</string>
-    <string name="code_teacher">كود المعلم / المعلمة</string>
-    <string name="mobile_number">التليفون</string>
-    <string name="attendance_and_departure">الالتزام بميعاد الحضور و الإنصراف</string>
-    <string name="number_ten">10</string>
-    <string name="notes">الملاحظات</string>
-    <string name="cleanliness_order_classroom">الحفاظ على نظافة و ترتيب الفصل</string>
-    <string name="value_game_material">تناول قيمه او لعبه مع الماده العلميه</string>
-    <string name="Dealing_with_students">التعامل مع الطلاب و الجو العام</string>
-    <string name="time_management">ادارة الوقت</string>
-    <string name="total">المجموع</string>
-    <string name="number_fifty">50</string>
-    <string name="which_select">أى اختيار تريد؟</string>
-    <string name="button_register_teacher">تسجيل معلم / معلمة</string>
-    <string name="button_register_student">تسجيل طالب</string>
-    <string name="days_of_absence">ايام الغياب</string>
-    <string name="days_increase">الايام الزيادة</string>
-    <string name="salary">الراتب</string>
-    <string name="message_not_data_teacher">لا يوجد معلمين مسجلين</string>
-    <string name="message_not_data_student">لا يوجد طلبه مسجلين</string>
-    <string name="message_not_data_admin">لا يوجد مشرفين / مشرفات مسجلين</string>
-    <string name="number_student">عدد الطلاب :</string>
-    <string name="number_teacher">عدد المعلمين :</string>
-    <string name="message_payment_whatsapp">🔹السلام عليكم ورحمة الله وبركاته 🔹
-
-بنذكر حضرتك بدفع إشتراك الشهر  🌻
-وإن الإشتراك عندنا شهري و الدفع بيكون مقدم من يوم ١ إلى يوم ٥ في الشهر.
-
-و الرجاء من حضراتكم عدم التأخير في الدفع مره أخرى🌿
-
-ولكم منا جزيل الشكر و الإحترام 🌷</string>
-
-    <string name="add_admin_appbar">عرض المشرفين / المشرفات</string>
-    <string name="add_admin">إضافة مشرف</string>
-    <string name="name_admin">اسم المشرف</string>
-    <string name="button_register_admin">تسجيل مشرف / مشرفة</string>
-    <string name="add_branch">اضافة الفرع</string>
-    <string name="button_log_out">تسجيل الخروج</string>
-    <string name="button_add_branch">اضافة فرع</string>
-    <string name="button_add_class">اضافة فصل</string>
-    <string name="days">الايام</string>
-    <string name="timing">التوقيت</string>
-    <string name="name_class">اسم الفصل</string>
-    <string name="close">مغلق</string>
-    <string name="open">مفتوح</string>
-    <string name="view_reservation">عرض الحجوزات</string>
-    <string name="text_class">الفصل :</string>
-    <string name="text_timing">التوقيت :</string>
-
-
-    <string name="jan">يناير</string>
-    <string name="feb">فبراير</string>
-    <string name="mar">مارس</string>
-    <string name="apr">ابريل</string>
-    <string name="may">مايو</string>
-    <string name="jun">يونيو</string>
-    <string name="jul">يوليو</string>
-    <string name="aug">اغسطس</string>
-    <string name="sep">سبتمبر</string>
-    <string name="oct">اكتوبر</string>
-    <string name="nov">نوفمبر</string>
-    <string name="dec">ديسمبر</string>
-
-
-
-    <string-array name="list_month">
-        <item> يناير</item>
-        <item> فبراير</item>
-        <item> مارس </item>
-        <item> ابريل</item>
-        <item> مايو </item>
-        <item> يونيو </item>
-        <item> يوليو </item>
-        <item> اغسطس </item>
-        <item> سبتمبر </item>
-        <item> اكتوبر </item>
-        <item> نوفمبر </item>
-        <item> ديسمبر </item>
-    </string-array>
-
-</resources>

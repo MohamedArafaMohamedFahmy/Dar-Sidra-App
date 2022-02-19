@@ -14,9 +14,12 @@
         android:roundIcon="@mipmap/ic_logo_sidra_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.DarSidraApp">
-        <activity android:name=".activities.ViewReservationActivity"
+        <activity android:name=".activities.AddTeachersUnderSupervisorActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar"
             />
+        <activity
+            android:name=".activities.ViewReservationActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".activities.ViewClassesActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />

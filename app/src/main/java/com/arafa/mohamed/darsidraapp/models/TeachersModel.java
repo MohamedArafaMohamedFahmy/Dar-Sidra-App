@@ -3,7 +3,7 @@ package com.arafa.mohamed.darsidraapp.models;
 import java.io.Serializable;
 
 public class TeachersModel implements Serializable {
-    private String codeTeacher, nameTeacher, phoneNumber, dateEnrollment ;
+    private String codeTeacher, nameTeacher, phoneNumber, dateEnrollment, emailAdmin ;
 
     public TeachersModel() {
     }
@@ -13,6 +13,13 @@ public class TeachersModel implements Serializable {
         this.nameTeacher = nameTeacher;
         this.phoneNumber = phoneNumber;
         this.dateEnrollment = dateEnrollment;
+    }
+
+    public TeachersModel(String nameTeacher, String codeTeacher, String emailAdmin) {
+        this.codeTeacher = codeTeacher;
+        this.nameTeacher = nameTeacher;
+        this.emailAdmin = emailAdmin;
+
     }
 
     public String getCodeTeacher() {
@@ -45,5 +52,13 @@ public class TeachersModel implements Serializable {
 
     public void setDateEnrollment(String dateEnrollment) {
         this.dateEnrollment = dateEnrollment;
+    }
+
+    public String getEmailAdmin() {
+        return emailAdmin;
+    }
+
+    public void setEmailAdmin(String emailAdmin) {
+        this.emailAdmin = emailAdmin;
     }
 }

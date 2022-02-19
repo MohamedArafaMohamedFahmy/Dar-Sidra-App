@@ -107,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
     public void signIn(){
 
         btSignIn.setOnClickListener(v -> {
-            emailAddress= Objects.requireNonNull(etEmailAddress.getText()).toString();
+            emailAddress= Objects.requireNonNull(etEmailAddress.getText()).toString().toLowerCase();
             password= Objects.requireNonNull(etPassword.getText()).toString();
 
             if(!emailAddress.isEmpty() && !password.isEmpty() && password.length() >= 6 && retrieveAdmins.contains(emailAddress)){

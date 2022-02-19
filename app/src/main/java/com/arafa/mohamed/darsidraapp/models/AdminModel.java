@@ -1,6 +1,8 @@
 package com.arafa.mohamed.darsidraapp.models;
 
-public class AdminModel {
+import java.io.Serializable;
+
+public class AdminModel implements Serializable {
    private String idAdmin, nameAdmin, emailAdmin;
 
     public AdminModel() {

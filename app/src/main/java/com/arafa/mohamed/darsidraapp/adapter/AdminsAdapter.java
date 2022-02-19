@@ -2,25 +2,22 @@ package com.arafa.mohamed.darsidraapp.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.arafa.mohamed.darsidraapp.R;
+import com.arafa.mohamed.darsidraapp.activities.AddTeachersUnderSupervisorActivity;
 import com.arafa.mohamed.darsidraapp.models.AdminModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -28,6 +25,7 @@ public class AdminsAdapter extends RecyclerView.Adapter<AdminsAdapter.MyViewHold
     Context context;
     ArrayList<AdminModel> downloadData;
     DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
     AppCompatButton btYes,btNo;
     AppCompatTextView tvMessage;
 
@@ -48,12 +46,28 @@ public class AdminsAdapter extends RecyclerView.Adapter<AdminsAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull AdminsAdapter.MyViewHolder holder, int position) {
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         holder.tvAdminName.setText(downloadData.get(position).getNameAdmin());
         holder.tvAdminEmail.setText(downloadData.get(position).getEmailAdmin());
 
+        holder.itemView.setOnClickListener(v -> {
+            if(Objects.equals(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail(), "sedra4quran@gmail.com")) {
+                Intent intentAddTeachers = new Intent(context, AddTeachersUnderSupervisorActivity.class);
+                intentAddTeachers.putExtra("adminData", downloadData.get(position));
+                context.startActivity(intentAddTeachers);
+            }else {
+                Toast.makeText(context, "لا يمكن لهذا الحساب بالدخول", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         holder.itemView.setOnLongClickListener(v -> {
-            showCustomDialog(position);
+            if(Objects.equals(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail(), "sedra4quran@gmail.com")) {
+                showCustomDialog(position);
+            }else {
+                Toast.makeText(context, "لا يمكن لهذا الحساب بحذف المشرف", Toast.LENGTH_SHORT).show();
+
+            }
             return false;
         });
     }
@@ -65,14 +79,13 @@ public class AdminsAdapter extends RecyclerView.Adapter<AdminsAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
         AppCompatTextView tvAdminName, tvAdminEmail;
-        LinearLayout linearViewAdmin;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tvAdminName = itemView.findViewById(R.id.text_admin_name);
             tvAdminEmail = itemView.findViewById(R.id.text_admin_email);
-            linearViewAdmin = itemView.findViewById(R.id.linear_view_admins);
 
         }
     }

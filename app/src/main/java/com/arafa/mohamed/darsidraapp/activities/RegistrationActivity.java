@@ -131,12 +131,13 @@ public class RegistrationActivity extends AppCompatActivity {
     public void signUp(){
         btSignUp.setOnClickListener(v -> {
             userName= Objects.requireNonNull(etUserName.getText()).toString();
-            emailAddress= Objects.requireNonNull(etEmailAddress.getText()).toString();
+            emailAddress= Objects.requireNonNull(etEmailAddress.getText()).toString().toLowerCase();
             password= Objects.requireNonNull(etPassword.getText()).toString();
             confirmPassword= Objects.requireNonNull(etConfirmPassword.getText()).toString();
 
 
-            if(!userName.isEmpty() && !emailAddress.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty() && password.length() >=6 && confirmPassword.equals(password) && retrieveAdmins.contains(emailAddress)){
+            if(!userName.isEmpty() && !emailAddress.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty()
+                    && password.length() >=6 && confirmPassword.equals(password) && retrieveAdmins.contains(emailAddress)){
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                         WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 etConfirmPassword.setCursorVisible(false);

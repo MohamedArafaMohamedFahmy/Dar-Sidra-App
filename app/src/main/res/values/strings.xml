@@ -48,6 +48,7 @@
     <string name="add_class_appbar">اضافة فصل</string>
     <string name="view_classes_appbar">عرض الفصول</string>
     <string name="reservations_appbar">الحجوزات</string>
+    <string name="add_teacher">إضافة المعلم / المعلمة</string>
 
     <string name="status">الحاله</string>
     <string name="add_status">Add Status</string>
@@ -87,6 +88,7 @@
     <string name="message_not_data_teacher">لا يوجد معلمين مسجلين</string>
     <string name="message_not_data_student">لا يوجد طلبه مسجلين</string>
     <string name="message_not_data_admin">لا يوجد مشرفين / مشرفات مسجلين</string>
+    <string name="message_not_data_supervisor_teachers">لا يوجد معلم / معلمة مسجلين تحت المشرف</string>
     <string name="number_student">عدد الطلاب :</string>
     <string name="number_teacher">عدد المعلمين :</string>
     <string name="message_payment_whatsapp">🔹السلام عليكم ورحمة الله وبركاته 🔹
@@ -99,6 +101,8 @@
 ولكم منا جزيل الشكر و الإحترام 🌷</string>
 
     <string name="add_admin_appbar">عرض المشرفين / المشرفات</string>
+    <string name="add_supervisor_appbar">عرض المعلمين تحت المشرف</string>
+
     <string name="add_admin">إضافة مشرف</string>
     <string name="name_admin">اسم المشرف</string>
     <string name="button_register_admin">تسجيل مشرف / مشرفة</string>
