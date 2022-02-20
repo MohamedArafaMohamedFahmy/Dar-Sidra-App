@@ -2,19 +2,18 @@ package com.arafa.mohamed.darsidraapp.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.models.RatingTeacherModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
@@ -22,7 +21,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.Objects;
 
 public class RatingTeacherFragment extends Fragment {
@@ -68,6 +66,8 @@ public class RatingTeacherFragment extends Fragment {
         etTotal = viewRating.findViewById(R.id.editText_score_total);
         btAddRatingTeacher = viewRating.findViewById(R.id.button_add_rating_teacher);
 
+        etTotal.setEnabled(false);
+
         databaseReference.child("RatingTeachers").child(codeTeacher).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull  DataSnapshot snapshot) {
@@ -84,6 +84,7 @@ public class RatingTeacherFragment extends Fragment {
                     etNotesTimeManagement.setText(ratingTeacherModel.getNotesTimeManagement());
                     etScoreTimeManagement.setText(ratingTeacherModel.getScoreTimeManagement());
                     etTotal.setText(ratingTeacherModel.getTotal());
+
                 }
 
             }
@@ -93,6 +94,15 @@ public class RatingTeacherFragment extends Fragment {
                 Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+        etScoreAttendanceDeparture.addTextChangedListener(textWatcher);
+        etScoreClassroomCleanTidy.addTextChangedListener(textWatcher);
+        etScoreValueGame.addTextChangedListener(textWatcher);
+        etScoreDealingAtmosphere.addTextChangedListener(textWatcher);
+        etScoreTimeManagement.addTextChangedListener(textWatcher);
+
 
         btAddRatingTeacher.setOnClickListener(v -> {
             notesAttendanceDeparture = Objects.requireNonNull(etNotesAttendanceDeparture.getText()).toString();
@@ -107,21 +117,77 @@ public class RatingTeacherFragment extends Fragment {
             scoreTimeManagement = Objects.requireNonNull(etScoreTimeManagement.getText()).toString();
             total = Objects.requireNonNull(etTotal.getText()).toString();
 
-            ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
-                    notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
-                    notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total);
+            if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
+                    && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
+                    && Integer.parseInt(scoreTimeManagement) <=10){
 
-            databaseReference.child("RatingTeachers").child(codeTeacher).setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                if (task.isSuccessful()){
-                    Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-                }
+                ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
+                        notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
+                        notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total);
 
-            });
+                databaseReference.child("RatingTeachers").child(codeTeacher).setValue(ratingTeacherModel).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+
+            if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
+                etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
+            }
+            if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
+                etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
+            }
+            if(Integer.parseInt( scoreValueGame ) > 10 ){
+                etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
+            }
+            if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
+                etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
+            }
+            if(Integer.parseInt(scoreTimeManagement) > 10 ){
+                etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
+            }
         });
-
-
         return viewRating;
     }
+
+    TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            if (!TextUtils.isEmpty(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString().trim())
+                    || !TextUtils.isEmpty(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString().trim())
+                    || !TextUtils.isEmpty(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString().trim())
+                    || !TextUtils.isEmpty(Objects.requireNonNull(etScoreTimeManagement.getText()).toString().trim())
+                    || !TextUtils.isEmpty(Objects.requireNonNull(etScoreValueGame.getText()).toString().trim()))
+            {
+
+
+                int firstValue = TextUtils.isEmpty(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString().trim()) ? 0 : Integer.parseInt(etScoreAttendanceDeparture.getText().toString().trim());
+                int secondValue = TextUtils.isEmpty(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString().trim()) ? 0 : Integer.parseInt(etScoreClassroomCleanTidy.getText().toString().trim());
+                int thirdValue = TextUtils.isEmpty(Objects.requireNonNull(etScoreTimeManagement.getText()).toString().trim()) ? 0 : Integer.parseInt(etScoreTimeManagement.getText().toString().trim());
+                int forthValue = TextUtils.isEmpty(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString().trim()) ? 0 : Integer.parseInt(etScoreDealingAtmosphere.getText().toString().trim());
+                int fifthValue = TextUtils.isEmpty(Objects.requireNonNull(etScoreValueGame.getText()).toString().trim()) ? 0 : Integer.parseInt(etScoreValueGame.getText().toString().trim());
+
+                int answer = firstValue + secondValue + thirdValue + forthValue + fifthValue;
+
+                etTotal.setText(String.valueOf(answer));
+            }else {
+                etTotal.setText("");
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
 }

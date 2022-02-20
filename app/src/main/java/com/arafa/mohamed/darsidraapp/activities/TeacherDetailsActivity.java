@@ -1,6 +1,7 @@
 package com.arafa.mohamed.darsidraapp.activities;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -14,11 +15,18 @@ import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.arafa.mohamed.darsidraapp.R;
+import com.arafa.mohamed.darsidraapp.models.AdminModel;
 import com.arafa.mohamed.darsidraapp.models.TeachersModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -31,7 +39,10 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
     AppCompatButton btRegisterData;
     LinearLayout linearProgressBar;
     DatabaseReference databaseReference;
-    TeachersModel teachersModel, retrieveDataTeacher;
+    FirebaseAuth firebaseAuth;
+    TeachersModel teachersModel, retrieveDataTeacher, retrieveCodeTeacher;
+    AdminModel adminModel;
+    ArrayList<String> listCodeTeacher;
     String codeTeacher, nameTeacher, phoneNumber, dateEnrollment, date;
 
     @Override
@@ -51,7 +62,9 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
         btRegisterData = findViewById(R.id.button_submit);
         linearProgressBar = findViewById(R.id.linear_progress_bar);
         layoutEnrollmentTeacher = findViewById(R.id.date_enrollment_layout);
+        listCodeTeacher = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         tvToolbar.setText(R.string.teacher_details_appbar);
         btBackArrow.setOnClickListener(v -> finish());
@@ -136,11 +149,45 @@ public class TeacherDetailsActivity extends AppCompatActivity implements DatePic
 
         });
 
+        databaseReference.child("AdminsData").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    adminModel = postSnapshot.getValue(AdminModel.class);
+                    if (adminModel != null && adminModel.getEmailAdmin().equals(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getEmail())) {
+                        databaseReference.child("SupervisorTeacher").child(adminModel.getIdAdmin()).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                                    retrieveCodeTeacher = postSnapshot.getValue(TeachersModel.class);
+                                    if (retrieveCodeTeacher !=null) {
+                                        listCodeTeacher.add(retrieveCodeTeacher.getCodeTeacher());
+                                    }
+                                }
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(TeacherDetailsActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(TeacherDetailsActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         btSalaryRating.setOnClickListener(v -> {
-            Intent intentRatingSalary = new Intent(TeacherDetailsActivity.this,RatingSalaryActivity.class);
-            intentRatingSalary.putExtra("codeTeacher",retrieveDataTeacher.getCodeTeacher());
-            intentRatingSalary.putExtra("nameTeacher",retrieveDataTeacher.getNameTeacher());
-            startActivity(intentRatingSalary);
+            if (listCodeTeacher.contains(retrieveDataTeacher.getCodeTeacher())) {
+                Intent intentRatingSalary = new Intent(TeacherDetailsActivity.this, RatingSalaryActivity.class);
+                intentRatingSalary.putExtra("codeTeacher", retrieveDataTeacher.getCodeTeacher());
+                intentRatingSalary.putExtra("nameTeacher", retrieveDataTeacher.getNameTeacher());
+                startActivity(intentRatingSalary);
+            }else {
+                Toast.makeText(this, "غير مسموح لك بالدخول", Toast.LENGTH_LONG).show();
+            }
         });
 
         layoutEnrollmentTeacher.setStartIconOnClickListener(v -> showDatePickerDialog());

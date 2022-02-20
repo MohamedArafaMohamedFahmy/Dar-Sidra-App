@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.arafa.mohamed.darsidraapp.R;
 import com.arafa.mohamed.darsidraapp.activities.AddTeachersUnderSupervisorActivity;
 import com.arafa.mohamed.darsidraapp.models.AdminModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -104,12 +106,16 @@ public class AdminsAdapter extends RecyclerView.Adapter<AdminsAdapter.MyViewHold
 
         tvMessage.setText(R.string.do_you_want_to_delete_this_admin);
         btYes.setOnClickListener(v -> {
-          databaseReference.child("AdminsData").child(downloadData.get(position).getIdAdmin()).removeValue().addOnCompleteListener(task -> {
-              if(task.isSuccessful()){
-                  dialog.dismiss();
-                  Toast.makeText(context, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
-              }
-          });
+            databaseReference.child("SupervisorTeacher").child(downloadData.get(position).getIdAdmin()).removeValue().addOnCompleteListener(task1 -> {
+                if (task1.isSuccessful()){
+                    databaseReference.child("AdminsData").child(downloadData.get(position).getIdAdmin()).removeValue().addOnCompleteListener(task2 -> {
+                        if(task2.isSuccessful()){
+                            dialog.dismiss();
+                            Toast.makeText(context, "تم الحذف بنجاح", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            });
         });
 
         btNo.setOnClickListener(v -> dialog.dismiss());

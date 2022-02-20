@@ -96,7 +96,7 @@ public class AddTeachersUnderSupervisorActivity extends AppCompatActivity {
                 }
 
                 if (!retrieveTeacher.isEmpty()) {
-                    supervisorTeacherAdapter = new SupervisorTeacherAdapter(AddTeachersUnderSupervisorActivity.this, retrieveTeacher);
+                    supervisorTeacherAdapter = new SupervisorTeacherAdapter(AddTeachersUnderSupervisorActivity.this, retrieveTeacher,retrieveDataAdmin.getIdAdmin());
                     supervisorTeacherAdapter.notifyDataSetChanged();
                     tvMessage.setVisibility(View.GONE);
                     recyclerViewTeachers.setAdapter(supervisorTeacherAdapter);
