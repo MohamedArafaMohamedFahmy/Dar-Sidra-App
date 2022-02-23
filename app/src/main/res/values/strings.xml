@@ -118,6 +118,8 @@
     <string name="view_reservation">عرض الحجوزات</string>
     <string name="text_class">الفصل :</string>
     <string name="text_timing">التوقيت :</string>
+    <string name="achievements">الانجازات</string>
+    <string name="message_to_rating">تأكد من ادخالك القيمة المحددة</string>
 
 
     <string name="jan">يناير</string>
@@ -132,7 +134,6 @@
     <string name="oct">اكتوبر</string>
     <string name="nov">نوفمبر</string>
     <string name="dec">ديسمبر</string>
-    <string name="achievements">الانجازات</string>
 
 
     <string-array name="list_month">

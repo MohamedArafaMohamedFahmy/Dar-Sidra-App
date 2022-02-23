@@ -1,10 +1,14 @@
 package com.arafa.mohamed.darsidraapp.fragments;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -20,6 +24,7 @@ import com.arafa.mohamed.darsidraapp.models.CustomSpinner;
 import com.arafa.mohamed.darsidraapp.models.RatingTeacherModel;
 import com.arafa.mohamed.darsidraapp.models.SubscriptionModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,6 +50,7 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
     int indexMonth;
     MonthAdapter monthAdapter;
     Context context;
+    Snackbar snackbar;
 
     public RatingTeacherFragment() {
         // Required empty public constructor
@@ -142,39 +148,46 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                         total = Objects.requireNonNull(etTotal.getText()).toString();
                         achievements = Objects.requireNonNull(etAchievements.getText()).toString();
 
-                        if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                                && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                                && Integer.parseInt(scoreTimeManagement) <=10){
+                        if ( Integer.parseInt(etScoreAttendanceDeparture.getText().toString()) <= 10  && Integer.parseInt(etScoreDealingAtmosphere.getText().toString()) <= 10
+                                && Integer.parseInt(etScoreValueGame.getText().toString()) <= 10 && Integer.parseInt(etScoreClassroomCleanTidy.getText().toString())  <= 10
+                                && Integer.parseInt(etScoreTimeManagement.getText().toString()) <= 10 ) {
+
 
                             ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
                                     notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
                                     notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
 
                             databaseReference.child("RatingTeachers").child(codeTeacher).child("jan").setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
 
-                        if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                            etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
-                        }
-                        if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                            etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
-                        }
-                        if(Integer.parseInt( scoreValueGame ) > 10 ){
-                            etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
-                        }
-                        if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                            etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
-                        }
-                        if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                            etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
-                        }
+                       if( Integer.parseInt(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString()) > 10){
+                           viewSnackBar(viewRating);
+                           etScoreAttendanceDeparture.getText().clear();
+                       }
+                       if (Integer.parseInt(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString()) > 10){
+                           viewSnackBar(viewRating);
+                           etScoreDealingAtmosphere.getText().clear();
+                       }
+                       if (Integer.parseInt(Objects.requireNonNull(etScoreValueGame.getText()).toString()) > 10){
+                           viewSnackBar(viewRating);
+                           etScoreValueGame.getText().clear();
+                       }
+                       if(Integer.parseInt(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString())  > 10){
+                           viewSnackBar(viewRating);
+                           etScoreClassroomCleanTidy.getText().clear();
+                       }
+                       if (Integer.parseInt(Objects.requireNonNull(etScoreTimeManagement.getText()).toString()) > 10){
+                           viewSnackBar(viewRating);
+                           etScoreTimeManagement.getText().clear();
+                       }
+
                     });
                 }
 
@@ -235,39 +248,46 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                         total = Objects.requireNonNull(etTotal.getText()).toString();
                         achievements = Objects.requireNonNull(etAchievements.getText()).toString();
 
-                        if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                                && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                                && Integer.parseInt(scoreTimeManagement) <=10){
+                        if ( Integer.parseInt(etScoreAttendanceDeparture.getText().toString()) <= 10  && Integer.parseInt(etScoreDealingAtmosphere.getText().toString()) <= 10
+                                && Integer.parseInt(etScoreValueGame.getText().toString()) <= 10 && Integer.parseInt(etScoreClassroomCleanTidy.getText().toString())  <= 10
+                                && Integer.parseInt(etScoreTimeManagement.getText().toString()) <= 10 ) {
+
 
                             ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
                                     notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
                                     notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
 
                             databaseReference.child("RatingTeachers").child(codeTeacher).child("feb").setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
 
-                        if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                            etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
+                        if( Integer.parseInt(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreAttendanceDeparture.getText().clear();
                         }
-                        if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                            etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreDealingAtmosphere.getText().clear();
                         }
-                        if(Integer.parseInt( scoreValueGame ) > 10 ){
-                            etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreValueGame.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreValueGame.getText().clear();
                         }
-                        if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                            etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
+                        if(Integer.parseInt(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString())  > 10){
+                            viewSnackBar(viewRating);
+                            etScoreClassroomCleanTidy.getText().clear();
                         }
-                        if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                            etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreTimeManagement.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreTimeManagement.getText().clear();
                         }
+
                     });
                 }
 
@@ -327,39 +347,46 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                         total = Objects.requireNonNull(etTotal.getText()).toString();
                         achievements = Objects.requireNonNull(etAchievements.getText()).toString();
 
-                        if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                                && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                                && Integer.parseInt(scoreTimeManagement) <=10){
+                        if ( Integer.parseInt(etScoreAttendanceDeparture.getText().toString()) <= 10  && Integer.parseInt(etScoreDealingAtmosphere.getText().toString()) <= 10
+                                && Integer.parseInt(etScoreValueGame.getText().toString()) <= 10 && Integer.parseInt(etScoreClassroomCleanTidy.getText().toString())  <= 10
+                                && Integer.parseInt(etScoreTimeManagement.getText().toString()) <= 10 ) {
+
 
                             ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
                                     notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
                                     notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
 
                             databaseReference.child("RatingTeachers").child(codeTeacher).child("mar").setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
 
-                        if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                            etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
+                        if( Integer.parseInt(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreAttendanceDeparture.getText().clear();
                         }
-                        if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                            etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreDealingAtmosphere.getText().clear();
                         }
-                        if(Integer.parseInt( scoreValueGame ) > 10 ){
-                            etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreValueGame.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreValueGame.getText().clear();
                         }
-                        if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                            etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
+                        if(Integer.parseInt(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString())  > 10){
+                            viewSnackBar(viewRating);
+                            etScoreClassroomCleanTidy.getText().clear();
                         }
-                        if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                            etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreTimeManagement.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreTimeManagement.getText().clear();
                         }
+
                     });
                 }
 
@@ -419,38 +446,46 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                         total = Objects.requireNonNull(etTotal.getText()).toString();
                         achievements = Objects.requireNonNull(etAchievements.getText()).toString();
 
-                        if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                                && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                                && Integer.parseInt(scoreTimeManagement) <=10){
+                        if ( Integer.parseInt(etScoreAttendanceDeparture.getText().toString()) <= 10  && Integer.parseInt(etScoreDealingAtmosphere.getText().toString()) <= 10
+                                && Integer.parseInt(etScoreValueGame.getText().toString()) <= 10 && Integer.parseInt(etScoreClassroomCleanTidy.getText().toString())  <= 10
+                                && Integer.parseInt(etScoreTimeManagement.getText().toString()) <= 10 ) {
+
 
                             ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
                                     notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
                                     notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
 
                             databaseReference.child("RatingTeachers").child(codeTeacher).child("apr").setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
-                        if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                            etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
+
+                        if( Integer.parseInt(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreAttendanceDeparture.getText().clear();
                         }
-                        if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                            etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreDealingAtmosphere.getText().clear();
                         }
-                        if(Integer.parseInt( scoreValueGame ) > 10 ){
-                            etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreValueGame.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreValueGame.getText().clear();
                         }
-                        if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                            etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
+                        if(Integer.parseInt(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString())  > 10){
+                            viewSnackBar(viewRating);
+                            etScoreClassroomCleanTidy.getText().clear();
                         }
-                        if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                            etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreTimeManagement.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreTimeManagement.getText().clear();
                         }
+
                     });
                 }
 
@@ -510,39 +545,46 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                         total = Objects.requireNonNull(etTotal.getText()).toString();
                         achievements = Objects.requireNonNull(etAchievements.getText()).toString();
 
-                        if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                                && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                                && Integer.parseInt(scoreTimeManagement) <=10){
+                        if ( Integer.parseInt(etScoreAttendanceDeparture.getText().toString()) <= 10  && Integer.parseInt(etScoreDealingAtmosphere.getText().toString()) <= 10
+                                && Integer.parseInt(etScoreValueGame.getText().toString()) <= 10 && Integer.parseInt(etScoreClassroomCleanTidy.getText().toString())  <= 10
+                                && Integer.parseInt(etScoreTimeManagement.getText().toString()) <= 10 ) {
+
 
                             ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
                                     notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
                                     notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
 
                             databaseReference.child("RatingTeachers").child(codeTeacher).child("may").setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
 
-                        if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                            etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
+                        if( Integer.parseInt(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreAttendanceDeparture.getText().clear();
                         }
-                        if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                            etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreDealingAtmosphere.getText().clear();
                         }
-                        if(Integer.parseInt( scoreValueGame ) > 10 ){
-                            etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreValueGame.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreValueGame.getText().clear();
                         }
-                        if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                            etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
+                        if(Integer.parseInt(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString())  > 10){
+                            viewSnackBar(viewRating);
+                            etScoreClassroomCleanTidy.getText().clear();
                         }
-                        if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                            etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreTimeManagement.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreTimeManagement.getText().clear();
                         }
+
                     });
                 }
 
@@ -588,6 +630,7 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                             Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
+
                     btAddRatingTeacher.setOnClickListener(v -> {
                         notesAttendanceDeparture = Objects.requireNonNull(etNotesAttendanceDeparture.getText()).toString();
                         scoreAttendanceDeparture = Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString();
@@ -602,38 +645,46 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                         total = Objects.requireNonNull(etTotal.getText()).toString();
                         achievements = Objects.requireNonNull(etAchievements.getText()).toString();
 
-                        if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                                && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                                && Integer.parseInt(scoreTimeManagement) <=10){
+                        if ( Integer.parseInt(etScoreAttendanceDeparture.getText().toString()) <= 10  && Integer.parseInt(etScoreDealingAtmosphere.getText().toString()) <= 10
+                                && Integer.parseInt(etScoreValueGame.getText().toString()) <= 10 && Integer.parseInt(etScoreClassroomCleanTidy.getText().toString())  <= 10
+                                && Integer.parseInt(etScoreTimeManagement.getText().toString()) <= 10 ) {
+
 
                             ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
                                     notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
                                     notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
 
                             databaseReference.child("RatingTeachers").child(codeTeacher).child("jun").setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
-                        if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                            etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
+
+                        if( Integer.parseInt(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreAttendanceDeparture.getText().clear();
                         }
-                        if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                            etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreDealingAtmosphere.getText().clear();
                         }
-                        if(Integer.parseInt( scoreValueGame ) > 10 ){
-                            etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreValueGame.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreValueGame.getText().clear();
                         }
-                        if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                            etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
+                        if(Integer.parseInt(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString())  > 10){
+                            viewSnackBar(viewRating);
+                            etScoreClassroomCleanTidy.getText().clear();
                         }
-                        if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                            etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreTimeManagement.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreTimeManagement.getText().clear();
                         }
+
                     });
                 }
 
@@ -693,39 +744,46 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                         total = Objects.requireNonNull(etTotal.getText()).toString();
                         achievements = Objects.requireNonNull(etAchievements.getText()).toString();
 
-                        if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                                && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                                && Integer.parseInt(scoreTimeManagement) <=10){
+                        if ( Integer.parseInt(etScoreAttendanceDeparture.getText().toString()) <= 10  && Integer.parseInt(etScoreDealingAtmosphere.getText().toString()) <= 10
+                                && Integer.parseInt(etScoreValueGame.getText().toString()) <= 10 && Integer.parseInt(etScoreClassroomCleanTidy.getText().toString())  <= 10
+                                && Integer.parseInt(etScoreTimeManagement.getText().toString()) <= 10 ) {
+
 
                             ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
                                     notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
                                     notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
 
                             databaseReference.child("RatingTeachers").child(codeTeacher).child("jul").setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
 
-                        if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                            etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
+                        if( Integer.parseInt(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreAttendanceDeparture.getText().clear();
                         }
-                        if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                            etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreDealingAtmosphere.getText().clear();
                         }
-                        if(Integer.parseInt( scoreValueGame ) > 10 ){
-                            etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreValueGame.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreValueGame.getText().clear();
                         }
-                        if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                            etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
+                        if(Integer.parseInt(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString())  > 10){
+                            viewSnackBar(viewRating);
+                            etScoreClassroomCleanTidy.getText().clear();
                         }
-                        if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                            etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreTimeManagement.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreTimeManagement.getText().clear();
                         }
+
                     });
                 }
 
@@ -785,39 +843,46 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                         total = Objects.requireNonNull(etTotal.getText()).toString();
                         achievements = Objects.requireNonNull(etAchievements.getText()).toString();
 
-                        if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                                && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                                && Integer.parseInt(scoreTimeManagement) <=10){
+                        if ( Integer.parseInt(etScoreAttendanceDeparture.getText().toString()) <= 10  && Integer.parseInt(etScoreDealingAtmosphere.getText().toString()) <= 10
+                                && Integer.parseInt(etScoreValueGame.getText().toString()) <= 10 && Integer.parseInt(etScoreClassroomCleanTidy.getText().toString())  <= 10
+                                && Integer.parseInt(etScoreTimeManagement.getText().toString()) <= 10 ) {
+
 
                             ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
                                     notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
                                     notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
 
                             databaseReference.child("RatingTeachers").child(codeTeacher).child("aug").setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
 
-                        if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                            etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
+                        if( Integer.parseInt(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreAttendanceDeparture.getText().clear();
                         }
-                        if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                            etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreDealingAtmosphere.getText().clear();
                         }
-                        if(Integer.parseInt( scoreValueGame ) > 10 ){
-                            etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreValueGame.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreValueGame.getText().clear();
                         }
-                        if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                            etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
+                        if(Integer.parseInt(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString())  > 10){
+                            viewSnackBar(viewRating);
+                            etScoreClassroomCleanTidy.getText().clear();
                         }
-                        if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                            etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreTimeManagement.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreTimeManagement.getText().clear();
                         }
+
                     });
                 }
 
@@ -877,39 +942,46 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                         total = Objects.requireNonNull(etTotal.getText()).toString();
                         achievements = Objects.requireNonNull(etAchievements.getText()).toString();
 
-                        if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                                && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                                && Integer.parseInt(scoreTimeManagement) <=10){
+                        if ( Integer.parseInt(etScoreAttendanceDeparture.getText().toString()) <= 10  && Integer.parseInt(etScoreDealingAtmosphere.getText().toString()) <= 10
+                                && Integer.parseInt(etScoreValueGame.getText().toString()) <= 10 && Integer.parseInt(etScoreClassroomCleanTidy.getText().toString())  <= 10
+                                && Integer.parseInt(etScoreTimeManagement.getText().toString()) <= 10 ) {
+
 
                             ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
                                     notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
                                     notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
 
                             databaseReference.child("RatingTeachers").child(codeTeacher).child("sep").setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
 
-                        if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                            etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
+                        if( Integer.parseInt(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreAttendanceDeparture.getText().clear();
                         }
-                        if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                            etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreDealingAtmosphere.getText().clear();
                         }
-                        if(Integer.parseInt( scoreValueGame ) > 10 ){
-                            etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreValueGame.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreValueGame.getText().clear();
                         }
-                        if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                            etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
+                        if(Integer.parseInt(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString())  > 10){
+                            viewSnackBar(viewRating);
+                            etScoreClassroomCleanTidy.getText().clear();
                         }
-                        if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                            etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreTimeManagement.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreTimeManagement.getText().clear();
                         }
+
                     });
                 }
 
@@ -969,39 +1041,46 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                         total = Objects.requireNonNull(etTotal.getText()).toString();
                         achievements = Objects.requireNonNull(etAchievements.getText()).toString();
 
-                        if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                                && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                                && Integer.parseInt(scoreTimeManagement) <=10){
+                        if ( Integer.parseInt(etScoreAttendanceDeparture.getText().toString()) <= 10  && Integer.parseInt(etScoreDealingAtmosphere.getText().toString()) <= 10
+                                && Integer.parseInt(etScoreValueGame.getText().toString()) <= 10 && Integer.parseInt(etScoreClassroomCleanTidy.getText().toString())  <= 10
+                                && Integer.parseInt(etScoreTimeManagement.getText().toString()) <= 10 ) {
+
 
                             ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
                                     notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
                                     notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
 
                             databaseReference.child("RatingTeachers").child(codeTeacher).child("oct").setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
 
-                        if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                            etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
+                        if( Integer.parseInt(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreAttendanceDeparture.getText().clear();
                         }
-                        if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                            etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreDealingAtmosphere.getText().clear();
                         }
-                        if(Integer.parseInt( scoreValueGame ) > 10 ){
-                            etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreValueGame.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreValueGame.getText().clear();
                         }
-                        if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                            etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
+                        if(Integer.parseInt(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString())  > 10){
+                            viewSnackBar(viewRating);
+                            etScoreClassroomCleanTidy.getText().clear();
                         }
-                        if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                            etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreTimeManagement.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreTimeManagement.getText().clear();
                         }
+
                     });
                 }
 
@@ -1061,39 +1140,46 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                         total = Objects.requireNonNull(etTotal.getText()).toString();
                         achievements = Objects.requireNonNull(etAchievements.getText()).toString();
 
-                        if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                                && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                                && Integer.parseInt(scoreTimeManagement) <=10){
+                        if ( Integer.parseInt(etScoreAttendanceDeparture.getText().toString()) <= 10  && Integer.parseInt(etScoreDealingAtmosphere.getText().toString()) <= 10
+                                && Integer.parseInt(etScoreValueGame.getText().toString()) <= 10 && Integer.parseInt(etScoreClassroomCleanTidy.getText().toString())  <= 10
+                                && Integer.parseInt(etScoreTimeManagement.getText().toString()) <= 10 ) {
+
 
                             ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
                                     notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
                                     notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
 
                             databaseReference.child("RatingTeachers").child(codeTeacher).child("nov").setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
 
-                        if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                            etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
+                        if( Integer.parseInt(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreAttendanceDeparture.getText().clear();
                         }
-                        if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                            etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreDealingAtmosphere.getText().clear();
                         }
-                        if(Integer.parseInt( scoreValueGame ) > 10 ){
-                            etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreValueGame.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreValueGame.getText().clear();
                         }
-                        if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                            etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
+                        if(Integer.parseInt(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString())  > 10){
+                            viewSnackBar(viewRating);
+                            etScoreClassroomCleanTidy.getText().clear();
                         }
-                        if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                            etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreTimeManagement.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreTimeManagement.getText().clear();
                         }
+
                     });
                 }
 
@@ -1154,39 +1240,46 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
                         total = Objects.requireNonNull(etTotal.getText()).toString();
                         achievements = Objects.requireNonNull(etAchievements.getText()).toString();
 
-                        if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                                && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                                && Integer.parseInt(scoreTimeManagement) <=10){
+                        if ( Integer.parseInt(etScoreAttendanceDeparture.getText().toString()) <= 10  && Integer.parseInt(etScoreDealingAtmosphere.getText().toString()) <= 10
+                                && Integer.parseInt(etScoreValueGame.getText().toString()) <= 10 && Integer.parseInt(etScoreClassroomCleanTidy.getText().toString())  <= 10
+                                && Integer.parseInt(etScoreTimeManagement.getText().toString()) <= 10 ) {
+
 
                             ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
                                     notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
                                     notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
 
                             databaseReference.child("RatingTeachers").child(codeTeacher).child("dec").setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
 
-                        if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                            etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
+                        if( Integer.parseInt(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreAttendanceDeparture.getText().clear();
                         }
-                        if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                            etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreDealingAtmosphere.getText().clear();
                         }
-                        if(Integer.parseInt( scoreValueGame ) > 10 ){
-                            etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreValueGame.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreValueGame.getText().clear();
                         }
-                        if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                            etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
+                        if(Integer.parseInt(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString())  > 10){
+                            viewSnackBar(viewRating);
+                            etScoreClassroomCleanTidy.getText().clear();
                         }
-                        if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                            etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
+                        if (Integer.parseInt(Objects.requireNonNull(etScoreTimeManagement.getText()).toString()) > 10){
+                            viewSnackBar(viewRating);
+                            etScoreTimeManagement.getText().clear();
                         }
+
                     });
                 }
             }
@@ -1202,55 +1295,6 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
         etScoreDealingAtmosphere.addTextChangedListener(textWatcher);
         etScoreTimeManagement.addTextChangedListener(textWatcher);
 
-
-        btAddRatingTeacher.setOnClickListener(v -> {
-            notesAttendanceDeparture = Objects.requireNonNull(etNotesAttendanceDeparture.getText()).toString();
-            scoreAttendanceDeparture = Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString();
-            notesClassroomCleanTidy = Objects.requireNonNull(etNotesClassroomCleanTidy.getText()).toString();
-            scoreClassroomCleanTidy = Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString();
-            notesValueGame = Objects.requireNonNull(etNotesValueGame.getText()).toString();
-            scoreValueGame = Objects.requireNonNull(etScoreValueGame.getText()).toString();
-            notesDealingAtmosphere = Objects.requireNonNull(etNotesDealingAtmosphere.getText()).toString();
-            scoreDealingAtmosphere = Objects.requireNonNull(etScoreDealingAtmosphere.getText()).toString();
-            notesTimeManagement = Objects.requireNonNull(etNotesTimeManagement.getText()).toString();
-            scoreTimeManagement = Objects.requireNonNull(etScoreTimeManagement.getText()).toString();
-            total = Objects.requireNonNull(etTotal.getText()).toString();
-            achievements = Objects.requireNonNull(etAchievements.getText()).toString();
-
-            if( Integer.parseInt(scoreAttendanceDeparture) <= 10 && Integer.parseInt(scoreClassroomCleanTidy ) <= 10
-                    && Integer.parseInt( scoreValueGame ) <=10 && Integer.parseInt( scoreDealingAtmosphere ) <=10
-                    && Integer.parseInt(scoreTimeManagement) <=10){
-
-                ratingTeacherModel = new RatingTeacherModel(notesAttendanceDeparture, scoreAttendanceDeparture,
-                        notesClassroomCleanTidy, scoreClassroomCleanTidy, notesValueGame, scoreValueGame,
-                        notesDealingAtmosphere, scoreDealingAtmosphere, notesTimeManagement, scoreTimeManagement, total, achievements);
-
-                databaseReference.child("RatingTeachers").child(codeTeacher).setValue(ratingTeacherModel).addOnCompleteListener(task -> {
-                    if (task.isSuccessful()){
-                        Toast.makeText(context, "تم الاضافة بنجاح", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(context, ""+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-
-
-            if(Integer.parseInt(scoreAttendanceDeparture) > 10 ){
-                etScoreAttendanceDeparture.setError("تأكد من ادخالك القيمة المحددة");
-            }
-            if(Integer.parseInt(scoreClassroomCleanTidy ) > 10 ){
-                etScoreClassroomCleanTidy.setError("تأكد من ادخالك القيمة المحددة");
-            }
-            if(Integer.parseInt( scoreValueGame ) > 10 ){
-                etScoreValueGame.setError("تأكد من ادخالك القيمة المحددة");
-            }
-            if (Integer.parseInt( scoreDealingAtmosphere ) > 10 ){
-                etScoreDealingAtmosphere.setError("تأكد من ادخالك القيمة المحددة");
-            }
-            if(Integer.parseInt(scoreTimeManagement) > 10 ){
-                etScoreTimeManagement.setError("تأكد من ادخالك القيمة المحددة");
-            }
-        });
         return viewRating;
     }
 
@@ -1262,6 +1306,7 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
 
             if (!TextUtils.isEmpty(Objects.requireNonNull(etScoreAttendanceDeparture.getText()).toString().trim())
                     || !TextUtils.isEmpty(Objects.requireNonNull(etScoreClassroomCleanTidy.getText()).toString().trim())
@@ -1297,5 +1342,17 @@ public class RatingTeacherFragment extends Fragment implements CustomSpinner.OnS
     @Override
     public void onPopupWindowClosed(AppCompatSpinner spinner) {
         spinnerMonth.setBackground(AppCompatResources.getDrawable(context,R.drawable.bg_spinner_month));
+    }
+
+    public void viewSnackBar(View viewRating){
+        snackbar =  Snackbar.make(viewRating, R.string.message_to_rating, Snackbar.LENGTH_LONG);
+        View sbView = snackbar.getView();
+        AppCompatTextView tv =  sbView.findViewById(com.google.android.material.R.id.snackbar_text);
+        tv.setTextColor(Color.WHITE);
+        tv.setTextSize(16);
+        tv.setTypeface(null, Typeface.BOLD);
+        sbView.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.red));
+        snackbar.show();
+
     }
 }

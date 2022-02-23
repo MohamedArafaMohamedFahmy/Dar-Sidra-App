@@ -10,5 +10,6 @@
     <color name="general_app">#69b555</color>
     <color name="sub_color_app">#DBEFD6</color>
     <color name="black_gray">#9F000000</color>
+    <color name="red">#D50606</color>
 
 </resources>
